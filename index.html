@@ -23,6 +23,10 @@
         margin-bottom: 0.5rem;
       }
 
+      h3 {
+        font-weight: normal;
+      }
+
       ul ul {
         margin-left: 1rem;
       }
@@ -79,6 +83,7 @@
         --ed-gov-color: rgb(22, 42, 140);
         --ed-in-color: rgb(80, 85, 235);
         --ed-st-color: rgb(80, 158, 250);
+        --no-g-color: #64ACA4;
       }
 
       .map-control label:not(.custom-label):before {
@@ -96,6 +101,7 @@
       #ed-gov-select:checked ~ .map-control [for='ed-gov-select'],
       #ed-in-select:checked ~ .map-control [for='ed-in-select'],
       #ed-st-select:checked ~ .map-control [for='ed-st-select'],
+      #no-g-select:checked ~ .map-control [for='no-g-select'],
       #wall-select:checked ~ .map-control [for='wall-select'] {
         font-weight: bold;
       }
@@ -110,7 +116,7 @@
       #wall-select:checked ~ .svg-container .wall {
         fill: url(#wall-hatch);
       }
-      #wall-select:checked ~ .svg-container .wall + .ue.marker {
+      #wall-select:checked ~ .svg-container .wall ~ .ue.marker {
         display: none;
       }
       label[for='wall-select']:before {
@@ -136,6 +142,13 @@
       }
       [for='ed-st-select']:before {
         background-color: var(--ed-st-color);
+      }
+
+      #no-g-select:checked ~ .svg-container .no-g {
+        fill: url(#no-g-hatch);
+      }
+      [for='no-g-select']:before {
+        background-image: repeating-linear-gradient(-45deg, var(--no-g-color), var(--no-g-color) 3px, white 3px, white 6px);
       }
 
       .map-container input {
@@ -215,7 +228,10 @@
     <svg height="0" width="0" id="svg-defs">
       <defs>
         <pattern id="wall-hatch" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-          <line x1="0" y1="0" x2="0" y2="10" style="stroke: var(--wall-color); stroke-width: 3" />
+          <line x1="0" y1="0" x2="0" y2="10" style="stroke: var(--wall-color); stroke-width: 2" />
+        </pattern>
+        <pattern id="no-g-hatch" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+          <line x1="5" y1="0" x2="5" y2="10" style="stroke: var(--no-g-color); stroke-width: 2" />
         </pattern>
         <g id="ue-star" transform="translate(10,10) scale(0.4 0.4)" fill="gold" stroke="black">
           <g id="c" stroke="none">
@@ -230,11 +246,12 @@
       </defs>
     </svg>
     <section class="map-container" id="map">
-      <input id="wall-select" name="map-control" type="checkbox" />
       <input id="ue-select" name="map-control" type="checkbox" />
-      <input id="ed-gov-select" name="map-control" type="checkbox" />
-      <input id="ed-in-select" name="map-control" type="checkbox" />
-      <input id="ed-st-select" name="map-control" type="checkbox" />
+      <input id="wall-select" name="map-control" type="checkbox" checked/>
+      <input id="ed-gov-select" name="map-control" type="checkbox" checked/>
+      <input id="ed-in-select" name="map-control" type="checkbox" checked/>
+      <input id="ed-st-select" name="map-control" type="checkbox" checked/>
+      <input id="no-g-select" name="map-control" type="checkbox" checked/>
       <div class="svg-container">
         <svg
           fill="#f3f3f3"
@@ -399,6 +416,11 @@
               name="Hungary2"
               class="country-overlay wall"
             />
+            <path
+              d="m 525.34999,325.25 h 1.5 l 1.4,2.3 2.2,0.8 0.9,1.1 2.3,0.4 0.9,0.7 0.7,1.7 -2.2,2.3 -4.6,1.1 -1.9,2.4 -1.2,1 0.1,1.7 -1.4,1.4 -0.7,2.5 -1.4,1.5 v 1.2 l -1.6,2.7 0.2,1.3 -2.1,1.5 -1.5,4.7 -1.3,0.9 -2.6,-0.3 -2.5,2 -1.4,-0.5 -3.2,0.9 -1,-0.5 -2.8,-0.3 -1.1,0.2 -2.9,-0.4 -1,0.3 -1.5,1.6 -2.2,1 -1.6,-0.5 -2.1,1.3 -2.9,0.4 -1.1,1.4 -2.5,0.9 -4.9,-0.2 -3.3,-0.9 -1.3,-1.3 -2.5,-0.6 -1.3,-0.7 -2.2,-2.2 -2.7,-1.8 -0.9,-1.3 -1.7,-1.2 -2.9,-1.2 -1.9,-2.2 -1.4,-3.3 -2.4,-0.1 1.8,-1.7 2.5,-0.5 0.3,-1.8 -1.1,-1.6 0.5,-0.7 -0.4,-1.5 2.2,-1.2 0.5,-1.4 -0.5,-1.1 -2.6,-0.7 1.3,-1.4 2.5,0.9 3.9,-0.3 -0.7,-2 0.6,-1.9 0.6,-0.7 2.1,0.3 4.2,2.7 1.6,0.7 4.7,0.1 7,-0.4 0.6,-1 -0.5,-1.3 0.4,-1 1.4,-0.7 4.3,-0.4 2.4,-0.6 1,-1.5 0.7,-0.2 3.5,1.4 5,-2.5 1.6,-3.5 1.8,-0.4 2.7,0.1 2.5,0.6 4.6,-0.7 1.4,0.9 2.2,2.2 0.6,0.2 z"
+              name="Hungary3"
+              class="country-overlay no-g"
+            />
             <use class="ue marker" href="#ue-star" x="500" y="330" />
           </a>
           <a href="#ireland">
@@ -449,12 +471,6 @@
             />
             <use class="ue marker" href="#ue-star" x="550" y="190" />
           </a>
-          <a href="#moldava">
-            <path
-              d="m 605.74999,370.65 -2,-2.3 0.9,-0.7 -1.4,-5 -0.1,-2.6 0.9,-4.8 -0.5,-2.9 -1.4,-2.3 -1.4,-2.9 -3,-2.1 -1.3,-1.7 -2.1,-1.8 -2.5,-3.2 -1.5,-1.3 -3,-4.9 -2.5,-3 -2.5,-1.6 h -2.1 l 0.2,-0.6 2.3,-1.4 0.7,0.2 4,0.1 1.2,-1 0.8,0.3 1.6,-1 3.5,1 3.6,2.4 2.5,0.3 0.6,1.2 5.6,0.6 1.4,1.9 1.4,1 1.4,-0.7 1.4,1.4 0.6,2.3 -0.6,3.1 0.6,1.2 2.3,1.2 2.9,2 v 2.4 l 0.9,1.9 2,1.3 2.1,0.8 1,1.6 0.2,2.9 2.9,1.7 -0.6,0.7 -2.9,0.4 -1.2,-1.3 -1.6,0.6 -2.1,-0.8 -1.9,-0.2 -2.1,-1 -2.5,1.6 0.5,2.1 1,1.7 -0.4,2 -2.3,1.7 v 1.3 l -2.5,2.9 0.5,1.4 -0.4,1 -2,0.2 z"
-              name="Moldova"
-            />
-          </a>
           <a href="#macedonia">
             <path
               d="m 538.14999,419.25 3.3,3.2 3.4,1.8 1.7,3.3 0.9,1 -0.5,1.7 v 4.2 l -2,0.3 -0.2,2.1 -2.9,1 -3.3,-0.6 -3,0.4 -0.8,0.3 -1.7,2.5 -2.4,1.3 -2.3,-0.6 -0.9,0.6 -4.6,0.3 -1.3,-1.1 -1.6,0.2 -1.3,-2.4 -1.2,-1.1 -1.2,-2.2 -0.2,-1.9 -0.7,-2 0.8,-0.8 -0.3,-2.1 0.5,-2.6 1.7,0.3 0.5,-0.8 0.2,-2.6 3.4,-1.5 1,-0.1 1.6,1.2 1.5,-1.9 2.1,-0.4 2.2,-0.3 2,-0.9 1.9,0.3 2.3,-0.8 z"
@@ -491,7 +507,7 @@
             <path
               d="m 605.74999,370.65 1.5,1.6 1.8,0.9 4,0.9 0.6,-1.2 0.9,0.3 1.6,-0.5 2.2,-1.3 2.2,-0.2 2.2,0.7 1.9,1.8 -0.2,4.3 -0.7,2.1 -6.2,1.3 0.4,-0.6 -0.7,-2 -1,-1 -0.9,1.1 0.6,1.7 -0.7,1.4 -0.2,2.4 0.6,0.9 -1.6,2 -0.5,1.3 0.8,4.8 -0.4,3.7 h -2 l -2.6,-0.5 -2.2,-0.7 -2.5,-2.6 -1.7,0.5 -0.9,-0.6 -3.2,-0.4 -4.5,-2.3 -2.9,0.4 -4.4,0.9 -3.2,1.2 -3.3,2.1 -1.2,1.6 -1.6,0.9 -2.3,0.6 -4.2,-0.2 -9.4,-1.7 -2.5,0.5 -3.5,-0.4 -5.3,-1 -3.9,-0.3 -3.7,0.6 -0.9,-1.8 1.8,-2 -4.3,-2.5 -0.8,-1.2 -1.6,-0.9 -0.5,-1.7 2.5,-1.8 -3,-1.6 -1.7,0.5 -1.7,1.8 -1.3,0.2 -1,-1.2 -1.5,-0.7 -3.5,-0.7 -1.5,-1.2 -2.1,-0.6 0.2,-0.6 1.8,-0.8 -2.3,-1.1 1.5,-2 -0.9,-1.1 -2.6,-0.8 -3.8,-1.9 -2.2,-1.8 -0.4,-4.1 -0.8,0.2 -1.8,-2 -2.9,-1.7 -1.7,-2 3.2,-0.9 1.4,0.5 2.5,-2 2.6,0.3 1.3,-0.9 1.5,-4.7 2.1,-1.5 -0.2,-1.3 1.6,-2.7 v -1.2 l 1.4,-1.5 0.7,-2.5 1.4,-1.4 -0.1,-1.7 1.2,-1 1.9,-2.4 4.6,-1.1 2.2,-2.3 2.1,-0.9 0.9,-1.2 h 0.7 l 2.7,1.5 2.7,-0.1 6.9,1.4 3.6,-0.7 1.2,0.3 4.3,3.3 2.1,-0.5 1,-1.2 3.4,-1.3 8.4,-1.2 1.1,-1.9 0.2,-1.4 3.7,-0.8 h 2.1 l 2.5,1.6 2.5,3 3,4.9 1.5,1.3 2.5,3.2 2.1,1.8 1.3,1.7 3,2.1 1.4,2.9 1.4,2.3 0.5,2.9 -0.9,4.8 0.1,2.6 1.4,5 -0.9,0.7 z"
               name="Romania"
-              class=""
+              class="no-g"
             />
             <use class="ue marker" href="#ue-star" x="550" y="350" />
           </a>
@@ -595,7 +611,7 @@
         <h2>Menu</h2>
         <ul>
           <li>
-            <svg height="20" width="20"><use href="#ue-star" /></svg>&nbsp;<label class="custom-label" for="ue-select">Membres de l'UE</label>
+            <h3><svg height="20" width="20"><use href="#ue-star" /></svg>&nbsp;<label class="custom-label" for="ue-select">Membres de l'UE</label></h3>
             <ul>
               <li>
                 <label for="wall-select">réclamant la construction de murs pour "protéger les frontières"</label>
@@ -603,11 +619,17 @@
             </ul>
           </li>
           <li>
-            Partis d'extrême-droite au gouvernement
+            <h3>Partis d'extrême-droite</h3>
             <ul>
               <li><label for="ed-gov-select">Gouvernements dirigés par un parti d'ED</label></li>
               <li><label for="ed-in-select">Gouvernements comprenant des membres d'un parti d'ED</label></li>
               <li><label for="ed-st-select">Gouvernements soutenus par un parti d'ED sans participation</label></li>
+            </ul>
+          </li>
+          <li>
+            <h3>Partis de gauche</h3>
+            <ul>
+              <li><label for="no-g-select">Aucun parti de gauche représenté</label></li>
             </ul>
           </li>
         </ul>
@@ -720,10 +742,6 @@
         <h2>Lettonie</h2>
         <p>Section en cours de construction.</p>
       </article>
-      <article id="moldava">
-        <a class="close" href="#map">x</a>
-        <h2>Moldavie</h2>
-        <p>Section en cours de construction.</p>
       </article>
       <article id="macedonia">
         <a class="close" href="#map">x</a>
