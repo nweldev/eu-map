@@ -1,0 +1,34 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+header h1 {
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+}
+.back {
+  color: #004494;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  margin: 0 5px;
+  align-items: center;
+}
+.back-text {
+  margin-right: 5px;
+  font-size: 24px;
+}
+.back figure {
+  margin: 0;
+  font-size: 12px;
+  line-height: 8px;
+  text-align: center;
+}
+main {
+  margin: 0 1rem;
+}
