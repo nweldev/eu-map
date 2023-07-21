@@ -32,3 +32,31 @@ header h1 {
 main {
   margin: 0 1rem;
 }
+table {
+  text-align: center;
+  border-collapse: collapse;
+}
+td, th {
+  padding: 0 .5rem;
+  border: solid black 1px;
+}
+th {
+  font-weight: bold;
+  background-color: #eee;
+}
+.en-link {
+  font-size: .7rem;
+  vertical-align: middle;
+}
+.source {
+  font-size: .6rem;
+  vertical-align: top;
+  padding-left: 2px;
+  text-decoration: none;
+}
+.source:before {
+  content: "(";
+}
+.source:after {
+  content: ")"
+}
