@@ -84,13 +84,15 @@
       }
 
       :root {
-        --ue-border-color: #e6bd19;
+        --ue-border-color: #B89714;
         --wall-color: #c46200;
+        --neolib-color: #F5DD00;
         --ed-gov-color: rgb(22, 42, 140);
         --ed-in-color: rgb(80, 85, 235);
-        --ed-st-color: rgb(80, 158, 250);
-        --no-g-color: #64aca4;
-        --demo-imp-color: #f9f8bb;
+        --ed-st-color: rgb(80, 140, 250);
+        --consr-color: rgb(100, 200, 255);
+        --no-g-color: #ff69b4;
+        --demo-imp-color: #999;
       }
 
       .map-control label:not(.custom-label):before {
@@ -107,6 +109,8 @@
       #ed-gov-select:checked ~ .map-control [for='ed-gov-select'],
       #ed-in-select:checked ~ .map-control [for='ed-in-select'],
       #ed-st-select:checked ~ .map-control [for='ed-st-select'],
+      #gov-nl-select:checked ~ .map-control [for='gov-nl-select'],
+      #gov-consr-select:checked ~ .map-control [for='gov-consr-select'],
       #no-g-select:checked ~ .map-control [for='no-g-select'],
       #hr-restrict-select:checked ~ .map-control [for='hr-restrict-select'],
       #discrimination-select:checked ~ .map-control [for='discrimination-select'],
@@ -130,14 +134,6 @@
         border: solid var(--ue-border-color) 3px;
       }
 
-      #demo-imp-select:checked ~ .svg-container .demo-imp {
-        fill: var(--demo-imp-color);
-      }
-      [for='demo-imp-select']:before {
-        background-color: var(--demo-imp-color);
-        border: solid black 1px;
-      }
-
       #wall-select:checked ~ .svg-container .wall.marker,
       #discrimination-select:checked ~ .svg-container .discrimination.marker,
       #hr-restrict-select:checked ~ .svg-container .hr-restrict.marker {
@@ -146,6 +142,7 @@
 
       #score-ed-select:checked ~ .svg-container .score-ed.marker {
         display: initial;
+        filter: url(#shadow);
       }
 
       #ed-gov-select:checked ~ .svg-container .ed-gov {
@@ -169,11 +166,32 @@
         background-color: var(--ed-st-color);
       }
 
+      #gov-nl-select:checked ~ .svg-container .gov-nl {
+        fill: var(--neolib-color);
+      }
+      [for='gov-nl-select']:before {
+        background-color: var(--neolib-color);
+      }
+
+      #gov-consr-select:checked ~ .svg-container .gov-consr {
+        fill: var(--consr-color);
+      }
+      [for='gov-consr-select']:before {
+        background-color: var(--consr-color);
+      }
+
       #no-g-select:checked ~ .svg-container .no-g {
         fill: url(#no-g-hatch);
       }
       [for='no-g-select']:before {
-        background-image: repeating-linear-gradient(-45deg, var(--no-g-color), var(--no-g-color) 3px, white 3px, white 6px);
+        background-image: repeating-linear-gradient(-45deg, var(--no-g-color), var(--no-g-color) 2px, white 3px, white 6px);
+      }
+
+      #demo-imp-select:checked ~ .svg-container .demo-imp {
+        fill: url(#demo-imp-hatch);
+      }
+      [for='demo-imp-select']:before {
+        background-image: repeating-linear-gradient(0deg, var(--demo-imp-color), var(--demo-imp-color) 2px, white 2px, white 6px);
       }
 
       .map-container input {
@@ -251,12 +269,15 @@
   </head>
   <body>
     <svg height="0" width="0" id="svg-defs">
+      <filter id="shadow" color-interpolation-filters="sRGB">
+        <feDropShadow dx="0" dy="0" stdDeviation="2" flood-opacity="0.6" />
+      </filter>
       <defs>
-        <pattern id="wall-hatch" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
-          <line x1="0" y1="0" x2="0" y2="10" style="stroke: var(--wall-color); stroke-width: 2" />
-        </pattern>
         <pattern id="no-g-hatch" width="10" height="10" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
           <line x1="5" y1="0" x2="5" y2="10" style="stroke: var(--no-g-color); stroke-width: 2" />
+        </pattern>
+        <pattern id="demo-imp-hatch" width="10" patternTransform="rotate(90 0 0)" height="10" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="10" style="stroke: var(--demo-imp-color); stroke-width: 3" />
         </pattern>
         <g id="ue-star" transform="translate(10,10) scale(0.4 0.4)" fill="gold" stroke="black">
           <g id="c" stroke="none">
@@ -294,11 +315,13 @@
       <input id="ed-gov-select" name="map-control" type="checkbox" checked />
       <input id="ed-in-select" name="map-control" type="checkbox" checked />
       <input id="ed-st-select" name="map-control" type="checkbox" checked />
+      <input id="gov-nl-select" name="map-control" type="checkbox" checked />
+      <input id="gov-consr-select" name="map-control" type="checkbox" checked />
       <input id="no-g-select" name="map-control" type="checkbox" />
       <input id="hr-restrict-select" name="map-control" type="checkbox" checked />
       <input id="discrimination-select" name="map-control" type="checkbox" checked />
       <input id="score-ed-select" name="map-control" type="checkbox" />
-      <input id="demo-imp-select" name="map-control" type="checkbox" checked />
+      <input id="demo-imp-select" name="map-control" type="checkbox" />
       <div class="svg-container">
         <svg
           fill="#f3f3f3"
@@ -342,9 +365,11 @@
               d="m 509.04999,415.55 0.5,0.4 2,2.9 1.4,0.5 1.9,1.3 1.4,3.2 0.1,2.2 -0.5,2.6 0.3,2.1 -0.8,0.8 0.7,2 0.2,1.9 1.2,2.2 1.2,1.1 1.3,2.4 1.6,-0.2 1.3,1.1 v 1.1 l 1.1,1.8 -0.8,2.6 -1.7,0.8 -1.2,3.1 -0.3,2 -0.6,0.5 -1.9,0.3 -1.7,1.3 1,2.2 -0.9,0.7 -0.3,1.5 -0.7,0.7 -2.7,-0.9 -0.7,-2.5 -1.7,-2.7 -4.9,-2.6 -1.2,-1.1 0.4,-1.5 -0.1,-1.4 -1.4,-2.4 0.3,-2.6 0.8,-2.2 -0.3,-2.7 0.1,-2.1 -0.7,-2.9 0.5,-2.1 0.9,-1.3 -0.2,-2.2 -1.5,-1.1 -1.6,-0.2 v -3.1 l -0.3,-0.6 h 1.7 l -1.7,-2.8 3.2,-5.3 1.1,0.3 0.8,2.1 z"
               name="Albania"
               id="Albania"
-              class="demo-imp"
+              class="gov-nl"
             />
             <use href="#Albania" class="no-g country-overlay" />
+            <use href="#Albania" class="demo-imp country-overlay" />
+            <text class="score-ed marker" x="505" y="450" style="font-size: 6px">0,1%</text>
             <use class="discrimination marker" href="#discrimination-icon" x="502" y="430" />
           </a>
           <a href="./c/bih.html" aria-label="Bosnie-Herzégovine">
@@ -397,8 +422,12 @@
             <path
               d="m 462.14999,322.35 -0.9,2.4 0.1,0.8 1.6,2.9 2.3,2.9 -0.6,0.7 -0.6,1.9 0.7,2 -3.9,0.3 -2.5,-0.9 -1.3,1.4 2.6,0.7 0.5,1.1 -0.5,1.4 -2.2,1.2 0.4,1.5 -0.5,0.7 1.1,1.6 -0.3,1.8 -2.5,0.5 -1.8,1.7 -1.3,0.9 -0.1,1.9 -2.4,-0.5 -1.6,0.2 -2.3,1.1 -2.8,-0.2 -2.6,0.2 -1.9,0.7 -1,1.3 -3,1.2 -5,-0.7 -5,-0.9 -2.6,-0.5 -4,-0.3 -8.6,-1.5 -1.1,-0.5 -3.1,-3.5 v -2.3 l -4.7,1.5 -3.1,-0.2 -3.4,0.3 -1.4,0.6 -1.2,2.2 -1.1,0.4 -2.1,-0.4 -0.9,-0.8 -3,-0.3 -0.5,-1.5 -0.8,-0.3 -2,1.9 -2.3,-0.4 -1.5,-0.8 -0.4,-1 -3.3,-0.8 0.3,-0.8 -1.1,-2.5 1,-3 -0.9,-0.7 1.7,-0.5 0.7,-0.5 3.5,1.6 0.9,1.4 1.2,0.3 -0.1,1.3 1.6,-0.5 1,-1.6 0.2,-1.9 2.8,-0.1 2.7,0.4 1.4,1.9 3.8,-0.5 1.1,-0.9 3.9,-1.5 5.7,-0.5 0.1,-1.4 2,0.3 1.5,0.8 2.5,-0.5 1.1,0.5 0.2,1.1 1.2,0.9 1.7,0.4 0.3,-1.5 -0.3,-1.9 -1.7,-0.3 0.6,-1.3 -0.1,-1.3 -2.5,-2.8 0.6,-1.3 3.1,-1.8 2.9,-0.8 1,-1 0.7,-2.9 2.3,0.9 1.3,-0.9 0.2,-2.8 2.2,1.2 0.8,1.3 3.9,0.4 1.4,-0.7 2.5,0.4 0.1,-1.1 1.3,-1.6 h 1.2 l 0.3,-3.2 1.2,-0.2 1.6,0.8 1.4,-0.4 4.8,1.7 1.5,-0.1 3,1.7 3.8,0.2 1.2,-0.9 5.1,1.5 z"
               name="Austria"
+              id="Austria"
+              class="gov-consr"
             />
-            <use class="wall marker" href="#wall-icon" x="435" y="330" />
+            <use href="#Austria" class="country-overlay no-g" />
+            <text class="score-ed marker" x="420" y="335" style="font-size: 11px">16%</text>
+            <use class="wall marker" href="#wall-icon" x="437" y="337" />
           </a>
           <a href="./c/bel.html" aria-label="Belgique">
             <path
@@ -477,9 +506,10 @@
               d="m 525.34999,325.25 h 1.5 l 1.4,2.3 2.2,0.8 0.9,1.1 2.3,0.4 0.9,0.7 0.7,1.7 -2.2,2.3 -4.6,1.1 -1.9,2.4 -1.2,1 0.1,1.7 -1.4,1.4 -0.7,2.5 -1.4,1.5 v 1.2 l -1.6,2.7 0.2,1.3 -2.1,1.5 -1.5,4.7 -1.3,0.9 -2.6,-0.3 -2.5,2 -1.4,-0.5 -3.2,0.9 -1,-0.5 -2.8,-0.3 -1.1,0.2 -2.9,-0.4 -1,0.3 -1.5,1.6 -2.2,1 -1.6,-0.5 -2.1,1.3 -2.9,0.4 -1.1,1.4 -2.5,0.9 -4.9,-0.2 -3.3,-0.9 -1.3,-1.3 -2.5,-0.6 -1.3,-0.7 -2.2,-2.2 -2.7,-1.8 -0.9,-1.3 -1.7,-1.2 -2.9,-1.2 -1.9,-2.2 -1.4,-3.3 -2.4,-0.1 1.8,-1.7 2.5,-0.5 0.3,-1.8 -1.1,-1.6 0.5,-0.7 -0.4,-1.5 2.2,-1.2 0.5,-1.4 -0.5,-1.1 -2.6,-0.7 1.3,-1.4 2.5,0.9 3.9,-0.3 -0.7,-2 0.6,-1.9 0.6,-0.7 2.1,0.3 4.2,2.7 1.6,0.7 4.7,0.1 7,-0.4 0.6,-1 -0.5,-1.3 0.4,-1 1.4,-0.7 4.3,-0.4 2.4,-0.6 1,-1.5 0.7,-0.2 3.5,1.4 5,-2.5 1.6,-3.5 1.8,-0.4 2.7,0.1 2.5,0.6 4.6,-0.7 1.4,0.9 2.2,2.2 0.6,0.2 z"
               name="Hungary"
               id="Hungary"
-              class="demo-imp ed-gov"
+              class="ed-gov"
             />
             <use href="#Hungary" class="country-overlay no-g" />
+            <use href="#Hungary" class="country-overlay demo-imp" />
             <use class="wall marker" href="#wall-icon" x="500" y="337" />
           </a>
           <a href="./c/irl.html" aria-label="Irelande">
@@ -576,7 +606,7 @@
             <path
               d="m 375.54999,411.55 -0.3,2.3 1,1.7 0.6,6.5 -1.8,3.2 0.1,3 -1.6,4.3 -0.8,1.1 -3.8,-2 -1.2,-1.1 1,-1.8 -2.2,-0.9 0.4,-1.7 -0.2,-0.9 -1.6,-0.5 1,-1.3 v -0.8 l -1.5,-1 -0.3,-0.9 1.3,-1.1 -0.6,-0.9 0.1,-1.3 0.9,-1.9 1.2,-0.9 2.8,-0.8 1.2,-1.1 1.9,0.6 0.6,-1.2 -0.2,-2.7 0.3,-1.1 1.3,0.5 z m -133.9,-47.9 -0.4,1.4 -1.9,-2.4 1,-0.5 z m 84.4,-55.6 2.1,1.2 h 1.4 l 2,-0.6 1.3,0.7 1.4,0.1 3.5,4.3 1.8,-0.7 1.4,0.4 0.3,0.9 2.1,0.1 3,-0.6 2,1.4 4.8,0.8 1.6,0.6 0.1,1.3 -3.5,3.8 -1.4,5.5 -1,1.8 -0.3,1.5 0.2,2.4 -0.6,2 v 1.5 l 1.1,1.3 -1.5,0.7 -0.8,1.4 -2.7,0.3 -0.8,-0.8 h -1.1 l -1.8,1.4 1.3,1.1 -0.6,0.9 -3.8,4 -2.1,0.9 -0.5,2.9 -3,2.2 -1.1,2.9 0.8,0.7 -0.3,1.5 -1.5,1 v 1 l 1.4,0.1 2.3,-1.6 -0.5,-1.3 2.3,-1.5 1.9,-0.1 2.2,0.3 0.8,2.2 -0.5,1.7 2.3,2.3 0.9,1.4 -2.6,1.7 0.1,1.6 0.9,0.6 1.7,2.6 1.8,1.6 -0.8,2.5 -1.2,0.3 -1.7,1.3 -1.9,-0.2 -0.8,0.4 1.5,3.1 3.2,1.4 0.5,1.7 -0.8,0.7 -1.4,2.5 0.7,1.3 0.1,1.4 0.9,0.9 5.1,2.4 3.3,-0.6 0.3,2 -2.1,2.6 0.2,1.5 -0.6,0.3 -0.8,0.3 -2.4,1.1 -3.9,3.4 -1.8,1 -0.7,1.8 -2,1.4 -2.4,0.5 -2.3,1 -1.1,-0.4 h -2.8 l -1.7,-1.2 -3.4,-0.8 -1.1,-1.8 -2.5,-0.1 -0.8,-1.5 -1.9,0.3 -1.5,0.7 -2,-0.1 -5.9,-1.8 -1.4,-1.4 -1.7,0.5 -1.6,1.6 -6.5,4.1 -2.6,4.3 -0.1,1.2 0.7,3.9 1.6,2.5 -3.1,-0.6 -3.8,1.1 -1.2,0.8 -4.7,-1.2 -2.1,1.1 -1.3,-1.2 -2.8,-1.2 v -1.5 l -2.6,-0.6 -0.9,0.7 -1.1,-1.5 -1.7,-0.3 -2.5,-1 -4,-1.1 -0.8,2.4 h -4.7 l -0.7,-0.4 -3.1,0.4 -3.2,-2.1 -3.6,0.4 -2.2,-2.1 -2.2,-0.2 -4.4,-1.7 -1.8,0.4 0.3,-3.2 -4.3,-1.3 -0.5,-1.3 2,-0.5 1.9,-1.9 1.7,-7.1 1.3,-8.3 1,-1.6 1.2,-0.4 -1,-1.2 -1.1,1.5 0.7,-7.6 0.5,-2.8 0.9,-3 3.1,2.4 0.8,1 0.9,3.4 0.6,0.1 -1.1,-4.6 -1.8,-2.3 -3.6,-2.3 -0.5,-1.3 1.8,-0.6 -0.5,-1.8 -0.5,-5.9 -3,-0.6 -4.8,-2.6 -1.7,-2.6 -1.6,-1.9 -0.4,-1.7 0.9,-1.8 -0.8,-1.1 -1.4,-0.8 1.1,-1.6 -3,-0.2 -1.8,-0.5 -0.3,-1.1 1.3,-1.4 -1.6,-0.8 -2.6,0.2 -0.2,-1.7 -2.2,0.3 -1.2,-0.3 -1.1,-1.1 -1.3,0.2 -2.2,-0.4 -0.8,-0.7 -4.8,-1.3 -2,-0.1 -1.9,0.6 -1.1,-0.3 -1.3,-2.2 -3.1,-1.1 0.6,-0.7 3.1,-0.6 0.6,-0.7 -2.2,-0.9 -0.2,-1.2 1.6,0.3 0.1,-1.2 -4,0.1 -0.4,-1.3 0.5,-1.4 2.3,-1.2 5.8,-1.4 2.5,0.2 1.7,-0.2 3,-1.6 2.9,-0.4 2.7,0.8 2.5,2.8 1.2,1 3.1,-1.7 4.4,0.1 0.9,0.9 1.2,-1.7 1,1 4.7,-0.2 -1.5,-2.5 -0.2,-6 -1.3,-1.7 -2.1,-4.3 0.2,-1.4 3.2,0.3 2.7,-0.6 1.3,0.4 0.3,2.8 1.1,1.6 h 2.2 l 2.3,0.5 3,0.1 4.3,0.8 1.8,-0.5 3.5,-2 -1.8,-0.7 -0.2,-0.7 0.9,-2.2 5.2,-2.5 3.7,-0.7 3.8,-1.3 2,-1.4 1.2,-1.8 0.5,-1.3 0.3,-6.8 1,-2.2 2.9,-1.6 6.4,-1.1 0.9,-0.5 0.9,2.2 v 1.2 l 2.9,2.4 3.2,-1 1.6,1.8 0.5,2 4.2,1.1 0.6,2 0.9,-0.3 3.6,0.4 1.6,1.1 -0.4,1.6 0.7,0.7 -0.7,1.4 0.5,0.6 2.3,0.3 2.2,-0.3 1.3,-0.6 0.5,-1.4 1.9,-0.6 -0.8,2.7 0.6,0.6 0.4,2 1.7,0.1 3.3,1.5 2.8,2.6 z"
               name="France"
-              class=""
+              class="gov-nl"
             />
             <text class="score-ed marker" x="275" y="360" style="font-size: 16px">24%</text>
             <use class="hr-restrict marker" href="#police-icon" x="280" y="310" />
@@ -625,22 +655,22 @@
             </ul>
           </li>
           <li>
-            <h3>Extrême-droite</h3>
+            <h3>Gouvernements</h3>
             <ul>
-              <li><label for="ed-gov-select">Gouvernements dirigés par un parti d'ED</label></li>
-              <li><label for="ed-in-select">Gouvernements comprenant des membres d'un parti d'ED</label></li>
-              <li><label for="ed-st-select">Gouvernements soutenus par un parti d'ED sans participation</label></li>
+              <li><label for="ed-gov-select">dirigés par un parti d'extrême-droite</label></li>
+              <li><label for="ed-in-select">comprenant des membres d'un parti d'extrême-droite</label></li>
+              <li><label for="ed-st-select">soutenus par un parti d'extrême-droite sans participation</label></li>
+              <li><label for="gov-consr-select">conservateur entretenant des proximités avec un parti d'extrême-droite</label></li>
+              <li><label for="gov-nl-select">menant une politique néolibérale radicale</label></li>
+            </ul>
+            <h3>Tendances</h3>
+            <ul>
               <li>
                 <span class="text-legend">%</span>
                 &nbsp;<label class="custom-label" for="score-ed-select">
                   score de l'extrême droite aux dernières élections parlementaires
                 </label>
               </li>
-            </ul>
-          </li>
-          <li>
-            <h3>Gauche non néolibérale</h3>
-            <ul>
               <li><label for="no-g-select">Aucun parti de gauche non néolibérale représenté au parlement</label></li>
             </ul>
           </li>
