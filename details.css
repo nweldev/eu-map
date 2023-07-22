@@ -60,3 +60,16 @@ th {
 .source:after {
   content: ")"
 }
+figure {
+  width: fit-content;
+  text-align: center;
+  margin: 1rem auto;
+}
+figure img, figure svg {
+  max-width: 100%;
+}
+figcaption {
+  color: #333;
+  font-style: italic;
+  font-size: .9rem;
+}
