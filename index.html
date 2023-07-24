@@ -61,14 +61,8 @@
         top: -100px;
       }
 
-      .map-container {
-        width: 100vw;
-        background-color: white;
-      }
-
       html,
-      body,
-      .svg-container {
+      body {
         width: 100%;
       }
       .svg-container {
@@ -291,18 +285,25 @@
 
       @media screen and (min-width: 1024px) {
         .map-container {
-          display: grid;
-          grid-template-columns: 3fr 1fr;
+          display: flex;
+          flex-direction: row;
         }
 
         .map {
-          max-height: calc(100vh - 4rem - 5px);
+          height: calc(100vh - 4rem - 5px);
           margin: 2rem;
+          max-width: calc(100% - 4em);
+        }
+
+        .svg-container {
+          flex-shrink: 1;
         }
 
         .map-control {
-          max-height: calc(100vh - 2rem - 5px);
+          height: calc(100vh - 2rem - 5px);
           overflow: scroll;
+          flex-grow: 1;
+          flex-shrink: 2;
         }
       }
 
