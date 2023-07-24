@@ -6,7 +6,10 @@ header {
   margin-bottom: 2em;
   margin-top: 1em;
 }
-header h1 {
+body {
+  background-color: #fafbfc;
+}
+header h1, header .title {
   margin: 0;
   text-align: center;
   flex-grow: 1;
