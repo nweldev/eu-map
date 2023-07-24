@@ -35,6 +35,7 @@ header h1, header .title {
 main {
   margin: 0 1rem;
 }
+
 table {
   text-align: center;
   border-collapse: collapse;
@@ -75,4 +76,51 @@ figcaption {
   color: #333;
   font-style: italic;
   font-size: .9rem;
+}
+.icon {
+  vertical-align: middle;
+  height: 25px;
+}
+
+.parti-list {
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: min-content auto;
+  column-gap: 2rem;
+}
+
+.parti-list .parti-link {
+  justify-self: center;
+  margin-top: 16px;
+}
+
+.emoji-li {
+  padding-left: 1rem;
+}
+.emoji-li.fra {
+  list-style-type: "🇫🇷";
+}
+.emoji-li.deu {
+  list-style-type: "🇩🇪";
+}
+.emoji-li.aut {
+  list-style-type: "🇦🇹";
+}
+.emoji-li.esp {
+  list-style-type: "🇪🇸";
+}
+.emoji-li.prt {
+  list-style-type: "🇵🇹";
+}
+.emoji-li.ita {
+  list-style-type: "🇮🇹";
+}
+.emoji-li.grc {
+  list-style-type: "🇬🇷";
+}
+.emoji-li.deu {
+  list-style-type: "🇩🇪";
+}
+.emoji-li.irl {
+  list-style-type: "🇮🇪";
 }
