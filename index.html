@@ -49,13 +49,12 @@
       }
 
       h2 {
-        font-weight: normal;
-        margin: .8rem 0;
+        margin: 1.5rem 0 1rem 0;
         font-size: 1.2rem;
       }
 
-      ul ul {
-        margin-left: 1rem;
+      ul {
+        padding-left: 40px;
       }
 
       #svg-defs {
@@ -73,11 +72,13 @@
       .map-control {
         padding: 1rem 1rem 1rem 2rem;
       }
-      .map-control li {
+      .map-control ul:not(.source-list) {
         list-style: none;
+        padding-left: 12px;
+      }
+      .map-control ul:not(.source-list) li {
         margin-bottom: 1rem;
       }
-
       svg a:link,
       svg a:visited {
         cursor: pointer;
@@ -282,6 +283,12 @@
         color: red;
       }
 
+      .info-icon {
+        height: 13px;
+        width: 13px;
+        padding-left: 5px;
+      }
+
       @media screen and (min-width: 1024px) {
         .map-container {
           display: flex;
@@ -359,6 +366,11 @@
           d="M 6,0 C 2.68,0 0,2.68 0,6 0,9.32 2.68,12 6,12 9.32,12 12,9.32 12,6 12,2.68 9.32,0 6,0 m 4.4,6 c 0,0.92 -0.28,1.78 -0.78,2.5 L 3.5,2.38 C 4.22,1.88 5.08,1.6 6,1.6 8.44,1.6 10.4,3.58 10.4,6 M 1.6,6 C 1.6,5.08 1.88,4.22 2.38,3.5 L 8.5,9.62 C 7.78,10.12 6.92,10.4 6,10.4 3.58,10.4 1.6,8.42 1.6,6"
           fill="#ff5a79"
           id="discrimination-icon"
+        />
+        <path
+          d="m11.125 1.9112c-2.5428-2.5459-6.6681-2.5485-9.2141-6e-3 -2.5459 2.5428-2.5485 6.6681-6e-3 9.2141 2.5428 2.5459 6.6681 2.5485 9.2141 6e-3 2.5459-2.5428 2.5485-6.6681 6e-3 -9.2141zm-3.7 8.7385c0 0.10053-0.0815 0.18194-0.18194 0.18194h-1.4555c-0.10047 0-0.18194-0.0814-0.18194-0.18194v-5.4031c0-0.10053 0.0815-0.18194 0.18194-0.18194h1.4555c0.10047 0 0.18194 0.0814 0.18194 0.18194zm-0.90969-6.34c-0.58182 0-1.0552-0.47332-1.0552-1.0552 0-0.58179 0.47334-1.0552 1.0552-1.0552 0.58184 0 1.0552 0.47337 1.0552 1.0552 0 0.58184-0.47341 1.0552-1.0552 1.0552z"
+          fill="#1E90FF"
+          id="info-icon"
         />
       </defs>
     </svg>
@@ -704,76 +716,101 @@
         </svg>
       </div>
       <div class="map-control">
+        <h2>Gouvernements</h2>
+        <ul>
+          <li><label for="ed-gov-select">dirigés par un parti d'extrême-droite</label></li>
+          <li><label for="ed-in-select">comprenant des membres d'un parti d'extrême-droite</label></li>
+          <li><label for="ed-st-select">soutenus par un parti d'extrême-droite sans participation</label></li>
+          <li>
+            <label for="gov-consr-select"
+              >dirigés par un parti conservateur entretenant des proximités avec un parti d'extrême-droite</label
+            >
+          </li>
+          <li><label for="gov-nl-select">menant une politique néolibérale radicale</label></li>
+          <li><label for="gov-lib-cons-select">de coalition entre partis libéraux et conservateurs</label></li>
+          <li>
+            <label for="gov-soclib-select">composés d'un ou plusieurs partis sociaux-libéraux (gauche non-néolibérale exclue)</label>
+          </li>
+          <li><label for="gov-uleft-select">de coalition de partis de gauche incluant des partis non-néolibéraux</label></li>
+        </ul>
+        <h2>Elections & Tendances</h2>
         <ul>
           <li>
-            <h2>Gouvernements</h2>
-            <ul>
-              <li><label for="ed-gov-select">dirigés par un parti d'extrême-droite</label></li>
-              <li><label for="ed-in-select">comprenant des membres d'un parti d'extrême-droite</label></li>
-              <li><label for="ed-st-select">soutenus par un parti d'extrême-droite sans participation</label></li>
-              <li>
-                <label for="gov-consr-select"
-                  >dirigés par un parti conservateur entretenant des proximités avec un parti d'extrême-droite</label
-                >
-              </li>
-              <li><label for="gov-nl-select">menant une politique néolibérale radicale</label></li>
-              <li><label for="gov-lib-cons-select">de coalition entre partis libéraux et conservateurs</label></li>
-              <li>
-                <label for="gov-soclib-select">composés d'un ou plusieurs partis sociaux-libéraux (gauche non-néolibérale exclue)</label>
-              </li>
-              <li><label for="gov-uleft-select">de coalition de partis de gauche incluant des partis non-néolibéraux</label></li>
-            </ul>
+            <span class="text-legend">%</span>
+            &nbsp;<label class="custom-label" for="score-ed-select">
+              Score de l'extrême droite aux dernières élections parlementaires
+            </label>
+          </li>
+          <li><label for="no-g-select">Aucun parti de gauche non néolibérale représenté au parlement</label></li>
+          <li>
+            <label for="demo-imp-select">Indice de démocratie &lt; 7</label>
+            <a href="#democracy-index">
+              <svg class="info-icon">
+                <use href="#info-icon" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+        <h2>Droits et Libertés (2022)</h2>
+        <ul>
+          <li>
+            <svg height="15" width="14" style="position: relative; top: 2px"><use href="#police-icon" /></svg>
+            &nbsp;<label class="custom-label" for="hr-restrict-select">
+              usage excessif de la force / restriction de la liberté d’expression des manifestant·e·s et des journalistes
+            </label>
+            <a href="#amnesty">
+              <svg class="info-icon">
+                <use href="#info-icon" />
+              </svg>
+            </a>
           </li>
           <li>
-            <h2>Elections & Tendances</h2>
-            <ul>
-              <li>
-                <span class="text-legend">%</span>
-                &nbsp;<label class="custom-label" for="score-ed-select">
-                  Score de l'extrême droite aux dernières élections parlementaires
-                </label>
-              </li>
-              <li><label for="no-g-select">Aucun parti de gauche non néolibérale représenté au parlement</label></li>
-              <li><label for="demo-imp-select">Indice de démocratie &lt; 7</label></li>
-            </ul>
+            <svg height="15" width="15" style="position: relative; top: 2px"><use href="#discrimination-icon" /></svg>
+            &nbsp;<label class="custom-label" for="discrimination-select">
+              Violences et discriminations courantes envers les personnes minorisées (LGBTI, minorités ethnique, femmes, etc.)
+            </label>
+            <a href="#amnesty">
+              <svg class="info-icon">
+                <use href="#info-icon" />
+              </svg>
+            </a>
+          </li>
+        </ul>
+        <h2>Immigration</h2>
+        <ul>
+          <li>
+            <label for="ue-select">Frontières de l'UE</label>
           </li>
           <li>
-            <h2>Droits et Libertés (2022)</h2>
-            <ul>
-              <li>
-                <svg height="15" width="14" style="position: relative; top: 2px"><use href="#police-icon" /></svg>
-                &nbsp;<label class="custom-label" for="hr-restrict-select">
-                  usage excessif de la force / restriction de la liberté d’expression des manifestant·e·s et des journalistes
-                </label>
-              </li>
-              <li>
-                <svg height="15" width="15" style="position: relative; top: 2px"><use href="#discrimination-icon" /></svg>
-                &nbsp;<label class="custom-label" for="discrimination-select">
-                  Violences et discriminations courantes envers les personnes minorisées (LGBTI, minorités ethnique, femmes, etc.)
-                </label>
-              </li>
-            </ul>
+            <svg height="15" width="14" style="position: relative; top: 2px"><use href="#wall-icon" /></svg>&nbsp;<label
+              class="custom-label"
+              for="wall-select"
+              >Membres de l'UE réclamant la construction de murs pour "protéger ses frontières"</label
+            >
+            <a href="#mediapart-mur">
+              <svg class="info-icon">
+                <use href="#info-icon" />
+              </svg>
+            </a>
           </li>
-          <li>
-            <h2>Immigration</h2>
-            <ul>
-              <li>
-                <label for="ue-select">Frontières de l'UE</label>
-              </li>
-              <li>
-                <svg height="15" width="14" style="position: relative; top: 2px"><use href="#wall-icon" /></svg>&nbsp;<label
-                  class="custom-label"
-                  for="wall-select"
-                  >Membres de l'UE réclamant la construction de murs pour "protéger ses frontières"</label
-                >
-              </li>
-            </ul>
+        </ul>
+
+        <h2>Compléments</h2>
+        <ul class="source-list">
+          <li><a href="./p/index.html">Partis Politiques Européens</a></li>
+          <li id="mediapart-mur">
+            Vallet, Cédric. "<a href="www.mediapart.fr/journal/international/170723/migrations-l-union-europeenne-droit-dans-le-mur"
+              >Migrations : l’Union européenne, droit dans le mur.</a
+            >" Mediapart, 17 juillet 2023.
           </li>
-          <li>
-            <h2>Compléments</h2>
-            <ul>
-              <li><a href="./p/index.html">Partis Politiques Européens</a></li>
-            </ul>
+          <li id="amnesty">
+            Amnesty International,
+            <a href="https://www.amnesty.fr/dossiers/rapport-annuel-la-situation-des-droits-humains-dans-le-monde-en-2022"
+              >Rapport annuel 2022/23 : la situation des droits humains dans le monde."</a
+            >
+          </li>
+          <li id="democracy-index">
+            Economist Intelligence Unit, <a href="https://pages.eiu.com/rs/753-RIQ-438/images/DI-final-version-report.pdf">Democracy Index 2022</a>
           </li>
         </ul>
       </div>
