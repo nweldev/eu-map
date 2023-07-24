@@ -70,7 +70,10 @@
         overflow: scroll;
       }
       .map-control {
-        padding: 1rem 1rem 1rem 2rem;
+        padding: 1rem;
+      }
+      .map-control h2:first-of-type {
+        margin-top: 0;
       }
       .map-control ul:not(.source-list) {
         list-style: none;
@@ -93,6 +96,10 @@
       }
       svg .marker {
         display: none;
+      }
+
+      .map {
+        max-height: calc(100vh - 5px);
       }
 
       .map text {
@@ -291,31 +298,28 @@
 
       @media screen and (min-width: 1024px) {
         .map-container {
-          display: flex;
-          flex-direction: row;
-        }
-
-        .map {
-          height: calc(100vh - 4rem - 5px);
-          margin: 2rem;
-          max-width: calc(100% - 4em);
+          display: grid;
+          grid-template-columns: minmax(50%, auto) minmax(350px, 33%);
         }
 
         .svg-container {
-          flex-shrink: 1;
+          display: flex;
+          align-items: center;
+        }
+
+        .map {
+          margin: 0 5px;
         }
 
         .map-control {
-          height: calc(100vh - 2rem - 5px);
+          height: calc(100vh - 2rem);
           overflow: scroll;
-          flex-grow: 1;
-          flex-shrink: 2;
         }
       }
 
       @media screen and (max-width: 1023px) {
         .map {
-          width: 150vw;
+          width: calc(100vw - 2rem);
           margin: 0 1rem 1rem 0;
         }
 
@@ -810,7 +814,8 @@
             >
           </li>
           <li id="democracy-index">
-            Economist Intelligence Unit, <a href="https://pages.eiu.com/rs/753-RIQ-438/images/DI-final-version-report.pdf">Democracy Index 2022</a>
+            Economist Intelligence Unit,
+            <a href="https://pages.eiu.com/rs/753-RIQ-438/images/DI-final-version-report.pdf">Democracy Index 2022</a>
           </li>
         </ul>
       </div>
