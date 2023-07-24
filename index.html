@@ -44,12 +44,14 @@
         margin: 1rem 0;
       }
 
-      h2 {
+      h1 {
         margin-bottom: 0.5rem;
       }
 
-      h3 {
+      h2 {
         font-weight: normal;
+        margin: .8rem 0;
+        font-size: 1.2rem;
       }
 
       ul ul {
@@ -69,10 +71,7 @@
         overflow: scroll;
       }
       .map-control {
-        padding: 1rem;
-      }
-      .map-control ul {
-        padding-top: 1rem;
+        padding: 1rem 1rem 1rem 2rem;
       }
       .map-control li {
         list-style: none;
@@ -705,10 +704,9 @@
         </svg>
       </div>
       <div class="map-control">
-        <h2>Menu</h2>
         <ul>
           <li>
-            <h3>Gouvernements</h3>
+            <h2>Gouvernements</h2>
             <ul>
               <li><label for="ed-gov-select">dirigés par un parti d'extrême-droite</label></li>
               <li><label for="ed-in-select">comprenant des membres d'un parti d'extrême-droite</label></li>
@@ -721,13 +719,13 @@
               <li><label for="gov-nl-select">menant une politique néolibérale radicale</label></li>
               <li><label for="gov-lib-cons-select">de coalition entre partis libéraux et conservateurs</label></li>
               <li>
-                <label for="gov-soclib-select">composés d'un ou plusieurs partis sociaux-libéraux (gauche non néolibérale exclue)</label>
+                <label for="gov-soclib-select">composés d'un ou plusieurs partis sociaux-libéraux (gauche non-néolibérale exclue)</label>
               </li>
-              <li><label for="gov-uleft-select">de coalition large entre partis de gauche (non néolibéraux inclus)</label></li>
+              <li><label for="gov-uleft-select">de coalition de partis de gauche incluant des partis non-néolibéraux</label></li>
             </ul>
           </li>
           <li>
-            <h3>Elections & Tendances</h3>
+            <h2>Elections & Tendances</h2>
             <ul>
               <li>
                 <span class="text-legend">%</span>
@@ -735,12 +733,12 @@
                   Score de l'extrême droite aux dernières élections parlementaires
                 </label>
               </li>
-              <li><label for="no-g-select">Aucun parti de gauche non néolibérale représenté au parleTendances</label></li>
+              <li><label for="no-g-select">Aucun parti de gauche non néolibérale représenté au parlement</label></li>
               <li><label for="demo-imp-select">Indice de démocratie &lt; 7</label></li>
             </ul>
           </li>
           <li>
-            <h3>Droits et Libertés (2022)</h3>
+            <h2>Droits et Libertés (2022)</h2>
             <ul>
               <li>
                 <svg height="15" width="14" style="position: relative; top: 2px"><use href="#police-icon" /></svg>
@@ -757,7 +755,7 @@
             </ul>
           </li>
           <li>
-            <h3>Immigration</h3>
+            <h2>Immigration</h2>
             <ul>
               <li>
                 <label for="ue-select">Frontières de l'UE</label>
@@ -777,7 +775,7 @@
     <section class="details">
       <article id="help">
         <a class="close" href="#map">x</a>
-        <h2>Aide</h2>
+        <h1>Aide</h1>
         <p>Cliquez sur un pays pour afficher les informations détaillées.</p>
         <p>Cliquez sur un élément dans le menu pour afficher la variante de la carte correspondante.</p>
       </article>
