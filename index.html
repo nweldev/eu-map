@@ -104,8 +104,11 @@
 
       .map text {
         fill: #000;
-        stroke: none;
         font-size: 12px;
+        font-weight: bold;
+        paint-order: stroke;
+        stroke: #fff;
+        stroke-width: 1px;
       }
 
       .map a {
@@ -175,7 +178,6 @@
 
       #score-ed-select:checked ~ .svg-container .score-ed.marker {
         display: initial;
-        filter: url(#shadow);
       }
 
       #ed-gov-select:checked ~ .svg-container .ed-gov {
@@ -412,6 +414,7 @@
               name="Switzerland"
               class="ed-in"
             />
+            <text class="score-ed marker" x="338" y="357" style="font-size: 16px;">▾ 26%</text>
           </a>
           <a href="./c/isl.html" aria-label="Islande">
             <path
@@ -419,6 +422,7 @@
               name="Iceland"
               class="gov-lib-cons"
             />
+            <text class="score-ed marker" x="80" y="110" style="font-size: 8px">0%</text>
           </a>
           <a href="./c/nor.html" aria-label="Norvège">
             <path
@@ -426,6 +430,7 @@
               name="Norway"
               class="gov-soclib"
             />
+            <text class="score-ed marker" x="350" y="130" style="font-size: 12px">▾ 12%</text>
           </a>
           <a href="./c/gbr.html" aria-label="Royaume-Uni">
             <path
@@ -433,6 +438,7 @@
               name="United Kingdom"
               class="gov-nl"
             />
+            <text class="score-ed marker" x="225" y="270" style="font-size: 8px">▾ 0,1%</text>
           </a>
           <a href="./c/alb.html" aria-label="Albanie">
             <path
@@ -443,7 +449,7 @@
             />
             <use href="#Albania" class="no-g country-overlay" />
             <use href="#Albania" class="demo-imp country-overlay" />
-            <text class="score-ed marker" x="506" y="450" style="font-size: 6px">0,1%</text>
+            <text class="score-ed marker" x="506" y="450" style="font-size: 8px">0,1%</text>
             <use class="discrimination marker" href="#discrimination-icon" x="504" y="431" />
           </a>
           <a href="./c/bih.html" aria-label="Bosnie-Herzégovine">
@@ -452,6 +458,7 @@
               name="Bosnia and Herzegovina"
               class="demo-imp"
             />
+            <text class="score-ed marker" x="480" y="390" style="font-size: 8px">0%</text>
           </a>
           <a href="./c/srb.html" aria-label="Serbie">
             <path
@@ -459,6 +466,7 @@
               name="Serbia"
               class="demo-imp"
             />
+            <text class="score-ed marker" x="505" y="400" style="font-size: 10px">▴ 7%</text>
           </a>
           <a href="./c/mkd.html" aria-label="Macédoine du Nord">
             <path
@@ -473,6 +481,7 @@
               name="Montenegro"
               class="demo-imp"
             />
+            <text class="score-ed marker" x="490" y="415" style="font-size: 8px">0,7%</text>
           </a>
           <a href="./c/xxk.html" aria-label="Kosovo">
             <path
@@ -480,6 +489,7 @@
               name="Kosovo"
               class="demo-imp"
             />
+            <text class="score-ed marker" x="512" y="418" style="font-size: 8px">0,1%</text>
           </a>
           <path
             name="UE"
@@ -501,16 +511,8 @@
               class="gov-consr"
             />
             <use href="#Austria" class="country-overlay no-g" />
-            <text class="score-ed marker" x="420" y="335" style="font-size: 11px">16%</text>
+            <text class="score-ed marker" x="420" y="335" style="font-size: 13px">▾ 16%</text>
             <use class="wall marker" href="#wall-icon" x="437" y="337" />
-          </a>
-          <a href="./c/bel.html" aria-label="Belgique">
-            <path
-              d="m 324.34999,289.25 1.6,-0.5 0.8,0.8 1.2,0.1 3,2.3 -0.4,1.5 1.7,0.7 0.4,2 -2.3,1.3 -0.6,1.7 -1.7,-0.7 -1.3,1.3 -1.4,2.5 -0.2,1.7 2,2.4 -1.1,1.7 -3.4,0.4 -2.8,-2.6 -3.3,-1.5 -1.7,-0.1 -0.4,-2 -0.6,-0.6 0.8,-2.7 -1.9,0.6 -0.5,1.4 -1.3,0.6 -2.2,0.3 -2.3,-0.3 -0.5,-0.6 0.7,-1.4 -0.7,-0.7 0.4,-1.6 -1.6,-1.1 -3.6,-0.4 -0.9,0.3 -0.6,-2 -4.2,-1.1 -0.5,-2 -1.6,-1.8 -3.2,1 -2.9,-2.4 v -1.2 l -0.9,-2.2 5.1,-2.5 4.7,-1.7 0.3,1.3 1.2,0.7 1.2,-0.6 3.9,1.1 3.2,-1.5 0.6,-1.2 2.1,0.3 -0.2,-0.9 1.4,-0.7 1.5,0.8 1.5,-1 1.1,1.3 2.5,-0.8 0.5,1.6 2.6,1.4 1.9,-0.4 1.7,1.3 2.6,1.1 -1,2.9 -1.1,1.3 z"
-              name="Belgium"
-              class="gov-lib-cons"
-            />
-            <!-- <use class="ue marker" href="#ue-star" x="300" y="280" /> -->
           </a>
           <a href="./c/cze.html" aria-label="Tchéquie">
             <path
@@ -518,7 +520,8 @@
               name="Czech Republic"
               class=""
             />
-            <use class="wall marker" href="#wall-icon" x="430" y="300" />
+            <text class="score-ed marker en-hausse" x="430" y="310" style="font-size: 11px">▾ 9,6%</text>
+            <use class="wall marker" href="#wall-icon" x="415" y="300" />
           </a>
           <a href="./c/deu.html" aria-label="Allemagne">
             <path
@@ -526,7 +529,7 @@
               name="Germany"
               class="gov-soclib"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="380" y="250" /> -->
+            <text class="score-ed marker" x="360" y="290" style="font-size: 11px">▾ 10%</text>
           </a>
           <a href="./c/dnk.html" aria-label="Danemark">
             <path
@@ -534,7 +537,8 @@
               name="Denmark"
               class="gov-lib-cons"
             />
-            <use class="wall marker" href="#wall-icon" x="355" y="202" />
+            <text class="score-ed marker" x="355" y="207" style="font-size: 13px">▴ 14%</text>
+            <use class="wall marker" href="#wall-icon" x="350" y="210" />
           </a>
           <a href="./c/est.html" aria-label="Estonie">
             <path
@@ -542,7 +546,8 @@
               name="Estonia"
               class=""
             />
-            <use class="wall marker" href="#wall-icon" x="540" y="165" />
+            <use class="wall marker" href="#wall-icon" x="545" y="165" />
+            <text class="score-ed marker" x="505" y="175" style="font-size: 13px">▾ 16%</text>
           </a>
           <a href="./c/fin.html" aria-label="Finlande">
             <path
@@ -550,7 +555,7 @@
               name="Finland"
               class="ed-in"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="500" y="120" /> -->
+            <text class="score-ed marker" x="520" y="120" style="font-size: 15px">▴ 20%</text>
           </a>
           <a href="./c/grc.html" aria-label="Grèce">
             <path
@@ -558,6 +563,7 @@
               name="Greece"
               class="gov-consr"
             />
+            <text class="score-ed marker" x="570" y="520" style="font-size: 13px">▴ 14%</text>
             <use class="wall marker" href="#wall-icon" x="532" y="465" />
           </a>
 
@@ -567,7 +573,7 @@
               name="Ireland"
               class="gov-lib-cons"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="160" y="240" /> -->
+            <text class="score-ed marker" x="155" y="255" style="font-size: 8px">▴ 0,2%</text>
           </a>
           <a href="./c/ita.html" aria-label="Italie">
             <path
@@ -575,7 +581,7 @@
               name="Italy"
               class="ed-gov"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="410" y="400" /> -->
+            <text class="score-ed marker en-hausse" x="395" y="465" style="font-size: 20px">▴ 37%</text>
           </a>
           <a href="./c/ltu.html" aria-label="Lituanie">
             <path
@@ -584,6 +590,7 @@
               class="gov-soclib"
             />
             <use class="wall marker" href="#wall-icon" x="535" y="215" />
+            <text class="score-ed marker" x="510" y="220" style="font-size: 9px">2%</text>
           </a>
           <a href="./c/lva.html" aria-label="Lettonie">
             <path
@@ -592,6 +599,7 @@
               class="ed-in"
             />
             <use class="wall marker" href="#wall-icon" x="550" y="195" />
+            <text class="score-ed marker" x="500" y="200" style="font-size: 17px">▴ 26%</text>
           </a>
           <a href="./c/pol.html" aria-label="Pologne">
             <path
@@ -600,14 +608,18 @@
               class="ed-gov"
             />
             <use class="wall marker" href="#wall-icon" x="500" y="250" />
+            <text class="score-ed marker en-hausse" x="440" y="280" style="font-size: 22px">▴ 44%</text>
           </a>
           <a href="./c/svk.html" aria-label="Slovaquie">
             <path
               d="m 529.14999,315.15 -1.5,3 -0.8,2.9 -1.6,1.7 0.1,2.5 -4.3,1.1 -0.6,-0.2 -2.2,-2.2 -1.4,-0.9 -4.6,0.7 -2.5,-0.6 -2.7,-0.1 -1.8,0.4 -1.6,3.5 -5,2.5 -3.5,-1.4 -0.7,0.2 -1,1.5 -2.4,0.6 -4.3,0.4 -1.4,0.7 -0.4,1 0.5,1.3 -0.6,1 -7,0.4 -4.7,-0.1 -1.6,-0.7 -4.2,-2.7 -2.1,-0.3 -2.3,-2.9 -1.6,-2.9 -0.1,-0.8 0.9,-2.4 1.1,-2.8 1.4,-1.2 3.6,0.5 1.7,-0.2 1.5,-0.7 2.1,-1.9 1.6,-0.8 0.7,-3 2.3,-1.2 0.6,-0.8 2,-1.5 2.8,-0.3 1.3,0.2 0.5,1.5 h 2.2 l 1,-1.7 2.2,-1.3 3,3 1.4,0.4 0.6,2.7 1.4,-0.4 1.7,0.6 1.1,-2.1 2.3,-1 3,-0.1 2.4,1 1.8,0.1 1.4,-1.5 3.2,-0.2 3.6,0.3 3.1,1 1,0.7 0.8,1.4 5.7,1.9 z"
               name="Slovakia"
+              id="Slovakia"
               class="gov-lib-cons"
             />
-            <use class="wall marker" href="#wall-icon" x="480" y="315" />
+            <use href="#Slovakia" class="country-overlay no-g" />
+            <use class="wall marker" href="#wall-icon" x="505" y="308" />
+            <text class="score-ed marker" x="465" y="327" style="font-size: 12px">▾ 11%</text>
           </a>
           <a href="./c/svn.html" aria-label="Slovénie">
             <path
@@ -615,7 +627,7 @@
               name="Slovenia"
               class="gov-uleft"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="427" y="352" /> -->
+            <text class="score-ed marker" x="420" y="362" style="font-size: 9px">▾ 1,5%</text>
           </a>
           <a href="./c/swe.html" aria-label="Suède">
             <path
@@ -623,7 +635,7 @@
               name="Sweden"
               class="ed-st"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="410" y="150" /> -->
+            <text class="score-ed marker" x="400" y="160" style="font-size: 15px">▴ 21%</text>
           </a>
           <a href="./c/nld.html" aria-label="Pays-Bas">
             <path
@@ -631,7 +643,7 @@
               name="Netherlands"
               class="gov-lib-cons"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="310" y="262" /> -->
+            <text class="score-ed marker" x="305" y="262" style="font-size: 14px">▴ 18%</text>
           </a>
           <a href="./c/esp.html" aria-label="Espagne">
             <path
@@ -639,6 +651,7 @@
               name="Spain"
               class="gov-uleft"
             />
+            <text class="score-ed marker" x="220" y="450" style="font-size: 12px">▾ 12%</text>
             <use class="hr-restrict marker" href="#police-icon" x="200" y="450" />
           </a>
           <a href="./c/fra.html" aria-label="France">
@@ -647,8 +660,16 @@
               name="France"
               class="gov-nl"
             />
-            <text class="score-ed marker" x="275" y="360" style="font-size: 16px">24%</text>
+            <text class="score-ed marker" x="265" y="360" style="font-size: 16px">▴ 24%</text>
             <use class="hr-restrict marker" href="#police-icon" x="280" y="310" />
+          </a>
+          <a href="./c/bel.html" aria-label="Belgique">
+            <path
+              d="m 324.34999,289.25 1.6,-0.5 0.8,0.8 1.2,0.1 3,2.3 -0.4,1.5 1.7,0.7 0.4,2 -2.3,1.3 -0.6,1.7 -1.7,-0.7 -1.3,1.3 -1.4,2.5 -0.2,1.7 2,2.4 -1.1,1.7 -3.4,0.4 -2.8,-2.6 -3.3,-1.5 -1.7,-0.1 -0.4,-2 -0.6,-0.6 0.8,-2.7 -1.9,0.6 -0.5,1.4 -1.3,0.6 -2.2,0.3 -2.3,-0.3 -0.5,-0.6 0.7,-1.4 -0.7,-0.7 0.4,-1.6 -1.6,-1.1 -3.6,-0.4 -0.9,0.3 -0.6,-2 -4.2,-1.1 -0.5,-2 -1.6,-1.8 -3.2,1 -2.9,-2.4 v -1.2 l -0.9,-2.2 5.1,-2.5 4.7,-1.7 0.3,1.3 1.2,0.7 1.2,-0.6 3.9,1.1 3.2,-1.5 0.6,-1.2 2.1,0.3 -0.2,-0.9 1.4,-0.7 1.5,0.8 1.5,-1 1.1,1.3 2.5,-0.8 0.5,1.6 2.6,1.4 1.9,-0.4 1.7,1.3 2.6,1.1 -1,2.9 -1.1,1.3 z"
+              name="Belgium"
+              class="gov-lib-cons"
+            />
+            <text class="score-ed marker en-hausse" x="290" y="293" style="font-size: 12px">▴ 12%</text>
           </a>
           <a href="./c/prt.html" aria-label="Portugal">
             <path
@@ -656,7 +677,7 @@
               name="Portugal"
               class="gov-soclib"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="140" y="450" /> -->
+            <text class="score-ed marker" x="138" y="455" style="font-size: 10px">▴ 7%</text>
           </a>
           <a href="./c/cyp.html" aria-label="Chypre">
             <path
@@ -665,6 +686,7 @@
               class=""
             />
             <use class="wall marker" href="#wall-icon" x="685" y="515" />
+            <text class="score-ed marker en-hausse" x="660" y="530" style="font-size: 10px">▴ 7%</text>
           </a>
           <a href="./c/lux.html" aria-label="Luxembourg">
             <path
@@ -672,7 +694,7 @@
               name="Luxembourg"
               class="gov-lib-cons"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="320" y="302" /> -->
+            <text class="score-ed marker" x="330" y="310" style="font-size: 8px">0%</text>
           </a>
           <path
             id="demo-imp"
@@ -686,7 +708,17 @@
               name="Croatia"
               class="gov-consr"
             />
-            <!-- <use class="ue marker" href="#ue-star" x="450" y="355" /> -->
+            <text class="score-ed marker" x="447" y="373" style="font-size: 12px">▴ 11%</text>
+          </a>
+          <a href="./c/rou.html" aria-label="Roumanie">
+            <path
+              d="m 605.74999,370.65 1.5,1.6 1.8,0.9 4,0.9 0.6,-1.2 0.9,0.3 1.6,-0.5 2.2,-1.3 2.2,-0.2 2.2,0.7 1.9,1.8 -0.2,4.3 -0.7,2.1 -6.2,1.3 0.4,-0.6 -0.7,-2 -1,-1 -0.9,1.1 0.6,1.7 -0.7,1.4 -0.2,2.4 0.6,0.9 -1.6,2 -0.5,1.3 0.8,4.8 -0.4,3.7 h -2 l -2.6,-0.5 -2.2,-0.7 -2.5,-2.6 -1.7,0.5 -0.9,-0.6 -3.2,-0.4 -4.5,-2.3 -2.9,0.4 -4.4,0.9 -3.2,1.2 -3.3,2.1 -1.2,1.6 -1.6,0.9 -2.3,0.6 -4.2,-0.2 -9.4,-1.7 -2.5,0.5 -3.5,-0.4 -5.3,-1 -3.9,-0.3 -3.7,0.6 -0.9,-1.8 1.8,-2 -4.3,-2.5 -0.8,-1.2 -1.6,-0.9 -0.5,-1.7 2.5,-1.8 -3,-1.6 -1.7,0.5 -1.7,1.8 -1.3,0.2 -1,-1.2 -1.5,-0.7 -3.5,-0.7 -1.5,-1.2 -2.1,-0.6 0.2,-0.6 1.8,-0.8 -2.3,-1.1 1.5,-2 -0.9,-1.1 -2.6,-0.8 -3.8,-1.9 -2.2,-1.8 -0.4,-4.1 -0.8,0.2 -1.8,-2 -2.9,-1.7 -1.7,-2 3.2,-0.9 1.4,0.5 2.5,-2 2.6,0.3 1.3,-0.9 1.5,-4.7 2.1,-1.5 -0.2,-1.3 1.6,-2.7 v -1.2 l 1.4,-1.5 0.7,-2.5 1.4,-1.4 -0.1,-1.7 1.2,-1 1.9,-2.4 4.6,-1.1 2.2,-2.3 2.1,-0.9 0.9,-1.2 h 0.7 l 2.7,1.5 2.7,-0.1 6.9,1.4 3.6,-0.7 1.2,0.3 4.3,3.3 2.1,-0.5 1,-1.2 3.4,-1.3 8.4,-1.2 1.1,-1.9 0.2,-1.4 3.7,-0.8 h 2.1 l 2.5,1.6 2.5,3 3,4.9 1.5,1.3 2.5,3.2 2.1,1.8 1.3,1.7 3,2.1 1.4,2.9 1.4,2.3 0.5,2.9 -0.9,4.8 0.1,2.6 1.4,5 -0.9,0.7 z"
+              name="Romania"
+              id="Romania"
+              class="gov-lib-cons"
+            />
+            <use href="#Romania" class="country-overlay no-g" />
+            <text class="score-ed marker en-hausse" x="560" y="370" style="font-size: 11px">▴ 9%</text>
           </a>
           <a href="./c/hun.html" aria-label="Hongrie">
             <path
@@ -697,25 +729,19 @@
             />
             <use href="#Hungary" class="country-overlay no-g" />
             <use href="#Hungary" class="country-overlay demo-imp" />
-            <use class="wall marker" href="#wall-icon" x="500" y="337" />
-          </a>
-          <a href="./c/rou.html" aria-label="Roumanie">
-            <path
-              d="m 605.74999,370.65 1.5,1.6 1.8,0.9 4,0.9 0.6,-1.2 0.9,0.3 1.6,-0.5 2.2,-1.3 2.2,-0.2 2.2,0.7 1.9,1.8 -0.2,4.3 -0.7,2.1 -6.2,1.3 0.4,-0.6 -0.7,-2 -1,-1 -0.9,1.1 0.6,1.7 -0.7,1.4 -0.2,2.4 0.6,0.9 -1.6,2 -0.5,1.3 0.8,4.8 -0.4,3.7 h -2 l -2.6,-0.5 -2.2,-0.7 -2.5,-2.6 -1.7,0.5 -0.9,-0.6 -3.2,-0.4 -4.5,-2.3 -2.9,0.4 -4.4,0.9 -3.2,1.2 -3.3,2.1 -1.2,1.6 -1.6,0.9 -2.3,0.6 -4.2,-0.2 -9.4,-1.7 -2.5,0.5 -3.5,-0.4 -5.3,-1 -3.9,-0.3 -3.7,0.6 -0.9,-1.8 1.8,-2 -4.3,-2.5 -0.8,-1.2 -1.6,-0.9 -0.5,-1.7 2.5,-1.8 -3,-1.6 -1.7,0.5 -1.7,1.8 -1.3,0.2 -1,-1.2 -1.5,-0.7 -3.5,-0.7 -1.5,-1.2 -2.1,-0.6 0.2,-0.6 1.8,-0.8 -2.3,-1.1 1.5,-2 -0.9,-1.1 -2.6,-0.8 -3.8,-1.9 -2.2,-1.8 -0.4,-4.1 -0.8,0.2 -1.8,-2 -2.9,-1.7 -1.7,-2 3.2,-0.9 1.4,0.5 2.5,-2 2.6,0.3 1.3,-0.9 1.5,-4.7 2.1,-1.5 -0.2,-1.3 1.6,-2.7 v -1.2 l 1.4,-1.5 0.7,-2.5 1.4,-1.4 -0.1,-1.7 1.2,-1 1.9,-2.4 4.6,-1.1 2.2,-2.3 2.1,-0.9 0.9,-1.2 h 0.7 l 2.7,1.5 2.7,-0.1 6.9,1.4 3.6,-0.7 1.2,0.3 4.3,3.3 2.1,-0.5 1,-1.2 3.4,-1.3 8.4,-1.2 1.1,-1.9 0.2,-1.4 3.7,-0.8 h 2.1 l 2.5,1.6 2.5,3 3,4.9 1.5,1.3 2.5,3.2 2.1,1.8 1.3,1.7 3,2.1 1.4,2.9 1.4,2.3 0.5,2.9 -0.9,4.8 0.1,2.6 1.4,5 -0.9,0.7 z"
-              name="Romania"
-              id="Romania"
-              class="gov-lib-cons"
-            />
-            <use href="#Romania" class="country-overlay no-g" />
-            <!-- <use class="ue marker" href="#ue-star" x="550" y="350" /> -->
+            <text class="score-ed marker en-hausse" x="480" y="355" style="font-size: 27px">▴58%</text>
+            <use class="wall marker" href="#wall-icon" x="465" y="337" />
           </a>
           <a href="./c/bgr.html" aria-label="Bulgarie">
             <path
               d="m 613.94999,397.05 0.2,3.7 -0.9,1.8 -2,-0.6 -2.2,0.5 -1,2 -1.2,1.2 v 2.6 l 0.4,4.2 -1.6,0.7 -2.9,3.7 3,1.8 1.7,2.2 2.4,2.5 0.5,1.2 -1.7,-0.2 -0.9,0.4 h -1.8 l -1.5,0.6 -3.4,-2.5 -3.5,0.3 -1.5,1.1 -3.4,0.4 -1,2.2 -1.9,0.3 -0.3,1.4 -1.6,-0.5 -1.6,1.1 0.7,1 0.9,2.7 -0.2,0.8 -2.5,1.2 -1.8,-0.3 -3.2,0.4 -3.4,0.9 -1.7,-1.1 -3.7,-1.2 -0.9,0.6 -2.4,-1.4 -1.2,-1.7 -1.6,0.5 -4.2,-0.1 -0.2,0.9 -1.9,0.2 -3,1.1 -2.6,-0.2 -2.4,0.2 -1,1 -3,-0.2 v -4.2 l 0.5,-1.7 -0.9,-1 -1.7,-3.3 -3.4,-1.8 -3.3,-3.2 1,-0.3 1.1,-1.7 -1.4,-2.9 v -3.3 l 1.1,-0.6 1.8,-0.1 1.1,-1.6 1.6,-1.7 0.3,-1.4 -1.6,-1 -1.3,-1.6 -2.9,-1.5 -2.4,-3.9 -0.6,-2.4 0.4,-2.3 2.1,-1 0.2,-1.9 0.9,-0.7 4.3,2.5 -1.8,2 0.9,1.8 3.7,-0.6 3.9,0.3 5.3,1 3.5,0.4 2.5,-0.5 9.4,1.7 4.2,0.2 2.3,-0.6 1.6,-0.9 1.2,-1.6 3.3,-2.1 3.2,-1.2 4.4,-0.9 2.9,-0.4 4.5,2.3 3.2,0.4 0.9,0.6 1.7,-0.5 2.5,2.6 2.2,0.7 2.6,0.5 z"
               name="Bulgaria"
-              class="demo-imp"
+              id="Bulgaria"
+              class="gov-lib-cons"
             />
+            <use href="#Bulgaria" class="country-overlay no-g" />
             <use class="wall marker" href="#wall-icon" x="550" y="410" />
+            <text class="score-ed marker en-hausse" x="567" y="410" style="font-size: 13px">▴ 14%</text>
           </a>
         </svg>
       </div>
@@ -740,14 +766,14 @@
         <h2>Elections & Tendances</h2>
         <ul>
           <li>
-            <span class="text-legend">%</span>
+            <span class="text-legend">▾ %</span>
             &nbsp;<label class="custom-label" for="score-ed-select">
-              Score de l'extrême droite aux dernières élections parlementaires
+              Tendance et résultat de l'extrême droite aux dernières élections parlementaires
             </label>
           </li>
           <li><label for="no-g-select">Aucun parti de gauche non néolibérale représenté au parlement</label></li>
           <li>
-            <label for="demo-imp-select">Indice de démocratie &lt; 7</label>
+            <label for="demo-imp-select"><em>Indice de démocratie</em> &lt; 7</label>
             <a href="#democracy-index">
               <svg class="info-icon">
                 <use href="#info-icon" />
@@ -803,7 +829,7 @@
         <ul class="source-list">
           <li><a href="./p/index.html">Partis Politiques Européens</a></li>
           <li id="mediapart-mur">
-            Vallet, Cédric. "<a href="www.mediapart.fr/journal/international/170723/migrations-l-union-europeenne-droit-dans-le-mur"
+            Vallet, Cédric. "<a href="https://www.mediapart.fr/journal/international/170723/migrations-l-union-europeenne-droit-dans-le-mur"
               >Migrations : l’Union européenne, droit dans le mur.</a
             >" Mediapart, 17 juillet 2023.
           </li>
