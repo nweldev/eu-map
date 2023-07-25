@@ -124,3 +124,9 @@ figcaption {
 .emoji-li.irl {
   list-style-type: "🇮🇪";
 }
+.emoji-li.pol {
+  list-style-type: "🇵🇱";
+}
+.emoji-li.gbr {
+  list-style-type: "🇬🇧";
+}
