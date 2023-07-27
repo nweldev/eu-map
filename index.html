@@ -48,9 +48,10 @@
         margin-bottom: 0.5rem;
       }
 
-      h2 {
-        margin: 1.5rem 0 1rem 0;
+      .map-control summary {
+        margin: 0 0 1rem 0;
         font-size: 1.2rem;
+        font-weight: bold;
       }
 
       ul {
@@ -745,9 +746,11 @@
           </a>
         </svg>
       </div>
+
       <div class="map-control">
-        <h2>Gouvernements</h2>
-        <ul>
+        <details open>
+          <summary>Gouvernements</summary>
+          <ul>
           <li><label for="ed-gov-select">dirigés par un parti d'extrême-droite</label></li>
           <li><label for="ed-in-select">comprenant des membres d'un parti d'extrême-droite</label></li>
           <li><label for="ed-st-select">soutenus par un parti d'extrême-droite sans participation</label></li>
@@ -763,7 +766,10 @@
           </li>
           <li><label for="gov-uleft-select">de coalition de partis de gauche incluant des partis non-néolibéraux</label></li>
         </ul>
-        <h2>Elections & Tendances</h2>
+      </details>
+
+      <details>
+        <summary>Elections & Tendances</summary>
         <ul>
           <li>
             <span class="text-legend">▾ %</span>
@@ -781,7 +787,10 @@
             </a>
           </li>
         </ul>
-        <h2>Droits et Libertés (2022)</h2>
+      </details>
+
+      <details>
+        <summary>Droits et Libertés (2022)</summary>
         <ul>
           <li>
             <svg height="15" width="14" style="position: relative; top: 2px"><use href="#police-icon" /></svg>
@@ -806,7 +815,10 @@
             </a>
           </li>
         </ul>
-        <h2>Immigration</h2>
+      </details>
+
+      <details open>
+        <summary>Immigration</summary>
         <ul>
           <li>
             <label for="ue-select">Frontières de l'UE</label>
@@ -816,22 +828,25 @@
               class="custom-label"
               for="wall-select"
               >Membres de l'UE réclamant la construction de murs pour "protéger ses frontières"</label
-            >
-            <a href="#mediapart-mur">
-              <svg class="info-icon">
-                <use href="#info-icon" />
-              </svg>
+              >
+              <a href="#mediapart-mur">
+                <svg class="info-icon">
+                  <use href="#info-icon" />
+                </svg>
             </a>
           </li>
         </ul>
+      </details>
 
-        <h2>Compléments</h2>
+      <details open>
+
+        <summary>Compléments</summary>
         <ul class="source-list">
           <li><a href="./p/index.html">Partis Politiques Européens</a></li>
           <li id="mediapart-mur">
             Vallet, Cédric. "<a href="https://www.mediapart.fr/journal/international/170723/migrations-l-union-europeenne-droit-dans-le-mur"
               >Migrations : l’Union européenne, droit dans le mur.</a
-            >" Mediapart, 17 juillet 2023.
+              >" Mediapart, 17 juillet 2023.
           </li>
           <li id="amnesty">
             Amnesty International,
@@ -845,6 +860,7 @@
           </li>
         </ul>
       </div>
+    </details>
     </section>
     <section class="details">
       <article id="help">
