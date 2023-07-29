@@ -25,7 +25,7 @@
 
         --wall-color: #c46200;
         --neolib-color: #f5dd00;
-        --lib-tech-color: #FFFF8A;
+        --lib-tech-color: #ffff8a;
         --ed-gov-color: #162a8c;
         --ed-in-color: #5055eb;
         --ed-st-color: #508cfa;
@@ -390,6 +390,7 @@
         />
       </defs>
     </svg>
+
     <section class="map-container" id="map">
       <input id="ue-select" name="map-control" type="checkbox" />
       <input id="wall-select" name="map-control" type="checkbox" checked />
@@ -407,6 +408,7 @@
       <input id="discrimination-select" name="map-control" type="checkbox" />
       <input id="score-ed-select" name="map-control" type="checkbox" />
       <input id="demo-imp-select" name="map-control" type="checkbox" />
+
       <div class="svg-container">
         <svg
           stroke="black"
@@ -425,7 +427,7 @@
               name="Switzerland"
               class="ed-in"
             />
-            <text class="score-ed marker" x="338" y="357" style="font-size: 16px;">▾ 26%</text>
+            <text class="score-ed marker" x="338" y="357" style="font-size: 16px">▾ 26%</text>
           </a>
           <a href="./c/isl.html" aria-label="Islande">
             <path
@@ -766,118 +768,123 @@
         <details open>
           <summary>Gouvernements</summary>
           <ul>
-          <li><label for="ed-gov-select">dirigés par un parti d'extrême-droite</label></li>
-          <li><label for="ed-in-select">comprenant des membres d'un parti d'extrême-droite</label></li>
-          <li><label for="ed-st-select">soutenus par un parti d'extrême-droite sans participation</label></li>
-          <li>
-            <label for="gov-consr-select"
-            >dirigés par un parti conservateur entretenant des proximités avec un parti d'extrême-droite</label
-            >
-          </li>
-          <li><label for="gov-lib-cons-select">de coalition entre partis libéraux et conservateurs</label></li>
-          <li><label for="gov-nl-select">menant une politique néolibérale radicale</label></li>
-          <li><label for="gov-lib-tech-select">technocratique ou de coalition libérale</label></li>
-          <li>
-            <label for="gov-soclib-select">composés d'un ou plusieurs partis sociaux-libéraux (gauche non-néolibérale exclue)</label>
-          </li>
-          <li><label for="gov-uleft-select">de coalition de gauche incluant des partis non-néolibéraux, ou dirigé par un parti de gauche non-néolibérale</label></li>
-        </ul>
-      </details>
+            <li><label for="ed-gov-select">dirigés par un parti d'extrême-droite</label></li>
+            <li><label for="ed-in-select">comprenant des membres d'un parti d'extrême-droite</label></li>
+            <li><label for="ed-st-select">soutenus par un parti d'extrême-droite sans participation</label></li>
+            <li>
+              <label for="gov-consr-select"
+                >dirigés par un parti conservateur entretenant des proximités avec un parti d'extrême-droite</label
+              >
+            </li>
+            <li><label for="gov-lib-cons-select">de coalition entre partis libéraux et conservateurs</label></li>
+            <li><label for="gov-nl-select">menant une politique néolibérale radicale</label></li>
+            <li><label for="gov-lib-tech-select">technocratique ou de coalition libérale</label></li>
+            <li>
+              <label for="gov-soclib-select">composés d'un ou plusieurs partis sociaux-libéraux (gauche non-néolibérale exclue)</label>
+            </li>
+            <li>
+              <label for="gov-uleft-select"
+                >de coalition de gauche incluant des partis non-néolibéraux, ou dirigé par un parti de gauche non-néolibérale</label
+              >
+            </li>
+          </ul>
+        </details>
 
-      <details>
-        <summary>Elections & Tendances</summary>
-        <ul>
-          <li>
-            <span class="text-legend">▾ %</span>
-            &nbsp;<label class="custom-label" for="score-ed-select">
-              Tendance et résultat de l'extrême droite aux dernières élections parlementaires
-            </label>
-          </li>
-          <li><label for="no-g-select">Aucun parti de gauche non néolibérale représenté au parlement</label></li>
-          <li>
-            <label for="demo-imp-select"><em>Indice de démocratie</em> &lt; 7</label>
-            <a href="#democracy-index">
-              <svg class="info-icon">
-                <use href="#info-icon" />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </details>
+        <details>
+          <summary>Elections & Tendances</summary>
+          <ul>
+            <li>
+              <span class="text-legend">▾ %</span>
+              &nbsp;<label class="custom-label" for="score-ed-select">
+                Tendance et résultat de l'extrême droite aux dernières élections parlementaires
+              </label>
+            </li>
+            <li><label for="no-g-select">Aucun parti de gauche non néolibérale représenté au parlement</label></li>
+            <li>
+              <label for="demo-imp-select"><em>Indice de démocratie</em> &lt; 7</label>
+              <a href="#democracy-index">
+                <svg class="info-icon">
+                  <use href="#info-icon" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </details>
 
-      <details>
-        <summary>Droits et Libertés (2022)</summary>
-        <ul>
-          <li>
-            <svg height="15" width="14" style="position: relative; top: 2px"><use href="#police-icon" /></svg>
-            &nbsp;<label class="custom-label" for="hr-restrict-select">
-              usage excessif de la force / restriction de la liberté d’expression des manifestant·e·s et des journalistes
-            </label>
-            <a href="#amnesty">
-              <svg class="info-icon">
-                <use href="#info-icon" />
-              </svg>
-            </a>
-          </li>
-          <li>
-            <svg height="15" width="15" style="position: relative; top: 2px"><use href="#discrimination-icon" /></svg>
-            &nbsp;<label class="custom-label" for="discrimination-select">
-              Violences et discriminations courantes envers les personnes minorisées (LGBTI, minorités ethnique, femmes, etc.)
-            </label>
-            <a href="#amnesty">
-              <svg class="info-icon">
-                <use href="#info-icon" />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </details>
+        <details>
+          <summary>Droits et Libertés (2022)</summary>
+          <ul>
+            <li>
+              <svg height="15" width="14" style="position: relative; top: 2px"><use href="#police-icon" /></svg>
+              &nbsp;<label class="custom-label" for="hr-restrict-select">
+                usage excessif de la force / restriction de la liberté d’expression des manifestant·e·s et des journalistes
+              </label>
+              <a href="#amnesty">
+                <svg class="info-icon">
+                  <use href="#info-icon" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <svg height="15" width="15" style="position: relative; top: 2px"><use href="#discrimination-icon" /></svg>
+              &nbsp;<label class="custom-label" for="discrimination-select">
+                Violences et discriminations courantes envers les personnes minorisées (LGBTI, minorités ethnique, femmes, etc.)
+              </label>
+              <a href="#amnesty">
+                <svg class="info-icon">
+                  <use href="#info-icon" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </details>
 
-      <details open>
-        <summary>Immigration</summary>
-        <ul>
-          <li>
-            <label for="ue-select">Frontières de l'UE</label>
-          </li>
-          <li>
-            <svg height="15" width="14" style="position: relative; top: 2px"><use href="#wall-icon" /></svg>&nbsp;<label
-              class="custom-label"
-              for="wall-select"
-              >Membres de l'UE réclamant la construction de murs pour "protéger ses frontières"</label
+        <details open>
+          <summary>Immigration</summary>
+          <ul>
+            <li>
+              <label for="ue-select">Frontières de l'UE</label>
+            </li>
+            <li>
+              <svg height="15" width="14" style="position: relative; top: 2px"><use href="#wall-icon" /></svg>&nbsp;<label
+                class="custom-label"
+                for="wall-select"
+                >Membres de l'UE réclamant la construction de murs pour "protéger ses frontières"</label
               >
               <a href="#mediapart-mur">
                 <svg class="info-icon">
                   <use href="#info-icon" />
                 </svg>
-            </a>
-          </li>
-        </ul>
-      </details>
+              </a>
+            </li>
+          </ul>
+        </details>
 
-      <details open>
-
-        <summary>Compléments</summary>
-        <ul class="source-list">
-          <li><a href="./p/index.html">Partis Politiques Européens</a></li>
-          <li id="mediapart-mur">
-            Vallet, Cédric. "<a href="https://www.mediapart.fr/journal/international/170723/migrations-l-union-europeenne-droit-dans-le-mur"
-              >Migrations : l’Union européenne, droit dans le mur.</a
+        <details open>
+          <summary>Compléments</summary>
+          <ul class="source-list">
+            <li><a href="./p/index.html">Partis Politiques Européens</a></li>
+            <li id="mediapart-mur">
+              Vallet, Cédric. "<a
+                href="https://www.mediapart.fr/journal/international/170723/migrations-l-union-europeenne-droit-dans-le-mur"
+                >Migrations : l’Union européenne, droit dans le mur.</a
               >" Mediapart, 17 juillet 2023.
-          </li>
-          <li id="amnesty">
-            Amnesty International,
-            <a href="https://www.amnesty.fr/dossiers/rapport-annuel-la-situation-des-droits-humains-dans-le-monde-en-2022"
-              >Rapport annuel 2022/23 : la situation des droits humains dans le monde."</a
-            >
-          </li>
-          <li id="democracy-index">
-            Economist Intelligence Unit,
-            <a href="https://pages.eiu.com/rs/753-RIQ-438/images/DI-final-version-report.pdf">Democracy Index 2022</a>
-          </li>
-        </ul>
+            </li>
+            <li id="amnesty">
+              Amnesty International,
+              <a href="https://www.amnesty.fr/dossiers/rapport-annuel-la-situation-des-droits-humains-dans-le-monde-en-2022"
+                >Rapport annuel 2022/23 : la situation des droits humains dans le monde."</a
+              >
+            </li>
+            <li id="democracy-index">
+              Economist Intelligence Unit,
+              <a href="https://pages.eiu.com/rs/753-RIQ-438/images/DI-final-version-report.pdf">Democracy Index 2022</a>
+            </li>
+          </ul>
+        </details>
       </div>
-    </details>
     </section>
+
     <section class="details">
       <article id="help">
         <a class="close" href="#map">x</a>
