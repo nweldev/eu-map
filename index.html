@@ -289,21 +289,23 @@
       }
 
       .details article {
-        padding: 1rem;
+        padding: 2rem;
         background-color: white;
-        border: solid rgba(0, 0, 0, 0.1) 1rem;
+        border: solid rgba(0, 0, 0, 0.5) 4rem;
+        border-inline-width: 15rem;
         display: none;
         z-index: 20;
-        animation: createBox 0.25s;
+        animation: fadeIn 0.25s;
         overflow-y: scroll;
+        background-clip: padding-box;
       }
 
-      @keyframes createBox {
-        from {
-          transform: scale(0);
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
         }
-        to {
-          transform: scale(1);
+        100% {
+          opacity: 1;
         }
       }
 
@@ -311,16 +313,16 @@
         position: fixed;
         left: 0;
         top: 0;
-        width: calc(100% - 4rem);
-        height: calc(100% - 4rem);
+        width: calc(100% - 34rem);
+        height: calc(100vh - 12rem);
         display: block;
       }
 
       .details article .close {
         font-size: 25px;
         position: fixed;
-        top: 1rem;
-        right: 2rem;
+        top: 6rem;
+        right: 18rem;
         text-decoration: none;
         z-index: 10;
         font-family: sans-serif;
@@ -363,6 +365,21 @@
 
         .map-container {
           height: 100vh;
+        }
+
+        .details article {
+          padding: 1rem;
+          border-width: 0.5rem;
+        }
+
+        .details article:target {
+          width: calc(100% - 3rem);
+          height: calc(100vh - 3rem);
+        }
+
+        .details article .close {
+          top: 1.5rem;
+          right: 2.5rem;
         }
       }
     </style>
