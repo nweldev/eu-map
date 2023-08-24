@@ -45,8 +45,34 @@
         margin: 1rem 0;
       }
 
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-block: 1em;
+      }
       h1 {
-        margin-bottom: 0.5rem;
+        font-size: 2em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      h3 {
+        font-size: 1.3em;
+      }
+      h4 {
+        font-size: 1em;
+      }
+      h5 {
+        font-size: 0.8em;
+      }
+      h6 {
+        font-size: 0.7em;
+      }
+      h1:first-of-type {
+        margin-top: 0;
       }
 
       .map-control summary {
@@ -263,21 +289,23 @@
       }
 
       .details article {
-        padding: 1rem;
+        padding: 2rem;
         background-color: white;
-        border: solid rgba(0, 0, 0, 0.1) 1rem;
+        border: solid rgba(0, 0, 0, 0.5) 4rem;
+        border-inline-width: 15rem;
         display: none;
         z-index: 20;
-        animation: createBox 0.25s;
+        animation: fadeIn 0.25s;
         overflow-y: scroll;
+        background-clip: padding-box;
       }
 
-      @keyframes createBox {
-        from {
-          transform: scale(0);
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
         }
-        to {
-          transform: scale(1);
+        100% {
+          opacity: 1;
         }
       }
 
@@ -285,16 +313,16 @@
         position: fixed;
         left: 0;
         top: 0;
-        width: calc(100% - 4rem);
-        height: calc(100% - 4rem);
+        width: calc(100% - 34rem);
+        height: calc(100vh - 12rem);
         display: block;
       }
 
       .details article .close {
         font-size: 25px;
         position: fixed;
-        top: 1rem;
-        right: 2rem;
+        top: 6rem;
+        right: 18rem;
         text-decoration: none;
         z-index: 10;
         font-family: sans-serif;
@@ -337,6 +365,21 @@
 
         .map-container {
           height: 100vh;
+        }
+
+        .details article {
+          padding: 1rem;
+          border-width: 0.5rem;
+        }
+
+        .details article:target {
+          width: calc(100% - 3rem);
+          height: calc(100vh - 3rem);
+        }
+
+        .details article .close {
+          top: 1.5rem;
+          right: 2.5rem;
         }
       }
     </style>
@@ -392,6 +435,7 @@
     </svg>
 
     <section class="map-container" id="map">
+      <!-- #region Checkboxes -->
       <input id="ue-select" name="map-control" type="checkbox" />
       <input id="wall-select" name="map-control" type="checkbox" checked />
       <input id="ed-gov-select" name="map-control" type="checkbox" checked />
@@ -408,6 +452,7 @@
       <input id="discrimination-select" name="map-control" type="checkbox" />
       <input id="score-ed-select" name="map-control" type="checkbox" />
       <input id="demo-imp-select" name="map-control" type="checkbox" />
+      <!-- #endregion -->
 
       <div class="svg-container">
         <svg
@@ -421,7 +466,7 @@
           xmlns="http://www.w3.org/2000/svg"
           class="map"
         >
-          <a href="./c/che.html" aria-label="Suisse">
+          <a href="#che" aria-label="Suisse">
             <path
               d="m 368.44999,336.55 0.8,1.1 2.6,1.3 h 1.2 l 0.9,0.7 -1.5,4.5 0.1,1.7 1.2,0.1 3.3,0.8 0.4,1 1.5,0.8 2.3,0.4 2,-1.9 0.8,0.3 0.5,1.5 -0.5,3.1 0.5,1.8 -1.9,-0.2 -1,-0.9 -1.3,0.3 -0.6,1.8 1.5,3.5 -1.2,0.3 -1.4,-1.9 -0.7,-0.1 -2.9,1.1 -2,-0.8 -0.8,-2.1 -2,0.1 v 2.9 l -0.5,1.1 -2.2,2.6 -0.2,1 0.7,1.7 -1.2,0.7 -0.9,-1.4 -1.3,-1.2 0.4,-1.2 -2.2,-0.6 -2.4,-2 -0.2,-2.5 -1,-0.6 -3.4,2.9 0.6,1.5 -1.6,2.2 -2.4,1.4 -3.1,-0.8 -2.6,1 -2.4,0.5 -1.4,-0.7 -0.9,-1.4 -2.3,-2.3 0.5,-1.7 -0.8,-2.2 -2.2,-0.3 -1.9,0.1 -2.3,1.5 0.5,1.3 -2.3,1.6 -1.4,-0.1 v -1 l 1.5,-1 0.3,-1.5 -0.8,-0.7 1.1,-2.9 3,-2.2 0.5,-2.9 2.1,-0.9 3.8,-4 0.6,-0.9 -1.3,-1.1 1.8,-1.4 h 1.1 l 0.8,0.8 2.7,-0.3 0.8,-1.4 1.5,-0.7 1,0.3 2.8,0.1 3.3,-0.6 2.6,0.2 -0.2,-1.5 1.3,-1.2 h 1.3 l 1.4,1 0.8,-0.2 1.1,0.9 z"
               name="Switzerland"
@@ -429,7 +474,7 @@
             />
             <text class="score-ed marker" x="338" y="357" style="font-size: 16px">▾ 26%</text>
           </a>
-          <a href="./c/isl.html" aria-label="Islande">
+          <a href="#isl" aria-label="Islande">
             <path
               d="m 94.649994,65.35 1.2,0.1 2.8,-0.8 2.199996,-1.1 0.5,1.1 -2.499996,2.4 2.199996,0.9 2,0.3 -0.1,1.7 -1.7,1.6 0.8,0.3 3.5,-0.5 1,2.3 1.5,-0.2 2.4,0.3 1.4,1.2 1.2,-0.3 0.5,0.9 -0.7,1.2 -1.5,0.6 2.1,2.9 v 1.1 l -1,0.7 h -1.3 l -1,2.1 -1.2,1.1 -2,1 -2.6,-0.5 -1.1,1.5 0.2,1.4 -1.3,1.3 -5.299996,2.1 h -2.5 l -2.6,0.5 -6.2,2 -4.7,2.8 -2,0.7 -3.1,0.3 -1.8,0.5 -5.9,0.8 -2,0.5 -1.2,1.1 -0.5,1.4 -4,1.1 -3.8,0.7 -6.4,-0.5 -5.4,-1.3 -4.5,-0.3 -3.8,-2.5 -2.9,-1 -3.6,-1.8 -2.3,1.1 -12.4,0.3 -0.8,-0.5 -0.2,-2.1 1.1,-0.8 1.3,1.2 5,-1.1 2.7,-1.9 2.5,-2.7 -3.5,1.2 -0.2,-1.9 -0.9,-1.1 -1.7,-0.8 -0.3,-0.8 1.1,-0.9 -2.3,-1.2 -2.6,0.1 -6.6000002,-0.5 -3.8,1 -2,0.1 -0.9,-1 v -1.1 l 1.5,-0.3 1.8,0.1 4.1000002,-0.6 1.4,-0.6 0.8,0.5 3.6,-1.1 1,0.2 4,-0.2 4.4,-0.1 1.1,-0.8 0.4,-1.1 -2.8,0.9 -3.7,-0.5 -0.6,-0.9 3.6,-1.6 2.7,-0.8 -0.8,-1.3 -3.2,0.2 -0.7,-0.8 -2.6,-0.4 -1.8,0.3 -0.9,-0.5 -2.4,0.6 -5.2000002,0.9 -3.3,0.9 -3.1,-1.1 -2.39999996,-0.2 1.39999996,-1.4 2,-0.1 1.7,0.8 0.1,-3.2 1.2,0.3 2.8,1.1 -0.7,-2.8 2.2000002,0.1 -2.2000002,-1.6 0.5,-1 1.6000002,-0.3 0.8,-1 h 2.4 l 2.3,1.1 0.2,1.4 h 2.1 l 1.1,-0.8 0.9,0.6 0.5,1.2 h 1.2 l 0.4,-2.2 -3.6,-1.1 -0.3,-1.4 3.7,-0.1 -1.7,-1.1 -3,0.2 -1.4,-0.4 2.6,-1.2 h 3.4 l 1.4,0.2 2.3,1.7 2,0.6 3.1,2.3 2.2,0.9 v 1.2 l 0.7,0.8 -2.3,3.4 0.9,0.7 -0.8,1.6 1.9,0.6 1,1.7 0.9,-1.8 1.5,-1.9 2.3,-1.3 0.9,0.1 0.9,1 0.9,0.1 1.4,-2 0.7,-4.3 1.7,-0.9 1.8,0.7 1.3,1.6 2.6,2.1 1.8,-0.5 0.1,-2.3 1,-1.3 2,-0.3 2.2,-0.8 2.3,-0.2 1.7,1.4 1.2,1.4 1.7,1.1 0.7,1.8 0.9,-0.3 -0.2,-1.7 -1.4,-2.6 0.3,-0.9 4.1,0.2 3,2.3 1.3,-0.3 3.6,-2.8 2.3,0.8 1.8,0.1 2.8,-0.8 0.8,-1.2 -0.9,-2.3 0.6,-0.4 2.6,-0.6 2.7,0.1 2.6,2.1 -0.1,1 z"
               name="Iceland"
@@ -437,7 +482,7 @@
             />
             <text class="score-ed marker" x="80" y="110" style="font-size: 8px">0%</text>
           </a>
-          <a href="./c/nor.html" aria-label="Norvège">
+          <a href="#nor" aria-label="Norvège">
             <path
               d="m 312.34999,148.35 0.1,1.7 -1,-0.1 -0.7,-1.1 -0.2,-2 0.7,-0.5 z m -1.8,-11.1 h -1.8 l 0.3,-1.3 0.9,-0.3 z m 32.5,-31.9 -2.3,-0.2 -1,-0.8 2.8,-0.8 0.7,0.5 z m 3.6,-4.6 -0.3,-0.9 2.7,-0.6 0.9,1 z m 28,-16.6 -4.2,0.3 -0.3,-1.1 2.1,-0.8 h 1.2 z m 6.8,-10.5 -2,0.3 0.1,-1.1 1.8,-0.3 z m 4.1,-5.7 -0.1,-1.1 1,-1.2 1,0.4 -0.3,1.5 z m 3.1,-24.9 -1.5,0.7 1.1,-2.6 1.1,-0.7 0.4,1.5 z m 8.5,-5.2 2.3,0.2 -0.5,0.8 -1.4,0.3 -1.1,0.8 -1.9,0.2 -1.9,1 -1.6,0.3 -0.4,-1.2 0.9,-1 h 1.3 l 1,-1.2 z m 12.4,-9 2.2,2.1 -0.3,1.5 -1.2,0.7 -3.3,0.1 -1.6,-0.9 -2.2,0.6 -1.6,-1.1 1.6,-1.4 2.6,0.4 0.5,-1.7 1.7,0.3 0.4,-1.5 z m 6.3,5 1.3,-1.1 1.5,-0.4 0.6,-2.2 1.8,-0.5 1.6,1 0.9,1.2 -0.2,1.1 -3.1,1.2 -2.5,2 -1.6,-0.2 -0.7,0.7 -2.4,0.6 -1.7,-0.9 -0.9,0.9 -1.4,0.4 -1.2,-0.4 -2.9,1.5 -2.8,0.3 -1,-1.1 3.1,-1.9 5.1,-0.6 2.9,-2.3 0.4,-2.5 0.6,-0.9 -1.3,-0.6 0.2,-1.7 2.4,-1.7 1.3,-1.4 1.5,-0.3 0.9,1.1 -1.1,1.4 -1.6,1.2 1.1,1.5 0.6,2.4 z m 15.5,-13.7 1.4,0.8 1.5,-0.3 2.3,0.7 1,1.5 -1.2,0.9 0.4,1.7 -3.8,0.5 -0.9,-0.5 -1.5,0.9 -1.4,1.4 -2.2,-0.6 0.2,-1.6 -0.3,-2.3 0.7,-0.5 2.9,0.3 -0.4,-2 z m 124,-2.6 -1.8,0.4 0.2,-1.8 z m -92.4,-3.8 -1.3,0.4 -1.8,-0.3 -0.7,-1 2.2,-1 1.7,0.3 z m -15.1,0.3 1,0.7 1.5,-0.5 1.1,1 -1.4,0.8 -0.8,1.2 -2,0.1 -2.9,2.3 -0.1,0.8 -5,0.5 -1.5,-0.3 1.7,-2.7 h 1.7 l 1.7,-0.8 -0.3,-0.8 2.5,-2 0.6,-1.7 1.4,-1 z m 4.8,-2 1.4,0.2 1.3,1.6 h -2.3 l -2,-1.8 z m 37.3,-4.3000001 0.5,1.1 -3.3,2.1000001 -1.6,0.1 -2.1,-1.2000001 0.1,-0.8 1.9,-0.9 0.9,0.1 2.7,-1.4 z m 3.9,-0.3 -1.8,0.5 -1.7,-0.9 -0.2,-1.6 0.8,-0.3 3.2,1.2 z m -6.4,-3.2 -0.4,0.8 -2.7,2.1 -2.2,0.7 -1.8,-0.3 -0.8,0.6 h -2 l -2,-0.6 -2,-1.2 3.5,-0.1 0.6,-0.5 h 1.5 l 2.8,-0.4 1.1,0.3 2.1,-1.4 z m 60.6,23.5000001 -1.7,-1.3 v -0.7 l 3.2,-2.9 0.7,-1 -2.6,-2.7 -3.6,-0.8 -4.2,-1.1 -4.2,-2 -1.8,-1.2 -2.9,0.3 -3.5,1.6 -0.9,0.2 -3.8,-0.4 -2.1,0.2 -1.7,1.8 -2.6,1.7 -0.7,3.8 -0.6,1.7 0.7,3.2 -1.5,1.4 -2.1,0.3 -1.6,1.3 -0.5,1.7 -1.3,0.6 -2.6,-0.8 -3.9,-0.8 -3.6,-1.1 -1.5,-0.1 -1.2,1.2 -3.7,0.9 -1.8,0.1 -0.8,-0.5 -6.9,-0.6 -1.4,-1.8 -7.9,-5.5 h -3.6 l -1.9,1.1 1,1.4 -0.5,0.6 -1.9,-0.4 h -2.1 l -0.5,0.4 -5.1,0.2 2.6,1.6 0.1,2 -1.4,1.9 -1.6,0.9 2.9,0.9 -2.5,1.6 -1,-0.1 -8.6,-1.7 -2.9,-0.1 -4.1,-0.9 -2.1,0.5 v 0.8 l 0.8,3.6 -2.1,3.1 -6.3,-1.8 -1.5,0.9 -3.7,1.9 -1.5,3.5 -1.1,1.1 -2.7,0.6 -0.5,1.1 2.7,2.3 1,1.3 -0.2,1.4 -1.5,1 -3.3,2.9 -3,2.9 -1.3,0.9 1,2.5 -3.3,1.5 -2.4,0.5 -3.8,0.4 1.4,3.9 -0.6,2.7 -0.1,4.7 -3.3,5 -4.4,5 4.7,1.6 1.1,2.9 0.1,1.2 -1.7,2.2 -7.1,-0.9 -3.3,0.4 -3.3,1.5 -3.5,3.8 -1.2,1 0.5,1.5 -2,2.8 2.7,4.1 -1.1,1.1 0.6,2.8 -0.1,1.8 2.5,4.4 v 1.6 l -0.9,6.4 3.8,2.1 1.2,0.4 3.4,2.7 -0.4,1.9 -1.3,2.5 h -2.4 l -1.8,0.6 0.3,1.6 3.1,4.9 0.5,1.4 -0.6,2.1 -0.1,2.8 -1.9,2 -1.3,0.8 -2.6,0.7 -0.9,2.4 -1.5,1.5 1.6,4.4 -0.6,3.9 -0.7,1.4 -1.9,0.2 -1,-1.8 -0.4,-1 -6,-1.2 -2.3,-2.9 -0.4,-3.1 -2.5,1.2 0.6,1.1 v 2.3 l -2.5,3.9 -1.1,-0.2 -1.3,0.8 -1.3,0.2 -0.6,-1 -1.1,0.2 -0.8,1 -3.4,1.3 1,0.7 -1.7,1 -0.6,0.9 -2.7,1.5 -4.3,3.9 -2.3,1.1 -1.6,1.2 h -1.4 l -1.8,0.9 -4.6,0.9 -3.1,-0.4 -2.1,0.4 -1.1,-0.7 v -1.1 l -1.2,-0.1 -0.8,1.2 -1.6,-0.4 0.7,-2.4 -3.1,-0.1 -3.8,-1.6 -0.9,-0.8 -3.1,-1.3 -1.4,-1.4 -0.8,-1.6 0.3,-3.6 0.6,-0.5 2.7,0.8 2.8,1.3 -0.1,-1.2 -2.4,-1.6 0.8,-1.8 -0.2,-1.6 2.6,-2.1 -0.4,-0.7 -3.4,2 -3.1,0.9 -1.1,1.2 -1.1,0.6 h -2.1 l -0.5,-0.9 0.5,-3.3 1.2,-2.7 1.8,-1 3.4,0.7 1,-1 1.3,-0.2 2.4,-1.2 -4.1,0.5 -1.2,-1 2.8,-2.4 1.2,-1.4 0.3,-1.5 2.2,-1.7 1.8,-0.8 1.6,0.6 1.5,-1.9 -5,1.1 -2,1.1 -2.7,2.8 -0.2,1.1 -2,0.9 -1.5,1.5 -0.6,1.2 -2.8,1.9 -1.4,0.3 v -2.4 l 1.1,-2 -0.3,-1.6 3.2,0.2 1.8,-1.2 h -2.7 l -1.4,-0.7 -1.2,-1.5 -0.6,-1.9 1.1,-1.8 -2.2,-2 -0.5,-2.2 -0.1,-2.5 0.9,-0.5 2.1,0.4 2.4,-0.2 5.2,-0.9 3.4,0.6 1.4,-0.1 2,-0.7 1.9,-0.1 2.2,1.2 0.7,-0.5 5.4,-1.2 -3,-1.5 0.1,1.4 -3.6,0.3 -3.2,-0.6 -1.3,-0.6 -0.5,1.3 -1.1,0.3 -3.4,-0.5 -4.7,0.3 -2.1,0.7 -1.4,-0.1 -2.5,-1.2 -0.9,-0.9 -0.3,-2.6 2.8,-0.3 -1.9,-2.3 -1.9,-1.3 -0.2,-1.4 0.7,-1.3 1.5,0.2 3.8,-0.1 6,1.5 4.9,-0.3 -0.8,-0.6 h -2.9 l -7.2,-1.3 -2.2,0.1 -1.2,-0.3 -0.7,-1 0.4,-1.9 1.1,-0.4 1.2,0.6 1.9,-2.3 1.9,-1 2,-0.5 2,1 1.3,-0.1 4,-0.8 -1.3,-0.5 -3.5,0.5 -0.2,-0.5 2.4,-2.3 4.2,-0.4 5.9,0.5 2.3,0.8 0.4,-1.8 5.3,-1.4 -6.8,0.8 -1.8,-0.5 -4.9,0.7 -0.1,-1.3 2.3,-2.3 4.1,-0.9 1.9,-1.1 3.1,-0.2 2.6,0.3 1.2,1.3 4.4,1.7 -5.1,-4 1.1,-1.7 3.3,-0.4 v -1.6 l -2.2,-0.3 v -1.2 l 1.9,-0.9 2.8,-0.7 3.2,0.8 -0.6,1.3 0.9,0.5 1.7,-1.5 3.9,-0.8 2.8,2.1 0.5,1.1 1.1,-0.5 2.7,-0.5 2.7,0.3 1.8,-0.2 -1,-1.3 0.4,-1 2.4,-1 1.7,-0.3 2.6,-1.2 -0.8,-1 -1.4,-0.3 2.9,-1.5 -1.7,-0.6 -2.4,0.9 -1.6,0.9 1.5,1 -1.1,1.1 -6.1,2.8 -3,0.8 -1.4,-0.1 -1.9,-2.5 -2.1,-0.1 1.3,-2.2 1.6,-0.8 1.4,-2.3 2.3,-1.3 3.2,-3.3 2.8,-1.1 0.9,-1.1 3,-1.5 3,-0.9 0.3,-1 -2.7,0.9 0.4,-2.1 1.4,-1 6.8,-2.8 1.6,1.3 2.1,-0.2 2.3,-1.6 -0.3,-0.7 -2.1,1 h -1.5 l -0.4,-0.6 -2.1,-0.5 -0.3,-1.2 1.3,-2.8 3.4,-3.3 0.5,-1.3 1.3,-0.7 1.7,0.2 -0.2,-1.1 -2.1,-1.1 6.2,-1.1 h 3 l 2.4,-0.9 0.5,-1 -6.4,1.1 -2.4,0.1 -0.8,-2.7 0.2,-1.5 1.9,-2.2 1.4,-0.2 1.7,-1.1 0.1,-1.5 2.3,-0.8 2.1,-2.1 2.3,-0.5 1.4,0.2 3,-0.7 6.6,-0.1 0.1,-0.6 -6.3,-0.3 -3.5,0.2 -0.4,-0.6 2.8,-2.7 2,-1 1.7,0.2 1.8,1 0.6,-0.8 -1.6,-1.5 0.7,-1.5 -2.6,1.1 -1.8,0.3 -0.9,-2 2.3,-2 h 2.3 l 0.3,-1.5 3.3,-1.3 1.9,-0.2 1.5,-0.6 0.6,0.4 0.9,2.3 1.5,0.3 1,-0.8 -1.3,-1.1 -1.1,-1.8 2,-1.5 2.3,-0.2 2.6,0.7 2.3,-0.2 0.9,-1.2 -6.3,-0.1 -0.8,-0.9 1.2,-1.2 2.2,-0.8 2.5,-0.1 2.4,-1.4 0.9,-1.1 0.3,-1.6 1.4,-1.3 3.9,-0.8 -0.6,-2.2 0.8,-1.4 1,-0.6 2.1,1.5 1.8,0.5 -0.5,-1.4 0.3,-1.2 h 2.1 l 1,-0.5 0.3,-1.3 1.4,-1.2 4.7,-0.7 0.5,2.5 0.7,1.4 0.8,-2.8 1.6,-2.1 2.4,-0.9 0.9,1.1 -0.4,4.3 -1.9,2.4 1.5,-0.2 2.5,-2.3 0.6,-1.2 -0.7,-2.8 0.6,-0.8 3.5,-0.1 1.9,0.4 0.7,-1.5 1.7,-0.1 1.8,0.9 4.1,1.4 -1.3,-2.2 -1,-0.8 -2.1,-0.5 -2.2,-1 1.2,-1 2.4,0.3 2,-0.8 2.2,-0.2 1.1,0.6 0.8,-1 2.5,-0.5000001 2.8,0.9000001 1.6,2.7 2.4,1.4 -0.1,-1.4 0.6,-1.9 2.3,-2.0000001 2.1,-1 1.4,-0.1 2.9,-3.4 -1.6,-1 3.3,-2.3 1.1,-0.1 5.4,2.1 1.5,-0.9 3.4,0.8 -0.8,1 -3.1,2.9 -0.5,0.8 -0.1,2.2000001 -1.2,1.4 0.8,1.4 1.6,-0.4 1.8,-1.3 0.1,-1.3 4.3,-3.7000001 1.9,-2.1 2.3,-1.7 1.5,-0.3 0.9,1.1 -0.2,1.5 0.2,4.3 3.7,-1.4 1.1,-3 1.1,-0.7 -0.8,-1.4 0.4,-1.1 2.3,-1.30000002 2.2,0.40000002 3.3,0.3 2.7,0.8 0.2,1.4 -0.8,0.9 -2.9,1.1 0.7,0.7 2,-0.6 0.9,5.5000001 0.9,-2.1000001 1,-0.7 0.1,-1.5 0.8,-1.9 1.8,-1.3 h 2.7 l 3.3,1.7 2.5,0.3 1.8,0.8 2.4,-0.7 2,1 0.1,1 3.8,0.3 3.8,1.6 0.6,1.6000001 -4.4,1 -1.8,1 -3.3,0.4 -11.5,-0.7 0.4,0.7 8.3,1.5 0.6,0.5 0.4,2.1 1.8,0.7 3.5,-0.2 v -1.3 l 3.2,0.6 3.8,0.2 1.1,1.7 -0.3,1.5 -2.4,0.1 -4.2,-1.4 -0.4,2.3 -1.1,0.9 -5.8,1.3 -1.1,2.6 z m -40.5,-27.70000012 3.7,0.5 2.2,1.40000002 -3.6,0.5 -1.7,-0.1 -2,-1.80000002 z"
               name="Norway"
@@ -445,7 +490,7 @@
             />
             <text class="score-ed marker" x="350" y="130" style="font-size: 12px">▾ 12%</text>
           </a>
-          <a href="./c/gbr.html" aria-label="Royaume-Uni">
+          <a href="#gbr" aria-label="Royaume-Uni">
             <path
               d="m 243.44999,290.55 -1.6,1.3 -1.3,0.2 -2.5,-1.2 v -0.5 l 2.5,-1.1 2,0.6 z m -36.5,-39.7 1.3,0.9 -3.4,1.9 -1.2,-0.6 -0.9,-1.2 -0.1,-1.9 1.2,-0.5 h 1.8 z m -23.3,-11.4 -2.1,0.4 h -2.9 l 0.1,-1.5 -1.4,-0.5 -1.8,-2.7 -1.3,-0.5 -1.9,1.6 0.5,0.9 -2.4,1.8 -2.9,-0.3 -0.8,-0.7 -2.1,-0.4 -0.2,-1 -2.7,-2 1,-1.4 2.9,-0.9 -1,-1.4 0.2,-0.8 1.6,0.1 2.2,-0.8 1.2,-1.6 1,-2.3 1.9,-0.9 1.3,0.6 1.9,-2 2.8,-0.1 2.7,-0.7 3.9,0.3 1.1,1.1 0.5,1.7 1.3,1.7 1.7,1.4 v 0.9 l -2,1.1 3.5,0.3 1.2,2.5 -2.1,0.3 -0.1,1.4 1.1,0.2 -0.6,1.4 -2.6,0.6 -1.4,2.2 -1,0.5 z m 13.7,-20.2 -2.6,-0.5 -0.6,-2 0.9,-1.4 1.8,0.7 0.6,1.3 z m -11.5,-7.1 0.7,3.4 -2.4,1.3 -0.8,-2.4 -1.4,1 0.2,-1.9 1.5,-0.3 z m 1.7,1.7 -1.1,-1.2 1.6,-2.2 1.7,-1 -0.1,1.6 z m 2.5,-7.8 -4.6,0.8 0.6,-3 -1.9,-0.9 0.3,-0.9 2.1,-0.5 1.7,1.7 2.1,0.6 z m -16.2,-11.4 -1.5,-0.2 -0.4,-1.4 0.2,-2.3 1.6,0.2 z m 12.8,-5.7 -0.1,2.8 2.9,0.8 2,-0.1 0.4,0.6 -3.3,2.7 -0.7,-0.1 -0.2,-2.2 -1.4,0.3 -1.9,-0.3 -1.2,-1.9 -2.7,-0.5 -0.9,-1.1 1.4,-0.6 0.3,-1.2 2.8,-0.6 1.5,-0.7 0.9,1 z m -11.9,-2.6 1.2,0.9 -1.1,1.3 h -1.5 l -2.2,-1 0.2,-0.5 z m 11.8,-9.9 -1.6,2.6 -1,0.7 -0.2,1.7 -3,1.6 -3.2,2.4 -1.4,-1 2.6,-1.7 -2.1,-1 -0.2,-2.6 0.8,-0.7 1.4,0.7 1.9,-0.3 -0.7,-1.2 6.3,-3.2 z m 34.8,-2.2 v 1.2 l -1.3,1.6 -2.2,1.2 -4.2,2.8 -2.5,1.3 -0.5,1.6 1.4,0.1 0.2,0.8 -2.2,1.6 -0.6,1.5 3,-0.4 5.3,-1.5 3.6,0.5 2.6,-0.3 6.9,0.2 1.9,-0.3 2.3,1.3 1,1.7 -2.8,3.4 -0.8,2.3 -2,3.5 -1.9,2 -2,2.5 -2.1,1.1 -3.1,0.5 4.5,1.9 -1.4,1.8 -2.4,0.1 -2.3,1.7 -2.1,0.7 3.6,1.1 2.4,-1 2.7,-0.1 5.2,1.9 3.6,3.4 2,1.5 0.5,1.1 2.1,6.9 1.5,3.8 1.6,1.8 4.5,1.6 1.1,0.6 3.4,3.3 3.4,2.4 -1.4,1.5 0.4,1.2 2.1,2.9 0.3,1.6 -1.3,-0.1 -2.3,-1.4 -0.3,0.7 5,3.3 1.6,2 1,2.7 -0.6,1.1 -3,2.7 2.8,1.4 1.2,-0.2 2,-2.1 1.7,-0.2 4.2,0.3 3.8,1 3.3,2.1 0.7,1.1 0.4,3.1 -2.2,5.8 -2.8,1.9 -0.5,1.7 -2.1,0.9 -1.7,-0.3 -2.4,1.2 1.7,0.6 v 1.7 l -1.1,0.6 -2.5,0.2 1.1,2 2.5,0.4 4.3,-0.2 1.9,0.2 -0.2,2.7 -0.4,0.4 -3.8,1.7 -1,1.8 -2.2,-0.1 -1.1,0.7 -5.7,1.9 -4.9,-0.8 -2.9,0.1 -4,0.6 -4.2,-1.2 -1.8,-0.2 -2.8,1.7 -4.2,0.5 -2,-0.2 0.9,1.5 -0.9,0.4 -3.8,-0.5 -1,0.5 -1.4,-0.2 -2.7,-1.4 -2.6,-0.1 -4.9,1.2 -1,1.3 -1.3,3.5 -1.1,1.2 -1.4,0.2 -4.5,-2.5 -1.5,0.5 -2.5,0.3 -2.7,0.7 -3.9,2.4 -0.9,1.5 -1.3,0.2 -1.1,-0.9 -1.4,-0.3 -2.3,0.8 -0.3,-1.3 1,-1 2.8,-0.7 2.5,-1.9 2.2,-2.3 4.6,-3.8 0.8,-3.1 2.7,-0.7 1.4,-2.5 4.1,-0.6 h 2.8 l 2.8,0.5 2.9,-0.1 1.1,-0.7 1.9,-2.4 3.6,-3 -4.7,1 -3.8,2.3 -3.2,-0.4 -2.3,-1.9 -2.1,-0.8 -2.1,0.4 -0.7,-0.9 -2.4,-1.7 h -2.6 l -3.6,1.7 -2.6,-1.2 -0.9,-2.3 0.3,-1.4 1.1,-0.7 2.5,-0.6 3.8,-1.7 2.2,-0.7 2.8,-1.9 1.2,-2.3 -0.3,-2 0.5,-1.4 -0.9,-1.7 0.3,-1.5 -3,0.3 -2.7,1.2 -0.7,-1.1 2.8,-1.8 1,-1.4 2.6,-1.7 3.6,-1.3 1.9,0.1 3.7,-0.7 2.7,1.3 -0.8,-2.1 1.2,-0.4 0.1,-2.4 1.6,-2.2 -1.2,-0.6 0.1,-2 1.5,-0.8 0.7,-2.6 -1.7,-0.5 -2.1,0.6 -1.7,-1.5 -2.8,-3.6 -0.3,-1.4 1.6,-3.1 2.3,-2 -1.9,-0.8 -1.4,0.2 -2.7,1.2 -2,1.3 h -2.1 l -0.8,-0.9 -1.1,0.1 -2.5,1.1 -3.5,-1.3 -1.1,2.3 -2.6,-2.5 -0.3,-1.9 h 1.3 l 1.2,-2.4 2.9,-4 0.6,-1.2 -0.5,-1.4 -1.9,-1.5 0.3,-2.6 0.8,-1 1.5,-0.4 -1.9,-1.2 -2.9,0.9 -1.8,0.9 0.3,-2 -0.6,-0.4 -1.5,1.4 0.1,3.3 -2.1,5.7 -1.1,0.9 -1.4,-0.5 1.1,-3.9 1.4,-2.5 -0.6,-0.3 0.3,-3.6 1,-2.9 1.7,-3.8 2.2,-3.5 -4.1,2.7 -1,0.5 -2.4,-0.4 -0.8,-0.7 -1,-2.3 1.8,-0.2 1.7,-1.1 -1.5,-0.7 1.5,-0.9 1.7,-2.1 0.4,-1.9 -1,-1.5 -1.6,-0.6 -0.2,-0.9 1.7,-1.9 -0.7,-1.5 1.6,-3.1 3,0.1 1.9,-0.4 -2.3,-2 0.7,-2.9 3.7,-0.3 -0.8,-1.8 0.3,-2 1.6,-0.9 1.3,0.2 1,0.9 2.6,-0.9 0.6,0.8 2.8,-0.6 3.7,-0.3 4.5,-0.6 2.2,-0.4 2.3,0.2 z m -0.6,-4 -1.3,0.1 -1.3,-1.4 1.5,-0.3 z m 1.3,-3.4 2.7,0.6 -0.6,1.4 -1.4,-0.7 -2,0.3 -1.9,-1 0.4,-2.1 1.7,-0.1 1.2,0.5 z m 3.7,-2.3 -1,0.3 -0.4,-1.2 -1.7,-0.6 0.4,-0.8 z m 16.1,-19.5 1.6,1.8 1,0.5 -1.3,3.8 -0.2,1.6 -1,1.7 -0.8,-0.4 0.9,-2.9 -0.5,-1.1 -1.7,0.3 -0.4,-0.9 1.6,-1.4 -0.8,-2 -1.1,-0.2 1.5,-1.6 z m 2.9,0.4 -1.4,-1.3 1.3,-0.6 z"
               name="United Kingdom"
@@ -465,7 +510,7 @@
             <text class="score-ed marker" x="506" y="450" style="font-size: 8px">0,1%</text>
             <use class="discrimination marker" href="#discrimination-icon" x="504" y="431" />
           </a>
-          <a href="./c/bih.html" aria-label="Bosnie-Herzégovine">
+          <a href="#bih" aria-label="Bosnie-Herzégovine">
             <path
               d="m 492.54999,379.65 2.8,-0.7 1.5,0.8 -0.5,2.5 -1.6,2.7 -0.1,2.6 0.5,0.8 2.4,1.2 3.3,2.9 -0.3,0.8 -3.1,-0.1 -0.5,0.8 3.2,3.7 -0.2,2.2 -2.5,-0.3 -0.7,0.8 -3.2,0.5 1.4,2.2 -2.3,0.2 -2,1.7 -0.5,1.7 0.1,1.5 -1.7,0.2 -0.5,0.7 0.6,3 1.1,1.6 -0.1,0.8 -1.1,1 -1.7,-0.7 -6.2,-3.8 -0.6,-0.9 -1.6,0.1 -1.1,-0.6 0.3,-1.6 -3,-2.5 -1.5,-1.6 -0.4,-2.2 -2.4,-1.1 -5,-4.1 -1.7,-2 -2.8,-2.3 -2.3,-2.4 -1.3,-4 -3.4,-3.2 -1.9,-1.3 -0.1,-1.4 0.3,-5 1.2,-0.6 1.8,0.4 1.7,1.8 1.8,1 2.7,-3.2 3.2,0.3 1.5,-1.2 2.7,1.6 2.5,0.1 2.8,0.7 1.7,-0.6 1.6,1.3 2.2,-1 1.8,0.3 1.8,-0.2 2.6,0.7 2.2,0.2 1.1,0.8 1.3,2.2 z"
               name="Bosnia and Herzegovina"
@@ -473,7 +518,7 @@
             />
             <text class="score-ed marker" x="480" y="390" style="font-size: 8px">0%</text>
           </a>
-          <a href="./c/srb.html" aria-label="Serbie">
+          <a href="#srb" aria-label="Serbie">
             <path
               d="m 505.94999,360.55 1.7,2 2.9,1.7 1.8,2 0.8,-0.2 0.4,4.1 2.2,1.8 3.8,1.9 2.6,0.8 0.9,1.1 -1.5,2 2.3,1.1 -1.8,0.8 -0.2,0.6 2.1,0.6 1.5,1.2 3.5,0.7 1.5,0.7 1,1.2 1.3,-0.2 1.7,-1.8 1.7,-0.5 3,1.6 -2.5,1.8 0.5,1.7 1.6,0.9 0.8,1.2 -0.9,0.7 -0.2,1.9 -2.1,1 -0.4,2.3 0.6,2.4 2.4,3.9 2.9,1.5 1.3,1.6 1.6,1 -0.3,1.4 -1.6,1.7 -1.1,1.6 -1.8,0.1 -1.1,0.6 v 3.3 l 1.4,2.9 -1.1,1.7 -1,0.3 -1.4,-0.7 -2.3,0.8 -1.9,-0.3 -2,0.9 -2.2,0.3 -0.6,-1.3 1,-0.9 1.2,-3.2 0.2,-1.2 -4.7,-1.2 v -1.3 l -2.2,-1.2 -0.2,-0.7 -2.3,-2.1 -2.8,-1.3 -1.1,-1.3 -1.7,0.9 0.6,1.6 -0.4,1 -1.7,1.3 v 1.4 l -1.5,0.5 -0.1,-1 -5.3,-2.9 -2.1,-0.5 -3,-1.6 -1.9,-2 -2.6,-1.7 -0.4,-1.2 0.7,-0.8 2.5,0.3 0.2,-2.2 -3.2,-3.7 0.5,-0.8 3.1,0.1 0.3,-0.8 -3.3,-2.9 -2.4,-1.2 -0.5,-0.8 0.1,-2.6 1.6,-2.7 0.5,-2.5 -1.5,-0.8 -2.8,0.7 1,-1.6 -0.7,-2.6 1.7,-0.4 2.3,-0.1 -0.9,-1.5 -3,-1 -1.2,-1 0.4,-2 -1.3,-0.4 -0.2,-1.6 -1.6,-2.7 0.7,-1.5 2.1,-1.3 1.6,0.5 2.2,-1 1.5,-1.6 1,-0.3 2.9,0.4 1.1,-0.2 2.8,0.3 z"
               name="Serbia"
@@ -481,7 +526,7 @@
             />
             <text class="score-ed marker" x="505" y="400" style="font-size: 10px">▴ 7%</text>
           </a>
-          <a href="./c/mkd.html" aria-label="Macédoine du Nord">
+          <a href="#mkd" aria-label="Macédoine du Nord">
             <path
               d="m 538.14999,419.25 3.3,3.2 3.4,1.8 1.7,3.3 0.9,1 -0.5,1.7 v 4.2 l -2,0.3 -0.2,2.1 -2.9,1 -3.3,-0.6 -3,0.4 -0.8,0.3 -1.7,2.5 -2.4,1.3 -2.3,-0.6 -0.9,0.6 -4.6,0.3 -1.3,-1.1 -1.6,0.2 -1.3,-2.4 -1.2,-1.1 -1.2,-2.2 -0.2,-1.9 -0.7,-2 0.8,-0.8 -0.3,-2.1 0.5,-2.6 1.7,0.3 0.5,-0.8 0.2,-2.6 3.4,-1.5 1,-0.1 1.6,1.2 1.5,-1.9 2.1,-0.4 2.2,-0.3 2,-0.9 1.9,0.3 2.3,-0.8 z"
               name="Macedonia"
@@ -489,7 +534,7 @@
             />
             <text class="score-ed marker en-hausse" x="530" y="430" style="font-size: 6px">0%</text>
           </a>
-          <a href="./c/mne.html" aria-label="Monténégro">
+          <a href="#mne" aria-label="Monténégro">
             <path
               d="m 496.74999,400.35 0.4,1.2 2.6,1.7 1.9,2 3,1.6 2.1,0.5 5.3,2.9 0.1,1 -1.6,0.4 -0.2,0.7 -2,0.4 0.9,1.5 -0.2,1.3 -3.4,1.2 -0.8,-2.1 -1.1,-0.3 -3.2,5.3 -0.8,0.3 -2.5,-0.2 1.6,1.9 1.7,0.8 0.3,0.6 v 3.1 l -2.1,-1.2 -0.9,-1.8 -3.1,-2.9 -3.5,-2 0.1,-1 -1.6,0.1 -1.2,-1.9 1.1,-1 0.1,-0.8 -1.1,-1.6 -0.6,-3 0.5,-0.7 1.7,-0.2 -0.1,-1.5 0.5,-1.7 2,-1.7 2.3,-0.2 -1.4,-2.2 z"
               name="Montenegro"
@@ -497,7 +542,7 @@
             />
             <text class="score-ed marker" x="490" y="415" style="font-size: 8px">0,7%</text>
           </a>
-          <a href="./c/xxk.html" aria-label="Kosovo">
+          <a href="#xxk" aria-label="Kosovo">
             <path
               d="m 528.34999,420.25 -2.1,0.4 -1.5,1.9 -1.6,-1.2 -1,0.1 -3.4,1.5 -0.2,2.6 -0.5,0.8 -1.7,-0.3 -0.1,-2.2 -1.4,-3.2 -1.9,-1.3 -1.4,-0.5 -2,-2.9 -0.5,-0.4 0.2,-1.3 -0.9,-1.5 2,-0.4 0.2,-0.7 1.6,-0.4 1.5,-0.5 v -1.4 l 1.7,-1.3 0.4,-1 -0.6,-1.6 1.7,-0.9 1.1,1.3 2.8,1.3 2.3,2.1 0.2,0.7 2.2,1.2 v 1.3 l 4.7,1.2 -0.2,1.2 -1.2,3.2 -1,0.9 z"
               name="Kosovo"
@@ -780,7 +825,9 @@
             <li><label for="gov-nl-select">menant une politique néolibérale radicale</label></li>
             <li><label for="gov-lib-tech-select">technocratiques ou de coalition libérale</label></li>
             <li>
-              <label for="gov-soclib-select">dirigés par un parti social-libéral sans soutien ni participation de partis de gauche non-néolibérale</label>
+              <label for="gov-soclib-select"
+                >dirigés par un parti social-libéral sans soutien ni participation de partis de gauche non-néolibérale</label
+              >
             </li>
             <li>
               <label for="gov-uleft-select"
@@ -891,6 +938,203 @@
         <h1>Aide</h1>
         <p>Cliquez sur un pays pour afficher les informations détaillées.</p>
         <p>Cliquez sur un élément dans le menu pour afficher la variante de la carte correspondante.</p>
+      </article>
+      <article id="che">
+        <a class="close" href="#map">x</a>
+        <h1>Suisse</h1>
+        <h2>Élections</h2>
+        <p>
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_suisses_de_2019">Élections fédérales de 2019</a>
+        </p>
+        <p>
+          Prochaines élections :
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_f%C3%A9d%C3%A9rales_suisses_de_2019">22 octobre 2023</a>
+        </p>
+        <h3>Résultat</h3>
+        <p>
+          Vainqueur : <a href="https://fr.wikipedia.org/wiki/Union_d%C3%A9mocratique_du_centre">Union Démocratique du Centre</a> (extrême
+          droite national-conservatrice) 25,59 %, 53/200 sièges
+        </p>
+      </article>
+      <article id="isl">
+        <a class="close" href="#map">x</a>
+        <h1>Islande</h1>
+        <h2>Élections</h2>
+        <p><a href="https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_islandaises_de_2021">Élections fédérales de 2021</a></p>
+        <h3>Résultat</h3>
+        <p>Coalition libérale-conservatrice :</p>
+        <ul>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Parti_de_l%27ind%C3%A9pendance_(Islande)">Parti de l'indépendance</a> (droite
+            libérale-conservatrice) 24,38%, 16/63 sièges
+          </li>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Parti_du_progr%C3%A8s_(Islande)">Parti du progrès</a> (droite libérale-conservatrice)
+            17,27%, 13/63 sièges
+          </li>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Mouvement_des_verts_et_de_gauche">Mouvement des verts et de gauche</a> (social-libéral)
+            12,57%, 8/63 sièges
+          </li>
+        </ul>
+        <p>Gouvernement: <a href="https://fr.wikipedia.org/wiki/Gouvernement_Jakobsd%C3%B3ttir_II">Jakobsdóttir II</a></p>
+      </article>
+      <article id="nor">
+        <a class="close" href="#map">x</a>
+        <h1>Norvège</h1>
+        <h2>Élections</h2>
+        <p>
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_norv%C3%A9giennes_de_2021">Élections fédérales de 2021</a>
+        </p>
+        <h3>Résultat</h3>
+        <p>Coalition minoritaire :</p>
+        <ul>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Parti_travailliste_(Norv%C3%A8ge)">Parti travailliste</a> (social-libéral) 26,25%, 48/169
+            sièges
+          </li>
+          <li><a href="https://fr.wikipedia.org/wiki/Parti_du_centre_(Norv%C3%A8ge)">Parti du centre</a> 13,50%, 28/169 sièges</li>
+        </ul>
+        <p>Gouvernement: <a href="https://fr.wikipedia.org/wiki/Gouvernement_St%C3%B8re">Støre</a></p>
+        <p>
+          Extrême-droite : <a href="https://fr.wikipedia.org/wiki/Parti_du_progr%C3%A8s_(Norv%C3%A8ge)">Parti du progrès</a>, 11,61%
+          (4<sup>ème</sup>)
+        </p>
+      </article>
+      <article id="gbr">
+        <a class="close" href="#map">x</a>
+        <h1>Royaume Uni</h1>
+        <h2>Élections</h2>
+        <p>
+          <a href="https://en.wikipedia.org/wiki/2019_United_Kingdom_general_election#Results">2019 general election</a>
+        </p>
+        <h3>Résultat</h3>
+        <p>
+          Vainqueur : <a href="https://fr.wikipedia.org/wiki/Parti_travailliste_(Norv%C3%A8ge)">Conservative Party</a> (droite
+          libérale-conservatrice) 43,6%, 365/650 sièges
+        </p>
+        <p>Gouvernement: <a href="https://fr.wikipedia.org/wiki/Gouvernement_Sunak">Sunak</a></p>
+        <p>
+          Extrême-droite : <a href="https://en.wikipedia.org/wiki/UK_Independence_Party">UKIP</a>, 0,07% (16<sup>ème</sup>) (cf.
+          <a href="https://en.wikipedia.org/wiki/Far-right_politics_in_the_United_Kingdom#Current_(2010%E2%80%93)">détails</a>)
+        </p>
+      </article>
+      <article id="bih">
+        <a class="close" href="#map">x</a>
+        <h1>Bosnie-Herzégovine</h1>
+        <h2>Élections</h2>
+        <p>
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_bosniennes_de_2022">Élections législatives de 2022</a>
+        </p>
+        <h3>Résultat</h3>
+        <p>Coalition de partis libéraux et conservateurs :</p>
+        <ul>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Alliance_des_sociaux-d%C3%A9mocrates_ind%C3%A9pendants"
+              >Alliance des sociaux-démocrates indépendants</a
+            >
+            16,34% (2<sup>ème</sup>)
+          </li>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Union_d%C3%A9mocratique_croate_de_Bosnie-et-Herz%C3%A9govine"
+              >Union démocratique croate</a
+            >
+            (droite libérale-conservatrice) 8,75%
+          </li>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Mouvement_des_verts_et_de_gauche">Parti social-démocrate</a>
+            8,15%
+          </li>
+        </ul>
+        <p>Gouvernement: <a href="https://fr.wikipedia.org/wiki/Gouvernement_Kri%C5%A1to">Krišto</a></p>
+        <p><em>Aucun parti d'extrême-droite identifiable.</em></p>
+      </article>
+      <article id="srb">
+        <a class="close" href="#map">x</a>
+        <h1>Serbie</h1>
+        <h2>Élections</h2>
+        <p>
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_serbes_de_2022#Forces_en_pr%C3%A9sence"
+            >Élections législatives de 2022</a
+          >
+        </p>
+        <h3>Résultat</h3>
+        <p>Coalition de coalitions :</p>
+        <ul>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Parti_progressiste_serbe">Parti progressiste serbe (SNS)</a> (droite radicale
+            national-conservatrice), coalition électorale
+            <a href="https://fr.wikipedia.org/wiki/Ensemble,_nous_pouvons_tout_faire">Ensemble, nous pouvons tout faire</a>, 42,97%
+          </li>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Parti_socialiste_de_Serbie">Parti socialiste de Serbie (SPS)</a>, coalition électorale
+            autour de Ivica Dačić, 11,44% (3<sup>ème</sup>)
+          </li>
+        </ul>
+        <p>Gouvernement: <a href="https://fr.wikipedia.org/wiki/Gouvernement_Brnabi%C4%87_III">Brnabić III</a></p>
+      </article>
+      <article id="mkd">
+        <a class="close" href="#map">x</a>
+        <h1>Macédoine du Nord</h1>
+        <h2>Élections</h2>
+        <p>
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_mac%C3%A9doniennes_de_2020"
+            >Élections législatives de 2020</a
+          >
+        </p>
+        <h3>Résultat</h3>
+        <p>Coalition social-libérale :</p>
+        <ul>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Union_sociale-d%C3%A9mocrate_de_Mac%C3%A9doine"
+              >Union sociale-démocrate de Macédoine (SDSM)</a
+            >, 35,89% (1<sup>ère</sup> coalition électorale avec notamment le
+            <a href="https://fr.wikipedia.org/wiki/Parti_lib%C3%A9ral-d%C3%A9mocrate_(Mac%C3%A9doine_du_Nord)">Parti libéral-démocrate</a>)
+          </li>
+          <li>
+            <a href="https://fr.wikipedia.org/wiki/Union_d%C3%A9mocratique_pour_l%27int%C3%A9gration"
+              >Union démocratique pour l'intégration (BDI)</a
+            >, 11,48% (3<sup>ème</sup>)
+          </li>
+        </ul>
+        <p>Gouvernement: <a href="https://fr.wikipedia.org/wiki/Gouvernement_Kova%C4%8Devski">Kovačevski</a></p>
+      </article>
+      <article id="mne">
+        <a class="close" href="#map">x</a>
+        <h1>Monténégro</h1>
+        <h2>Élections</h2>
+        <p>
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_mont%C3%A9n%C3%A9grines_de_2023"
+            >Élections législatives de 2023</a
+          >
+        </p>
+        <h3>Résultat</h3>
+        <p>
+          Suite à une motion de censure votée en 2022, le gouvernement est remplacé par une coalition minoritaire soutenue sans
+          participation par le
+          <a href="Parti démocratique des socialistes du Monténégro">Parti démocratique des socialistes du Monténégro (DPS)</a>, néolibéral
+          affilié au Parti Socialiste Européen.
+        </p>
+        <p>Gouvernement: <a href="https://fr.wikipedia.org/wiki/Gouvernement_Abazovi%C4%87">Abazović</a></p>
+      </article>
+      <article id="xxk">
+        <a class="close" href="#map">x</a>
+        <h1>Kosovo</h1>
+        <h2>Élections</h2>
+        <p>
+          <a href="https://fr.wikipedia.org/wiki/%C3%89lections_l%C3%A9gislatives_kosovares_de_2021">Élections législatives de 2021</a>
+        </p>
+        <h3>Résultat</h3>
+        <p>
+          Coalition majoritaire restreinte dirigée par
+          <a href="https://fr.wikipedia.org/wiki/Autod%C3%A9termination_(parti_politique)"
+            >Autodétermination! &mdash; <em>Vetëvendosje!</em>, <strong>VV</strong></a
+          >
+          (<a href="https://en.wikipedia.org/wiki/Vet%C3%ABvendosje">en</a>) (gauche social-libérale interventionniste / non-néolibérale),
+          suivie de son alliée <a href="https://fr.wikipedia.org/wiki/Guxo">Guxo</a> (centriste), tous deux ayant fait 50,28% via la liste
+          commune VV, ainsi que de divers partis représentants de minorités non-serbes.
+        </p>
+        <p>Gouvernement: <a href="https://fr.wikipedia.org/wiki/Gouvernement_Kurti_II">Kurti II</a></p>
       </article>
     </section>
   </body>
