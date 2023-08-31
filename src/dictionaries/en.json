@@ -1,0 +1,19 @@
+{
+  "global": {
+    "appName": "Eurocracies",
+    "tagline": "Understand and explore European states' politics."
+  },
+  "home": {
+    "author": "By Nwel.dev",
+    "links": {
+      "map": {
+        "title": "Map",
+        "description": "Find information on each and every countries."
+      },
+      "docs": {
+        "title": "Docs",
+        "description": "Documentations on specific topics."
+      }
+    }
+  }
+}
