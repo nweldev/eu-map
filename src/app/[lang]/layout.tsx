@@ -7,7 +7,12 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Eurocraties',
   description: "Comprendre et explorer la politique des pays d'Europe",
-}
+  themeColor: '#000',
+  other: {
+    'msapplication-TileColor': '#000',
+    'msapplication-TileImage': '/apple-icon/xlarge',
+  },
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
