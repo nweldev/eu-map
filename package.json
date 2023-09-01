@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "db-studio": "prisma studio",
-    "db-sync": "prisma db push"
+    "db-sync": "prisma db push",
+    "db-seed": "bash prisma/seed.sh",
+    "db-save": "source ./.env.local && pg_dump -a \"postgres://default:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DATABASE}\" > prisma/seed.sql"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.4.0",
