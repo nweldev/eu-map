@@ -1,0 +1,210 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Countrie {
+  id   Int    @id @default(autoincrement())
+  code String @unique
+
+  name           CountrieName @relation(fields: [countrieNameId], references: [id])
+  countrieNameId String       @unique
+
+  parties   Party[]    @relation()
+  elections Election[] @relation()
+
+  hasHighHouse  Boolean @default(true)
+  lowHouseSeats Int
+
+  // see https://en.wikipedia.org/wiki/Government#Forms
+  // Europe w/o micro-states only includes the followings :
+  // presidential + monarchy = full republic (none included for now)
+  // presidential + NOT monarchy = semi-presidential
+  // NOT presidential + NOT monarchy = parlementary republic
+  // NOT presidential + monarchy = parlementary monarchy (where royalty does not hold significant power)
+  isPresidential Boolean @default(false)
+  isMonarchy     Boolean @default(false)
+}
+
+model CountrieName {
+  id String @id @default(cuid())
+  en String
+  fr String
+  vo String
+
+  countrie Countrie? @relation()
+}
+
+model Party {
+  id      String    @id @default(cuid())
+  code    String
+  color   String
+  founded DateTime? @db.Date
+
+  country   Countrie @relation(fields: [countryId], references: [id])
+  countryId Int
+
+  isGoverning   Boolean
+  lowHouseSeats Int
+
+  name        PartyName   @relation(fields: [nameId], references: [id])
+  nameId      String      @unique
+  desc        IntlText?   @relation(fields: [descId], references: [id])
+  descId      String?
+  alliance    Alliance[]  @relation("party:alliance")
+  candidacies Candidate[] @relation()
+}
+
+model PartyName {
+  id String  @id @default(cuid())
+  fr String
+  en String
+  vo String?
+
+  party Party? @relation()
+}
+
+model Election {
+  id   String       @id @default(cuid())
+  date DateTime     @db.Date
+  type ElectionType
+
+  results    ElectionRslt[] @relation()
+  desc       IntlText?      @relation(fields: [descId], references: [id])
+  descId     String?
+  countrie   Countrie?      @relation(fields: [countrieId], references: [id])
+  countrieId Int?
+}
+
+model IntlText {
+  id String @id @default(cuid())
+  // should include all supported languages
+  en String
+  fr String
+
+  party    Party[]    @relation()
+  election Election[] @relation()
+}
+
+enum ElectionType {
+  PARLEMENTARY
+  PRESIDENTIAL
+  EUROPEAN
+  LOCAL
+  MISC
+}
+
+model Candidate {
+  id String @id @default(cuid())
+
+  party   Party?  @relation(fields: [partyId], references: [id])
+  partyId String?
+
+  alliance   Alliance? @relation(fields: [allianceId], references: [id])
+  allianceId String?
+
+  rslts ElectionRslt[] @relation()
+}
+
+model AllianceName {
+  id String  @id @default(cuid())
+  fr String
+  en String
+  vo String?
+
+  alliance Alliance? @relation()
+}
+
+model Alliance {
+  id   String @id @default(cuid())
+  code String
+
+  name   AllianceName @relation(fields: [nameId], references: [id])
+  nameId String       @unique
+
+  parties   Party[]     @relation("party:alliance")
+  candidacies Candidate[] @relation()
+}
+
+model ElectionRslt {
+  id    String  @id @default(cuid())
+  score Decimal @db.Decimal(2, 2)
+
+  candidate   Candidate @relation(fields: [candidateId], references: [id])
+  candidateId String
+
+  election   Election @relation(fields: [electionId], references: [id])
+  electionId String
+}
+
+model Ideology {
+  id       String            @id @default(cuid())
+  economy  EconomicIdeology?
+  social   SocialIdeology?
+  national NationalIdeology?
+
+  sources   IdeologySources? @relation(fields: [sourcesId], references: [id])
+  sourcesId String
+}
+
+model IdeologySources {
+  id       String  @id @default(cuid())
+  economy  String?
+  social   String?
+  national String?
+
+  ideology Ideology[] @relation()
+}
+
+enum EconomicIdeology {
+  NEOLIBERAL
+  LIBERAL
+  INTERVENTIONIST
+  CENTRALIST
+  COOPERATIVIST
+}
+
+enum SocialIdeology {
+  DECLINIST
+  REACTIONARY
+  CONSERVATIVE
+  NEUTRAL
+  PROGRESSIVE
+  // not to be confused with equalitarian
+  // includes a focus on eliminating discrimination and oppression
+  EGALITARIAN
+  // "radical" equalitarian with a systemic constructivist approach
+  INTERSECTIONAL
+}
+
+enum NationalIdeology {
+  NATIONALIST
+  LEFTWING_NATIONALIST
+  INTERNATIONALIST
+}
+
+enum IdeologicFamiy {
+  // Declinist or Reactionary Nationalist (aka "National-conservative")
+  FAR_RIGHT
+  // Neoiberal-Reactionary
+  RADICAL_RIGHT
+  // Neoiberal-Conservative
+  RIGHT
+  // Neoliberal or Liberal-Neutral
+  CENTER
+  // can be anything (usually neoliberal) including opposite concepts (e.g. neoliberal-egalitarian)
+  CATCH_ALL
+  // Neoliberal-Progressive
+  THIRD_WAY
+  // non-Neoliberal Progressive
+  LEFT
+  // Centralist or Cooperativist, Egalitarian, Internationalist
+  RADICAL_LEFT
+  // revolutionary radical-left
+  FAR_LEFT
+}
