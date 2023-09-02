@@ -186,10 +186,10 @@ COPY public."Ideology" (id, economy, social, "national", "sourcesId") FROM stdin
 
 
 --
--- Data for Name: _party:alliance; Type: TABLE DATA; Schema: public; Owner: default
+-- Data for Name: _PartyToAlliance; Type: TABLE DATA; Schema: public; Owner: default
 --
 
-COPY public."_party:alliance" ("A", "B") FROM stdin;
+COPY public."_PartyToAlliance" ("A", "B") FROM stdin;
 \.
 
 

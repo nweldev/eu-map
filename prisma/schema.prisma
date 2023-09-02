@@ -56,7 +56,7 @@ model Party {
   nameId      String      @unique
   desc        IntlText?   @relation(fields: [descId], references: [id])
   descId      String?
-  alliance    Alliance[]  @relation("party:alliance")
+  alliance    Alliance[]  @relation("PartyToAlliance")
   candidacies Candidate[] @relation()
 }
 
@@ -127,7 +127,7 @@ model Alliance {
   name   AllianceName @relation(fields: [nameId], references: [id])
   nameId String       @unique
 
-  parties   Party[]     @relation("party:alliance")
+  parties   Party[]     @relation("PartyToAlliance")
   candidacies Candidate[] @relation()
 }
 
