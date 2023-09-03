@@ -3,6 +3,7 @@ import { Locale } from '@/i18n-config';
 import Link from 'next/link';
 import LocaleSwitcher from '@/app/shared/locale-switcher';
 import SimpleMap from '../shared/simple-map';
+import { DarkModeToggle } from '../shared/DarkModeToggle';
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(lang);
@@ -12,6 +13,9 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm md:flex">
         <div className="flex h-12 w-full item-start justify-center md:h-auto md:w-auto">
           <LocaleSwitcher lang={lang} />
+        </div>
+        <div className="">
+          <DarkModeToggle />
         </div>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black md:static md:h-auto md:w-auto md:bg-none">
           <a
@@ -27,7 +31,7 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
 
       <div className="grid grid-cols-1 grid-rows-1 place-items-center my-4">
         <div className="w-full z-0 col-start-1 row-start-1">
-          <SimpleMap fill="none" stroke="#222" />
+          <SimpleMap className='stroke-4 stroke-zinc-300 dark:stroke-zinc-800 fill-none w-full' />
         </div>
         <div className="text-center relative z-1 col-start-1 row-start-1 m-6">
           <h1 className="text-5xl">{dictionary.global.appName}</h1>

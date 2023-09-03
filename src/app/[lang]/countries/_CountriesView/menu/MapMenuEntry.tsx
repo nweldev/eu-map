@@ -3,21 +3,26 @@
 import { useContext } from 'react';
 import { CountriesParamsContext, CountriesParamsState } from '../CountriesView';
 import { ToggleSwitch } from '@/app/shared/ToggleSwitch';
+import classNames from 'classnames';
 
 export default function MapMenuEntry({
   text,
-  color,
   stroke,
-  borderColor = 'white',
+  color,
+  darkColor,
+  borderColor = 'black',
+  darkBoderColor = 'white',
   toggle = false,
 }: {
   text: string;
   color?: string;
+  darkColor?: string;
   stroke?: string;
   borderColor?: string;
+  darkBoderColor?: string;
   toggle?: boolean
 }) {
-  const legendStyle = `w-6 h-6 border${stroke ? `-${stroke}` : ''} border-${borderColor} mr-2 bg-${color}`;
+  const legendStyle = `w-6 h-6 border${stroke ? `-${stroke}` : ''} border-${borderColor}  bg-${color}`;
   const {
     countriesParams,
     setCountriesParams
@@ -29,7 +34,12 @@ export default function MapMenuEntry({
 
   return (
     <div className="flex flex-row gap-2">
-      <span className={legendStyle}></span>
+      <span className={classNames(`w-6 h-6 mr-2 border-${borderColor} dark:border-${darkBoderColor}`, {
+        border: !stroke,
+        [`border-${stroke}`]: stroke,
+        [`bg-${color}`]: color,
+        [`dark:bg-${darkColor}`]: darkColor
+      })}></span>
       <span className="grow">{text}</span>
       { toggle && <ToggleSwitch checked={!!countriesParams.ueBorder} onChange={handleChange} /> }
     </div>

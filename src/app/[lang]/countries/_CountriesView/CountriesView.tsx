@@ -37,7 +37,7 @@ export default function CountriesView({ dictionary }: PropsWithDictionary<{}, an
       }}
     >
       <div className="flex flex-row max-md:flex-col-reverse h-screen md:h-screen w-full">
-        <div className="grow min-w-[300px] md:max-w-[500px] bg-zinc-900 md:mr-4 p-4 overflow-y-scroll">
+        <div className="grow min-w-[300px] md:max-w-[500px] bg-zinc-300 dark:bg-zinc-900 md:mr-4 p-4 overflow-y-scroll">
           <MapMenu dictionary={dictionary.menu} />
         </div>
         <div className="flex item-center relative md:grow max-md:max-w-screen overflow-scroll snap-x">

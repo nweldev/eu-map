@@ -36,7 +36,7 @@ export default function EuropeMap() {
       name={countrie.code}
       key={countrie.code}
       className={classNames({
-        'fill-slate-900': countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.FAR_RIGHT,
+        'fill-blue-800 dark:fill-blue-950': countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.FAR_RIGHT,
         'fill-none': countrie.code === 'ue',
         'stroke-4 stroke-red-800': countrie.code === 'ue' && countriesParams.ueBorder,
         'stroke-none': countrie.code === 'ue' && !countriesParams.ueBorder,
@@ -47,8 +47,6 @@ export default function EuropeMap() {
 
   return (
     <svg
-      stroke="#fff"
-      fill="#111"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth=".5"
@@ -56,7 +54,7 @@ export default function EuropeMap() {
       version="1.2"
       viewBox="0 0 702 540"
       xmlns="http://www.w3.org/2000/svg"
-      className="md:h-screen m-auto min-w-[600px] min-h-[450px] snap-center"
+      className="md:h-screen m-auto min-w-[600px] min-h-[450px] snap-center fill-neutral-300 dark:fill-neutral-900 stroke-black dark:stroke-white"
     >
       {countriesPaths}
     </svg>
