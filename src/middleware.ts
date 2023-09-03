@@ -30,7 +30,8 @@ export function middleware(request: NextRequest) {
     [
       /^\/manifest.webmanifest$/,
       /^\/favicon.ico$/,
-      /^\/(apple-)?icon\/*/,
+      /^\/(apple-)?icon\//,
+      /^\/api\//,
     ].find((exp) => pathname.match(exp))
   )
     return
