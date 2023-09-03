@@ -8,9 +8,5 @@ import CountriesView from './_CountriesView/CountriesView';
 export default async function Countries({ params: { lang } }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(lang);
 
-  return (
-    <div className="min-h-screen w-full flex flex-row">
-        <CountriesView dictionary={dictionary.countries} />
-    </div>
-  );
+  return <CountriesView dictionary={dictionary.countries} />;
 }
