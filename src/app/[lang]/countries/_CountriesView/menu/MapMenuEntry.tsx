@@ -1,8 +1,8 @@
 'use client';
 
-import { ToggleSwitch } from 'flowbite-react';
 import { useContext } from 'react';
 import { CountriesParamsContext, CountriesParamsState } from '../CountriesView';
+import { ToggleSwitch } from '@/app/shared/ToggleSwitch';
 
 export default function MapMenuEntry({
   text,
@@ -31,7 +31,7 @@ export default function MapMenuEntry({
     <div className="flex flex-row gap-2">
       <span className={legendStyle}></span>
       <span className="grow">{text}</span>
-      { toggle && <ToggleSwitch label="" checked={!!countriesParams.ueBorder} onChange={handleChange} /> }
+      { toggle && <ToggleSwitch checked={!!countriesParams.ueBorder} onChange={handleChange} /> }
     </div>
   );
 }

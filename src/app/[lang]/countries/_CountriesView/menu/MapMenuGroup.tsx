@@ -1,9 +1,10 @@
 'use client';
 
-import { Spinner, ToggleSwitch } from 'flowbite-react';
 import { PropsWithChildren, useContext } from 'react';
 import { CountriesGroup, CountriesParamsContext, CountriesParamsState } from '../CountriesView';
 import { PropsWithDictionary } from '@/types';
+import { ToggleSwitch } from '@/app/shared/ToggleSwitch';
+import { Spinner } from '@/app/shared/Spinner';
 
 export default function MapMenuGroup({
   children,
