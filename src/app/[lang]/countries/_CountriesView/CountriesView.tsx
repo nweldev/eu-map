@@ -8,8 +8,9 @@ import { PropsWithDictionary } from '@/types';
 export type CountriesGroup = 'gov';
 
 export interface CountriesParams {
-  ueBorder?: boolean;
+  ueBorder: boolean;
   group?: CountriesGroup;
+  loading: boolean
 }
 
 export type CountriesParamsState = {
@@ -20,6 +21,7 @@ export type CountriesParamsState = {
 const InitialCountriesParams: CountriesParams = {
   ueBorder: false,
   group: 'gov',
+  loading: true,
 };
 
 export const CountriesParamsContext = createContext<CountriesParamsState | {}>({});

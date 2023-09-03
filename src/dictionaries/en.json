@@ -18,6 +18,7 @@
   },
   "countries": {
     "menu": {
+      "loading": "loading",
       "farRightLeader": "led by a far-right party",
       "governements": "Governments",
       "europeanUnion": "European Union",

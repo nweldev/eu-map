@@ -7,11 +7,12 @@ import { IdeologicFamily } from '@prisma/client';
 import { CountriesParamsContext, CountriesParamsState } from '../CountriesView';
 
 export default function EuropeMap() {
-  const { countriesParams } = useContext(CountriesParamsContext) as CountriesParamsState;
+  const { countriesParams, setCountriesParams } = useContext(CountriesParamsContext) as CountriesParamsState;
   const [countries, setCountries] = useState(svgCountries as any[]);
 
   useEffect(() => {
     const countriesFetch = async () => {
+      setCountriesParams({ ...countriesParams, loading: true});
       const res = await fetch('/api/countries?synthetic=true');
       const { data } = await res.json();
 
@@ -22,6 +23,7 @@ export default function EuropeMap() {
 
       // set state when the data received
       setCountries(mergedData);
+      setCountriesParams({ ...countriesParams, loading: false});
     };
 
     countriesFetch();
@@ -34,7 +36,9 @@ export default function EuropeMap() {
       key={countrie.code}
       className={classNames({
         'fill-slate-900': countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.FAR_RIGHT,
+        'fill-none': countrie.code === 'ue',
         'stroke-4 stroke-red-800': countrie.code === 'ue' && countriesParams.ueBorder,
+        'stroke-none': countrie.code === 'ue' && !countriesParams.ueBorder,
         'hidden': countrie.code === 'flawed-democracies'
       })}
     />
