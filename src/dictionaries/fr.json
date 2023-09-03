@@ -15,5 +15,13 @@
         "description": "Documentations thématiques additionnelles."
       }
     }
+  },
+  "countries": {
+    "menu": {
+      "farRightLeader": "dirigés par un parti d'extrême-droite",
+      "governements": "Gouvernements",
+      "europeanUnion": "Union Européenne",
+      "borders": "frontières"
+    }
   }
 }

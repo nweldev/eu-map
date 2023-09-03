@@ -15,5 +15,13 @@
         "description": "Documentations on specific topics."
       }
     }
+  },
+  "countries": {
+    "menu": {
+      "farRightLeader": "led by a far-right party",
+      "governements": "Governments",
+      "europeanUnion": "European Union",
+      "borders": "borders"
+    }
   }
 }
