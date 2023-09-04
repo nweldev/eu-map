@@ -26,6 +26,7 @@
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
     "flowbite": "^1.8.1",
+    "js-cookie": "^3.0.5",
     "negotiator": "^0.6.3",
     "next": "13.4.19",
     "postcss": "8.4.29",
@@ -35,6 +36,7 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.3",
     "@types/negotiator": "^0.6.1",
     "prisma": "^5.2.0",
     "ts-node": "^10.9.1"

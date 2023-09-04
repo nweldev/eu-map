@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-import { i18n } from './i18n-config';
+import { i18n, intlCookieKey } from './i18n-config';
 
 import { match as matchLocale } from '@formatjs/intl-localematcher';
 import Negotiator from 'negotiator';
@@ -16,6 +16,12 @@ function getLocale(request: NextRequest): string | undefined {
 
   // Use negotiator and intl-localematcher to get best locale
   let languages = new Negotiator({ headers: negotiatorHeaders }).languages(locales);
+
+  // preference stored in a cookie should have priority
+  const cookieLanguage = request.cookies.get(intlCookieKey)?.value
+  if (cookieLanguage) {
+    languages = [cookieLanguage, ...languages];
+  }
 
   const locale = matchLocale(languages, locales, i18n.defaultLocale);
 
