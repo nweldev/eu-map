@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/server';
-import SimpleMap from './shared/simple-map';
+import SimpleMap from './[lang]/_components/simple-map';
 
 // Route segment config
 export const runtime = 'edge';
