@@ -1,7 +1,8 @@
 {
   "global": {
     "appName": "Eurocraties",
-    "tagline": "Comprendre et explorer la politique des États européens."
+    "tagline": "Comprendre et explorer la politique des États européens.",
+    "wip": "Page en cours de construction."
   },
   "header": {
     "home": "Accueil",
@@ -31,5 +32,8 @@
       "europeanUnion": "Union Européenne",
       "borders": "frontières"
     }
+  },
+  "docs": {
+    "title": "Documentation"
   }
 }
