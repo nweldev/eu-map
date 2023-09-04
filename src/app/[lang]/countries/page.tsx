@@ -4,9 +4,15 @@ import MapMenu from './_CountriesView/menu/MapMenu';
 import { getDictionary } from '@/get-dictionnary';
 import { useState, createContext, Context } from 'react';
 import CountriesView from './_CountriesView/CountriesView';
+import { Header } from '../_header/Header';
 
 export default async function Countries({ params: { lang } }: { params: { lang: Locale } }) {
   const dictionary = await getDictionary(lang);
 
-  return <CountriesView dictionary={dictionary.countries} />;
+  return (
+    <>
+      <Header author={dictionary.home.author} />
+      <CountriesView dictionary={dictionary.countries} />;
+    </>
+  );
 }

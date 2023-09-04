@@ -4,7 +4,7 @@ import { Locale, intlCookieKey } from '@/i18n-config';
 import Cookies from 'js-cookie';
 import { usePathname, useRouter } from 'next/navigation';
 
-export default function LocaleSwitcher({ lang }: { lang: Locale }) {
+export default function LocaleSwitcher() {
   const router = useRouter();
 
   const dictionnary = {
@@ -13,11 +13,13 @@ export default function LocaleSwitcher({ lang }: { lang: Locale }) {
   };
 
   const pathName = usePathname();
+  if (!pathName) return '/';
+  const pathSegments = pathName.split('/');
+  const currentLanguage = pathSegments[1];
+
   const redirectedPathName = (locale: string) => {
-    if (!pathName) return '/';
-    const segments = pathName.split('/');
-    segments[1] = locale;
-    return segments.join('/');
+    pathSegments[1] = locale;
+    return pathSegments.join('/');
   };
 
   const setPreferredLanguage = (locale: Locale) => {
@@ -25,7 +27,7 @@ export default function LocaleSwitcher({ lang }: { lang: Locale }) {
     router.push(redirectedPathName(locale));
   };
 
-  const target = lang === 'fr' ? 'en' : 'fr';
+  const target = currentLanguage === 'fr' ? 'en' : 'fr';
 
   return <button onClick={() => setPreferredLanguage(target)}>{dictionnary[target]}</button>;
 }
