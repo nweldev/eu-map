@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "npm run db-update",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "db-update": "prisma generate",
     "db-studio": "prisma studio",
     "db-sync": "prisma db push",
     "db-clear": "ts-node --esm prisma/clear.ts",
