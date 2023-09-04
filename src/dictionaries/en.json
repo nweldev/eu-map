@@ -3,8 +3,15 @@
     "appName": "Eurocracies",
     "tagline": "Understand and explore European states' politics."
   },
-  "home": {
+  "header": {
+    "home": "Home",
     "author": "By Nwel.dev",
+    "theme": {
+      "dark": "dark mode",
+      "light": "light mode"
+    }
+  },
+  "home": {
     "links": {
       "map": {
         "title": "Map",

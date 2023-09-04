@@ -8,8 +8,8 @@ export default async function Home({ params: { lang } }: { params: { lang: Local
   const dictionary = await getDictionary(lang);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between px-4 py-8 md:p-24 ">
-      <Header author={dictionary.home.author} />
+    <main className="flex min-h-screen flex-col items-center justify-between px-4 pb-24">
+      <Header dictionary={dictionary.header} />
       <div className="grid grid-cols-1 grid-rows-1 place-items-center my-4">
         <div className="w-full z-0 col-start-1 row-start-1">
           <SimpleMap className='stroke-4 stroke-zinc-300 dark:stroke-zinc-800 fill-none w-full' />

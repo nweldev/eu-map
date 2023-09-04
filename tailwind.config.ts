@@ -7,7 +7,7 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  safelist: ['border-red-800', 'border-2', 'bg-blue-800', 'bg-blue-950'],
+  safelist: ['border-red-800', 'border-2', 'bg-blue-800', 'bg-blue-950', 'bg-zinc-500'],
   plugins: [require('flowbite/plugin')],
   theme: {
     extend: {

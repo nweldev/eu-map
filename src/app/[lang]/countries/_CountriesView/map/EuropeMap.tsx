@@ -54,7 +54,7 @@ export default function EuropeMap() {
       version="1.2"
       viewBox="0 0 702 540"
       xmlns="http://www.w3.org/2000/svg"
-      className="md:h-screen m-auto min-w-[600px] min-h-[450px] snap-center fill-neutral-300 dark:fill-neutral-900 stroke-black dark:stroke-white"
+      className="md:h-[--h-full-content] py-4 m-auto min-w-[600px] min-h-[450px] snap-center fill-neutral-300 dark:fill-neutral-900 stroke-black dark:stroke-white"
     >
       {countriesPaths}
     </svg>

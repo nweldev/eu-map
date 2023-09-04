@@ -3,8 +3,15 @@
     "appName": "Eurocraties",
     "tagline": "Comprendre et explorer la politique des États européens."
   },
-  "home": {
+  "header": {
+    "home": "Accueil",
     "author": "Une app Nwel.dev",
+    "theme": {
+      "dark": "mode sombre",
+      "light": "mode clair"
+    }
+  },
+  "home": {
     "links": {
       "map": {
         "title": "Carte",
