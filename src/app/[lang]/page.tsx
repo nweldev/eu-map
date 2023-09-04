@@ -2,8 +2,6 @@ import { getDictionary } from '@/get-dictionnary';
 import { Locale } from '@/i18n-config';
 import Link from 'next/link';
 import SimpleMap from './_components/simple-map';
-import { DarkModeToggle } from './_header/DarkModeToggle';
-import LocaleSwitcher from './_header/LocaleSwitcher';
 import { Header } from './_header/Header';
 
 export default async function Home({ params: { lang } }: { params: { lang: Locale } }) {

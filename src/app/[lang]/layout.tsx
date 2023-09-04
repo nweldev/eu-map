@@ -1,6 +1,9 @@
 import './globals.css';
+import { cookies } from 'next/headers';
 import type { Metadata } from 'next';
+import classNames from 'classnames';
 import { Inter } from 'next/font/google';
+import { Locale } from '@/i18n-config';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,10 +17,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children, params: { lang } }: { children: React.ReactNode; params: { lang: Locale } }) {
+  const prefersDark = cookies().get('color-theme')?.value === 'dark';
   return (
-    <html lang="en">
-        <body className={inter.className}>{children}</body>
+    <html lang={lang} className={classNames({ dark: prefersDark })}>
+      <body className={inter.className} suppressHydrationWarning={true}>
+        {children}
+      </body>
     </html>
   );
 }

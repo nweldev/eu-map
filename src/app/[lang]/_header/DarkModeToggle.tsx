@@ -1,24 +1,26 @@
 'use client';
 
 import classNames from 'classnames';
-import { ComponentProps, FC, useContext, useEffect, useState } from 'react';
+import { ComponentProps, useState } from 'react';
+import Cookies from 'js-cookie';
+import { useRouter } from 'next/navigation';
 
 export interface DarkModeToggleProps extends ComponentProps<'button'> {}
 
 type ThemeColor = 'dark' | 'light';
 
-export function DarkModeToggle({ className }: DarkModeToggleProps) {
-  const preferedTheme: ThemeColor = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  const [theme, setTheme] = useState(preferedTheme);
+export default function DarkModeToggle({ className }: DarkModeToggleProps) {
+  const router = useRouter();
+  const theme = (Cookies.get('color-theme') as ThemeColor | undefined) || 'light';
 
   const toggleTheme = () => {
     if (theme === 'dark') {
-      setTheme('light');
-      document.documentElement.classList.remove('dark');
+      Cookies.set('color-theme', 'light');
     } else {
-      setTheme('dark');
-      document.documentElement.classList.add('dark');
+      Cookies.set('color-theme', 'dark');
     }
+    window.location.reload();
+    router.refresh();
   };
 
   return (
@@ -42,7 +44,7 @@ export function DarkModeToggle({ className }: DarkModeToggleProps) {
       </svg>
       <svg
         id="theme-toggle-light-icon"
-        className={classNames('w-5 h-5', { hidden: theme === 'light'})}
+        className={classNames('w-5 h-5', { hidden: theme === 'light' })}
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
