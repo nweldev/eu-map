@@ -13,6 +13,7 @@ const config: Config = {
     extend: {
       strokeWidth: {
         '4': '4px',
+        '5': '5px',
       },
     },
   },

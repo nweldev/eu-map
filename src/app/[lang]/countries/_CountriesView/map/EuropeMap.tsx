@@ -1,7 +1,7 @@
 'use client';
 
 import { useContext, useEffect, useState } from 'react';
-import { svgCountries } from './svgCountires';
+import { svgCountries } from './svgCountries';
 import classNames from 'classnames';
 import { IdeologicFamily } from '@prisma/client';
 import { CountriesParamsContext, CountriesParamsState } from '../CountriesView';
