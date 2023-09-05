@@ -2,7 +2,7 @@ import { Alliance, Candidate, Election, Party, PrismaClient } from '@prisma/clie
 import { ita2022ElectionsSeed } from './2022.ts';
 import { ItaAllianceCode, ItaPartyCode } from '../../parties/ita.ts';
 
-export type ItaCandidateCode = ItaPartyCode;
+export type ItaCandidateCode = ItaPartyCode | ItaAllianceCode;
 
 export async function itaElectionsSeed(
   prisma: PrismaClient,

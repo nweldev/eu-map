@@ -9,8 +9,8 @@ import {
   SocialIdeology,
 } from '@prisma/client';
 
-export type ItaPartyCode = 'fdi' | 'lega' | 'fi' | 'nm' | 'ie' | 'pd' | 'avs' | 'plusEu' | 'ic';
-export type ItaAllianceCode = 'cdx' | 'csx';
+export type ItaPartyCode = 'fdi' | 'lega' | 'fi' | 'nm' | 'ie' | 'pd' | 'avs' | 'plusEu' | 'ic' | 'm5s' | 'az' | 'iv';
+export type ItaAllianceCode = 'cdx' | 'csx' | 'aziv' | 'up';
 
 export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
   const alliances: Record<ItaAllianceCode, Alliance> = {
@@ -24,6 +24,11 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
             vo: 'coalizione di centro-destra',
           },
         },
+        ideology: {
+          create: {
+            family: IdeologicFamily.FAR_RIGHT
+          }
+        }
       },
     }),
     csx: await prisma.alliance.create({
@@ -31,11 +36,50 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         code: 'CSX',
         name: {
           create: {
+            fr: 'Action – Italia Viva',
+            en: 'Action – Italia Viva',
+            vo: 'Azione – Italia Viva',
+          },
+        },
+        ideology: {
+          create: {
+            family: IdeologicFamily.CONVENTIONAL_LEFT
+          }
+        }
+      },
+    }),
+    aziv: await prisma.alliance.create({
+      data: {
+        code: 'Az-IV',
+        name: {
+          create: {
             fr: 'Coalition de centre gauche',
             en: 'Centre-left coalition',
             vo: 'coalizione di centro-sinistra',
           },
         },
+        ideology: {
+          create: {
+            family: IdeologicFamily.CENTRE
+          }
+        }
+      },
+    }),
+    up: await prisma.alliance.create({
+      data: {
+        code: 'UP',
+        name: {
+          create: {
+            fr: 'Union populairee',
+            en: "People's Union",
+            vo: 'Unione Popolare',
+          },
+        },
+        ideology: {
+          create: {
+            family: IdeologicFamily.RADICAL_LEFT
+          }
+        }
       },
     }),
   };
@@ -327,6 +371,84 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         },
       },
     }),
+    m5s: await prisma.party.create({
+      data: {
+        code: 'M5S',
+        founded: new Date('2009-10-04'),
+        color: 'FFEB3B',
+        isGoverning: false,
+        lowHouseSeats: 53,
+        name: {
+          create: {
+            fr: 'Mouvement 5 étoiles',
+            en: 'Five Star Movement',
+            vo: 'Movimento 5 Stelle',
+          },
+        },
+        ideology: {
+          create: {
+            family: IdeologicFamily.CATCH_ALL,
+          },
+        },
+        country: {
+          connect: { id: countryId },
+        },
+      },
+    }),
+    az: await prisma.party.create({
+      data: {
+        code: 'Az',
+        founded: new Date('2019-01-18'),
+        color: '003399',
+        isGoverning: false,
+        lowHouseSeats: 12,
+        name: {
+          create: {
+            fr: 'Action',
+            en: 'Action',
+            vo: 'Azione',
+          },
+        },
+        ideology: {
+          create: {
+            family: IdeologicFamily.CENTRE,
+          },
+        },
+        country: {
+          connect: { id: countryId },
+        },
+        alliance: {
+          connect: alliances.aziv,
+        },
+      },
+    }),
+    iv: await prisma.party.create({
+      data: {
+        code: 'IV',
+        founded: new Date('2019-09-25'),
+        color: 'CC3C84',
+        isGoverning: false,
+        lowHouseSeats: 9,
+        name: {
+          create: {
+            fr: 'Italia Viva',
+            en: 'Italia Viva',
+            vo: 'Italia Viva',
+          },
+        },
+        ideology: {
+          create: {
+            family: IdeologicFamily.CENTRE,
+          },
+        },
+        country: {
+          connect: { id: countryId },
+        },
+        alliance: {
+          connect: alliances.aziv,
+        },
+      },
+    })
   };
 
   console.log(`INSERT parties (ita): ${Object.values(parties).length}`);

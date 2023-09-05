@@ -109,12 +109,45 @@ export async function ita2022ElectionsSeed(
     }),
     await prisma.electionRslt.create({
       data: {
+        score: 15.40,
+        election: {
+          connect: election,
+        },
+        candidate: {
+          connect: candidates.m5s,
+        },
+      },
+    }),
+    await prisma.electionRslt.create({
+      data: {
+        score: 7.78,
+        election: {
+          connect: election,
+        },
+        candidate: {
+          connect: candidates.aziv,
+        },
+      },
+    }),
+    await prisma.electionRslt.create({
+      data: {
         score: 1.90,
         election: {
           connect: election,
         },
         candidate: {
           connect: candidates.ie,
+        },
+      },
+    }),
+    await prisma.electionRslt.create({
+      data: {
+        score: 1.43,
+        election: {
+          connect: election,
+        },
+        candidate: {
+          connect: candidates.up,
         },
       },
     }),
