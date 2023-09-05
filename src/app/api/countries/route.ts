@@ -121,6 +121,8 @@ export async function GET(request: Request) {
                   return acc + party.lowHouseSeats;
                 }, 0) ||
                 0;
+              acc[familyKey].share = Math.round(acc[familyKey].seats * 100 / countrie.lowHouseSeats);
+
               return acc;
             },
             {
