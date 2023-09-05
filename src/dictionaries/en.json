@@ -1,10 +1,18 @@
 {
   "global": {
     "appName": "Eurocracies",
-    "tagline": "Understand and explore European states' politics."
+    "tagline": "Understand and explore European states' politics.",
+    "wip": "This page is under construction."
+  },
+  "header": {
+    "home": "Home",
+    "author": "By Nwel.dev",
+    "theme": {
+      "dark": "dark mode",
+      "light": "light mode"
+    }
   },
   "home": {
-    "author": "By Nwel.dev",
     "links": {
       "map": {
         "title": "Map",
@@ -12,7 +20,7 @@
       },
       "docs": {
         "title": "Docs",
-        "description": "Documentations on specific topics."
+        "description": "Documentation of specific topics."
       }
     }
   },
@@ -24,5 +32,8 @@
       "europeanUnion": "European Union",
       "borders": "borders"
     }
+  },
+  "docs": {
+    "title": "Documentation"
   }
 }

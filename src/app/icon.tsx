@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/server';
-import SimpleMap from './shared/simple-map';
+import SimpleMap from './[lang]/_components/simple-map';
 
 // Route segment config
 export const runtime = 'edge';
@@ -79,7 +79,7 @@ export const iconFromMeta = (metadatas: ImageMetadata[]) => {
             width: '100%',
           }}
         >
-          <SimpleMap />
+          <SimpleMap fill="#a1a1aa" stroke="#000" width="100%" strokeWidth="8" />
         </div>
       ),
       {

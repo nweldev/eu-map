@@ -1,10 +1,18 @@
 {
   "global": {
     "appName": "Eurocraties",
-    "tagline": "Comprendre et explorer la politique des États européens."
+    "tagline": "Comprendre et explorer la politique des États européens.",
+    "wip": "Page en cours de construction."
+  },
+  "header": {
+    "home": "Accueil",
+    "author": "Une app Nwel.dev",
+    "theme": {
+      "dark": "mode sombre",
+      "light": "mode clair"
+    }
   },
   "home": {
-    "author": "Une app Nwel.dev",
     "links": {
       "map": {
         "title": "Carte",
@@ -24,5 +32,8 @@
       "europeanUnion": "Union Européenne",
       "borders": "frontières"
     }
+  },
+  "docs": {
+    "title": "Documentation"
   }
 }

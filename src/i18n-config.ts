@@ -8,4 +8,6 @@ export const codes = {
   en: 'english',
 };
 
+export const intlCookieKey = 'language';
+
 export type Locale = (typeof i18n)['locales'][number];
