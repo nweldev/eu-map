@@ -1,10 +1,11 @@
 'use client';
 
-import { useContext, useEffect, useState } from 'react';
+import { Fragment, ReactNode, useContext, useEffect, useState } from 'react';
 import { svgCountries } from './svgCountries';
 import classNames from 'classnames';
 import { IdeologicFamily } from '@prisma/client';
 import { CountriesParamsContext, CountriesParamsState } from '../CountriesView';
+import Link from 'next/link';
 
 export default function EuropeMap() {
   const { countriesParams, setCountriesParams } = useContext(CountriesParamsContext) as CountriesParamsState;
@@ -12,7 +13,7 @@ export default function EuropeMap() {
 
   useEffect(() => {
     const countriesFetch = async () => {
-      setCountriesParams({ ...countriesParams, loading: true});
+      setCountriesParams({ ...countriesParams, loading: true });
       const res = await fetch('/api/countries?synthetic=true');
       const { data } = await res.json();
 
@@ -23,27 +24,40 @@ export default function EuropeMap() {
 
       // set state when the data received
       setCountries(mergedData);
-      setCountriesParams({ ...countriesParams, loading: false});
+      setCountriesParams({ ...countriesParams, loading: false });
     };
 
     countriesFetch();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const countriesPaths = countries.map((countrie) => (
-    <path
-      d={countrie.path}
-      name={countrie.code}
-      key={countrie.code}
-      className={classNames({
-        'fill-blue-800 dark:fill-blue-950': countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.FAR_RIGHT,
-        'fill-none': countrie.code === 'ue',
-        'stroke-4 stroke-red-800': countrie.code === 'ue' && countriesParams.ueBorder,
-        'stroke-none': countrie.code === 'ue' && !countriesParams.ueBorder,
-        'hidden': countrie.code === 'flawed-democracies'
-      })}
-    />
-  ));
+  const virtualCountries = ['ue', 'flawed-democracies'];
+
+  const linkWrapper = (countrie: any, children: ReactNode) =>
+    virtualCountries.includes(countrie.code) ? (
+      <Fragment key={countrie.code}>{children}</Fragment>
+    ) : (
+      <Link href={`/countries/${countrie.code}`} key={countrie.code}>
+        {children}
+      </Link>
+    );
+
+  const countriesPaths = countries.map((countrie) =>
+    linkWrapper(
+      countrie,
+      <path
+        d={countrie.path}
+        className={classNames({
+          'fill-blue-800 dark:fill-blue-950':
+            countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.FAR_RIGHT,
+          'fill-none': countrie.code === 'ue',
+          'stroke-4 stroke-red-800': countrie.code === 'ue' && countriesParams.ueBorder,
+          'stroke-none': countrie.code === 'ue' && !countriesParams.ueBorder,
+          hidden: countrie.code === 'flawed-democracies',
+        })}
+      />
+    )
+  );
 
   return (
     <svg
