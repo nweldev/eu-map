@@ -79,7 +79,7 @@ export const iconFromMeta = (metadatas: ImageMetadata[]) => {
             width: '100%',
           }}
         >
-          <SimpleMap />
+          <SimpleMap fill="#a1a1aa" stroke="#000" width="100%" strokeWidth="8" />
         </div>
       ),
       {
