@@ -226,7 +226,7 @@ enum IdeologicFamily {
   // can be anything (usually neoliberal) including opposite concepts (e.g. neoliberal-egalitarian)
   CATCH_ALL
   // Neoliberal or Liberal-Neutral
-  CENTER
+  CENTRE
   // Neoliberal-Progressive
   THIRD_WAY
   // non-Neoliberal Progressive

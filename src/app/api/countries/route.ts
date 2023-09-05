@@ -6,7 +6,6 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
 
   const isSynthetic = searchParams.get('synthetic');
-  console.log(`synth: ${isSynthetic}`);
 
   const countryBaseProps = {
     code: true,
@@ -87,7 +86,7 @@ export async function GET(request: Request) {
 
       const leftFamilies: IdeologicFamily[] = [IdeologicFamily.CONVENTIONAL_LEFT, IdeologicFamily.RADICAL_LEFT, IdeologicFamily.FAR_LEFT];
       const rightFamilies: IdeologicFamily[] = [IdeologicFamily.CONVENTIONAL_RIGHT, IdeologicFamily.RADICAL_RIGHT];
-      // const centerFamilies: IdeologicFamily[] = [IdeologicFamily.CENTER, IdeologicFamily.CATCH_ALL];
+      // const centerFamilies: IdeologicFamily[] = [IdeologicFamily.CENTRE, IdeologicFamily.CATCH_ALL];
 
       data = countries.reduce((acc, countrie) => {
         const synthetisedCountrie = {
@@ -99,7 +98,7 @@ export async function GET(request: Request) {
           },
           families: countrie.elections[0]?.results.reduce(
             (acc, result) => {
-              let familyKey: 'farLeft' | 'left' | 'thirdWay' | 'center' | 'right' | 'farRight' = 'center';
+              let familyKey: 'farLeft' | 'left' | 'thirdWay' | 'centre' | 'right' | 'farRight' = 'centre';
               let candidateFamily = result.candidate.party?.ideology?.family || result.candidate.alliance?.ideology?.family;
               if (!candidateFamily) {
                 return acc;
@@ -137,7 +136,7 @@ export async function GET(request: Request) {
                 score: new Prisma.Decimal(0.0),
                 seats: 0,
               },
-              center: {
+              centre: {
                 score: new Prisma.Decimal(0.0),
                 seats: 0,
               },

@@ -252,7 +252,7 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         ideology: {
           create: {
             economy: EconomicIdeology.LIBERAL,
-            family: IdeologicFamily.CENTER,
+            family: IdeologicFamily.CENTRE,
           },
         },
         country: {
@@ -279,7 +279,7 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         },
         ideology: {
           create: {
-            family: IdeologicFamily.CENTER,
+            family: IdeologicFamily.CENTRE,
             religion: Religion.CONVENTIONAL_CHRISTIAN
           },
         },
