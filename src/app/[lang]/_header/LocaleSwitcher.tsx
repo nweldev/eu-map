@@ -6,12 +6,18 @@ import Cookies from 'js-cookie';
 import { usePathname, useRouter } from 'next/navigation';
 import { ComponentProps } from 'react';
 
-export default function LocaleSwitcher({ className } : ComponentProps<'button'>) {
+export default function LocaleSwitcher({ className }: ComponentProps<'button'>) {
   const router = useRouter();
 
-  const dictionnary = {
-    fr: 'Passer en français',
-    en: 'Switch to english',
+  const dictionary = {
+    fr: {
+      switch: 'Passer en ',
+      lang: 'français',
+    },
+    en: {
+      switch: 'Switch to ',
+      lang: 'english',
+    },
   };
 
   const pathName = usePathname();
@@ -31,8 +37,16 @@ export default function LocaleSwitcher({ className } : ComponentProps<'button'>)
 
   const target = currentLanguage === 'fr' ? 'en' : 'fr';
 
-  return <button className={classNames(
-    'focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1',
-    className
-  )} onClick={() => setPreferredLanguage(target)}>{dictionnary[target]}</button>;
+  return (
+    <button
+      className={classNames(
+        'focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1',
+        className
+      )}
+      onClick={() => setPreferredLanguage(target)}
+    >
+      <span className="hidden md:inline">{dictionary[target].switch}</span>
+      {dictionary[target].lang}
+    </button>
+  );
 }
