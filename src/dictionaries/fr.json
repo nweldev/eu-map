@@ -60,7 +60,8 @@
           "thirdWay": "troisième-voix",
           "centre": "centre",
           "right": "droite",
-          "farRight": "extrême-droite"
+          "farRight": "extrême-droite",
+          "unclassified": "autres (non répertoriés)"
         }
       }
     }

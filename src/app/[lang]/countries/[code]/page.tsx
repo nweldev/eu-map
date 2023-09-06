@@ -26,12 +26,12 @@ const IdeologicGroupColors: Record<IdeologicGroup, string> = {
   centre: 'b2ffff',
   right: '2986cc',
   farRight: '103551',
+  unclassified: '94a3b8',
 };
 
 export default async function Countries({ params: { lang, code: countryCode } }: { params: { lang: Locale; code: string } }) {
   const dictionary = (await getDictionary(lang)).countries.details;
   const country = await fetchCountry(countryCode);
-
   const dateFormat = Intl.DateTimeFormat(lang, { dateStyle: 'long' });
 
   return (
@@ -97,7 +97,7 @@ export default async function Countries({ params: { lang, code: countryCode } }:
                   {dictionary.ideology.group[key as IdeologicGroup]}
                 </span>
                 : {summary.score > 0 ? `${summary.score}%` : dictionary.negligible}
-                {summary.seats ? (
+                {summary.score > 0 ? (
                   <>
                     &ensp;&ndash;&ensp;{summary.seats} {summary.seats > 1 ? dictionary.seats : dictionary.seat} / {country.lowHouseSeats} (
                     {summary.share}%)
