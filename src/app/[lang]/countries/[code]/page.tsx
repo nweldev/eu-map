@@ -47,7 +47,8 @@ export default async function Countries({ params: { lang, code: countryCode } }:
             {country.parties.map((party: any) => (
               <li key={party.id}>
                 <ColorMark color={party.color} />
-                {party.name[lang] || party.name.vo}{!!party.name[lang] && party.name[lang] !== party.name.vo && <> ({party.name.vo})</>}:{' '}
+                {party.name[lang] || party.name.vo}
+                {!!party.name[lang] && party.name[lang] !== party.name.vo && <> ({party.name.vo})</>}:{' '}
                 {dictionary.ideology.family[party.ideology.family as IdeologicFamily]}
                 {/* &mdash; {country.elections[0].results.find((rslt: any) => rslt.candidate.party.code === party.code)?.score}% */}
               </li>
