@@ -49,8 +49,9 @@ model Party {
   country   Countrie @relation(fields: [countryId], references: [id])
   countryId Int
 
-  isGoverning   Boolean
-  lowHouseSeats Int
+  isGoverning     Boolean @default(false)
+  isSupportingGov Boolean @default(false)
+  lowHouseSeats   Int
 
   name        PartyName   @relation(fields: [nameId], references: [id])
   nameId      String      @unique
@@ -129,6 +130,8 @@ model Alliance {
 
   name   AllianceName @relation(fields: [nameId], references: [id])
   nameId String       @unique
+  color  String?
+  lowHouseSeats   Int?
 
   parties     Party[]     @relation("PartyToAlliance")
   ideology    Ideology?   @relation(fields: [ideologyId], references: [id])
@@ -163,11 +166,11 @@ model Ideology {
 }
 
 model IdeologySources {
-  id       String  @id @default(cuid())
+  id       String   @id @default(cuid())
   economy  String[]
   social   String[]
   national String[]
-  family  String[]
+  family   String[]
   religion String[]
 
   ideology Ideology[] @relation()
