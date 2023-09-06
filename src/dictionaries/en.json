@@ -28,9 +28,41 @@
     "menu": {
       "loading": "loading",
       "farRightLeader": "led by a far-right party",
-      "governements": "Governments",
+      "governments": "Governments",
       "europeanUnion": "European Union",
       "borders": "borders"
+    },
+    "details" : {
+      "government": "Current government",
+      "lastElection": "Last parlementary elections",
+      "results": "Results",
+      "seats": "seats",
+      "seat": "seat",
+      "byFamily": "Summary by ideological groups",
+      "negligible": "nonexistent or negligible",
+      "noData": "missing data (collection is in-progress)",
+      "coalition": "Coalition",
+      "ideology": {
+        "family": {
+          "FAR_RIGHT": "far-right",
+          "RADICAL_RIGHT": "right or radical right",
+          "CONVENTIONAL_RIGHT": "right",
+          "CATCH_ALL": "catch-all",
+          "CENTRE": "centre",
+          "THIRD_WAY": "third-way",
+          "CONVENTIONAL_LEFT": "left",
+          "RADICAL_LEFT": "left or radical left",
+          "FAR_LEFT": "far-left"
+        },
+        "group": {
+          "farLeft": "far-left",
+          "left": "left",
+          "thirdWay": "third-way",
+          "centre": "centre",
+          "right": "right",
+          "farRight": "far-right"
+        }
+      }
     }
   },
   "docs": {

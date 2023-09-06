@@ -4,6 +4,8 @@ export const leftFamilies: IdeologicFamily[] = [IdeologicFamily.CONVENTIONAL_LEF
 export const rightFamilies: IdeologicFamily[] = [IdeologicFamily.CONVENTIONAL_RIGHT, IdeologicFamily.RADICAL_RIGHT];
 export const centerFamilies: IdeologicFamily[] = [IdeologicFamily.CENTRE, IdeologicFamily.CATCH_ALL];
 
+export type IdeologicGroup = 'farLeft' | 'left' | 'thirdWay' | 'centre' | 'right' | 'farRight';
+
 // TODO: replace any with accurate types
 export const synthetiseCountrie = (countrie: any) => ({
   ...countrie,

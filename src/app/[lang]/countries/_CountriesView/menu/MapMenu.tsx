@@ -9,7 +9,7 @@ import MapMenuGroup from './MapMenuGroup';
 export default function MapMenu({ dictionary }: PropsWithDictionary<{}, any>) {
   return (
     <>
-      <MapMenuGroup title={dictionary.governements} toggle group='gov' dictionary={dictionary}>
+      <MapMenuGroup title={dictionary.governments} toggle group='gov' dictionary={dictionary}>
         <MapMenuEntry text={dictionary.farRightLeader} color="blue-800" darkColor='blue-950' />
       </MapMenuGroup>
       <MapMenuGroup title={dictionary.europeanUnion} dictionary={dictionary}>

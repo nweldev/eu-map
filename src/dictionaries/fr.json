@@ -28,9 +28,41 @@
     "menu": {
       "loading": "loading",
       "farRightLeader": "dirigés par un parti d'extrême-droite",
-      "governements": "Gouvernements",
+      "governments": "Gouvernements",
       "europeanUnion": "Union Européenne",
       "borders": "frontières"
+    },
+    "details" : {
+      "government": "Gouvernement actuel",
+      "lastElection": "Dernières élections parlementaires",
+      "results": "Résultats",
+      "seats": "sièges",
+      "seat": "siège",
+      "byFamily": "Synthèse par groupes idéologiques",
+      "negligible": "inexistant(e) ou négligeable",
+      "noData": "donnée manquante (collecte en cours)",
+      "coalition": "Coalition&nbsp;",
+      "ideology": {
+        "family": {
+          "FAR_RIGHT": "extrême-droite",
+          "RADICAL_RIGHT": "droite ou droite radicale",
+          "CONVENTIONAL_RIGHT": "droite",
+          "CATCH_ALL": "attrape-tout",
+          "CENTRE": "centre",
+          "THIRD_WAY": "troisième-voix",
+          "CONVENTIONAL_LEFT": "gauche",
+          "RADICAL_LEFT": "gauche ou gauche radicale",
+          "FAR_LEFT": "extrême-gauche"
+        },
+        "group": {
+          "farLeft": "extrême-gauche",
+          "left": "gauche",
+          "thirdWay": "troisième-voix",
+          "centre": "centre",
+          "right": "droite",
+          "farRight": "extrême-droite"
+        }
+      }
     }
   },
   "docs": {
