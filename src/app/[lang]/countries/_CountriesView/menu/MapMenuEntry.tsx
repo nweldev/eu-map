@@ -33,7 +33,7 @@ export default function MapMenuEntry({
   };
 
   return (
-    <div className="flex flex-row gap-2">
+    <div className="flex flex-row gap-2 mb-2">
       <span className={classNames(`w-6 h-6 mr-2 border-${borderColor} dark:border-${darkBoderColor}`, {
         border: !stroke,
         [`border-${stroke}`]: stroke,

@@ -28,6 +28,7 @@
     "menu": {
       "loading": "loading",
       "farRightLeader": "dirigés par un parti d'extrême-droite",
+      "catchAllLeader": "dirigés par un parti attrape-tout",
       "governments": "Gouvernements",
       "europeanUnion": "Union Européenne",
       "borders": "frontières"

@@ -50,6 +50,8 @@ export default function EuropeMap() {
         className={classNames({
           'fill-blue-800 dark:fill-blue-950':
             countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.FAR_RIGHT,
+          'fill-yellow-400':
+            countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.CATCH_ALL,
           'fill-none': countrie.code === 'ue',
           'stroke-4 stroke-red-800': countrie.code === 'ue' && countriesParams.ueBorder,
           'stroke-none': countrie.code === 'ue' && !countriesParams.ueBorder,
