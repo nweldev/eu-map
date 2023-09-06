@@ -174,25 +174,39 @@ model IdeologySources {
 }
 
 enum EconomicIdeology {
-  // neoliberalisme & right-wing libetarians
-  // deminish the wellfare state
-  LIBERAL_PRO_AUSTERITY
-  // defend or enforce the wellfare state
-  LIBERAL_ANTI_AUSTERITY
-  // FIXME: remove after enough research
-  // Unknow relation with austerity
+  // no wellfare state + interventions in favor of the "free market"
+  // neoliberalism & right-wing libetarians
+  // should be based on actual evidences of austerity politics (reducing the wellfare state)
+  // while maintaining or increasing financial support for "free" market economy (w/o conditions)
+  // ie. LIBERAL_PRO_AUSTERITY / RADICAL_LIBERAL
+  NEOLIB
+  // So.M.E. : Social Market Economy (Economie Sociale de Marché)
+  // liberals in favor of wellfare state
+  // should be based on actual evidences of wellfare state support politics
+  // https://en.wikipedia.org/wiki/Social_market_economy
+  // https://fr.wikipedia.org/wiki/%C3%89conomie_sociale_de_march%C3%A9
+  // ie. LIBERAL_ANTI_AUSTERITY
+  SOCIAL_MARKET
+  // self-defined as "liberal" w/o clear evidence to determine if SoME or neolib
   LIBERAL
-  // FIXME: remove after enough research
-  // Unknow level
+  // promote interventionist politics w/o more specific details or evidences
+  // as those (and the followings) are rarer than liberals and don't often come to power,
+  // self-definition might be sufficient in most cases, except when vaguely expressed, especially
+  // if it can be linked to catch-all and right-wing demagogy ("populism")
   INTERVENTIONIST
-  // keynesianisme and other non-neoliberal heterodoxies
+  // neo-keynesians and other non-neoliberal heterodoxies
+  // those are pretty specific (rare, but evident)
   // e.g. https://fr.wikipedia.org/wiki/Joseph_E._Stiglitz
+  // https://en.wikipedia.org/wiki/New_Keynesian_economics
   CONVENTIONAL_INTERVENTIONIST
-  // advocate for strong interventions and nationalisations
+  // advocate for strong economic regulations and/or nationalisations
   RADICAL_INTERVENTIONIST
-  // advocate for (nearly) total nationalisations (e.g. communists)
+  // advocate for extensive nationalisations and/or planned economy
+  // e.g. marxists / marxist-leninists
   CENTRALIST
-  // left-wing libertarians
+  // left-wing libertarians & council-communists
+  // extremely rare in elections
+  // usually linked to labor unions and workers' advocacy ("democratic economy")
   COOPERATIVIST
 }
 

@@ -70,7 +70,7 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         code: 'UP',
         name: {
           create: {
-            fr: 'Union populairee',
+            fr: 'Union populaire',
             en: "People's Union",
             vo: 'Unione Popolare',
           },
@@ -103,7 +103,7 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         },
         ideology: {
           create: {
-            economy: EconomicIdeology.LIBERAL_PRO_AUSTERITY,
+            economy: EconomicIdeology.NEOLIB,
             social: SocialIdeology.DECLINIST,
             national: NationalIdeology.NATIONALIST,
             family: IdeologicFamily.FAR_RIGHT,
@@ -171,7 +171,7 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         },
         ideology: {
           create: {
-            economy: EconomicIdeology.LIBERAL_PRO_AUSTERITY,
+            economy: EconomicIdeology.NEOLIB,
             social: SocialIdeology.CONSERVATIVE,
             family: IdeologicFamily.CONVENTIONAL_RIGHT,
           },
@@ -200,7 +200,7 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         },
         ideology: {
           create: {
-            economy: EconomicIdeology.LIBERAL_PRO_AUSTERITY,
+            economy: EconomicIdeology.NEOLIB,
             social: SocialIdeology.CONSERVATIVE,
             family: IdeologicFamily.CONVENTIONAL_RIGHT,
             religion: Religion.CONVENTIONAL_CHRISTIAN,
@@ -230,7 +230,7 @@ export async function itaPartiesSeed(prisma: PrismaClient, countryId: number) {
         },
         ideology: {
           create: {
-            economy: EconomicIdeology.LIBERAL_PRO_AUSTERITY,
+            economy: EconomicIdeology.NEOLIB,
             social: SocialIdeology.NEUTRAL,
             family: IdeologicFamily.THIRD_WAY,
             religion: Religion.CONVENTIONAL_CHRISTIAN,
