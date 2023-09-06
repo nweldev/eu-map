@@ -1,16 +1,5 @@
-import { Countrie, IdeologicFamily, Prisma } from '@prisma/client';
-
-export const leftFamilies: IdeologicFamily[] = [IdeologicFamily.CONVENTIONAL_LEFT, IdeologicFamily.RADICAL_LEFT, IdeologicFamily.FAR_LEFT];
-export const rightFamilies: IdeologicFamily[] = [IdeologicFamily.CONVENTIONAL_RIGHT, IdeologicFamily.RADICAL_RIGHT];
-export const centerFamilies: IdeologicFamily[] = [IdeologicFamily.CENTRE, IdeologicFamily.CATCH_ALL];
-
-export type IdeologicGroup = 'farLeft' | 'left' | 'thirdWay' | 'centre' | 'right' | 'farRight' | 'unclassified';
-
-export interface FamilyData {
-  score: Prisma.Decimal;
-  seats: number;
-  share: number;
-}
+import { IdeologicFamily, Prisma } from '@prisma/client';
+import { FamilyData, leftFamilies, rightFamilies } from '../_types/ideologies';
 
 // TODO: replace any with accurate types
 export const synthetiseCountrie = (countrie: any) => {

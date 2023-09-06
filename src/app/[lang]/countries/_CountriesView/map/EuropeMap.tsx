@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import { IdeologicFamily } from '@prisma/client';
 import { CountriesParamsContext, CountriesParamsState } from '../CountriesView';
 import Link from 'next/link';
+import { conservatives, liberals } from '@/app/api/_types/ideologies';
 
 export default function EuropeMap() {
   const { countriesParams, setCountriesParams } = useContext(CountriesParamsContext) as CountriesParamsState;
@@ -42,16 +43,32 @@ export default function EuropeMap() {
       </Link>
     );
 
+  const govLeaderColor = (countrie: any): string => {
+    if (countriesParams.group !== 'gov' || !countrie.gov) return '';
+
+    if (countrie.gov.leaderFamily === IdeologicFamily.FAR_RIGHT) {
+      return 'fill-blue-800 dark:fill-blue-950';
+    }
+    if (countrie.gov.leaderFamily === IdeologicFamily.CATCH_ALL) {
+      return 'fill-yellow-400';
+    }
+
+    const leaderIdeology = countrie.parties[0]?.ideology;
+    if (leaderIdeology) {
+      if (liberals.includes(leaderIdeology.economy) && conservatives.includes(leaderIdeology.social)) {
+        return 'fill-sky-600 dark:fill-sky-800';
+      }
+    }
+
+    return '';
+  };
+
   const countriesPaths = countries.map((countrie) =>
     linkWrapper(
       countrie,
       <path
         d={countrie.path}
-        className={classNames({
-          'fill-blue-800 dark:fill-blue-950':
-            countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.FAR_RIGHT,
-          'fill-yellow-400':
-            countriesParams.group === 'gov' && countrie.gov && countrie.gov.leaderFamily === IdeologicFamily.CATCH_ALL,
+        className={classNames(govLeaderColor(countrie), {
           'fill-none': countrie.code === 'ue',
           'stroke-4 stroke-red-800': countrie.code === 'ue' && countriesParams.ueBorder,
           'stroke-none': countrie.code === 'ue' && !countriesParams.ueBorder,
