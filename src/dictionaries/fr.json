@@ -51,7 +51,7 @@
           "CONVENTIONAL_RIGHT": "droite",
           "CATCH_ALL": "attrape-tout",
           "CENTRE": "centre",
-          "THIRD_WAY": "troisième-voix",
+          "THIRD_WAY": "troisième-voie",
           "CONVENTIONAL_LEFT": "gauche",
           "RADICAL_LEFT": "gauche ou gauche radicale",
           "FAR_LEFT": "extrême-gauche"
@@ -59,7 +59,7 @@
         "group": {
           "farLeft": "extrême-gauche",
           "left": "gauche",
-          "thirdWay": "troisième-voix",
+          "thirdWay": "troisième-voie",
           "centre": "centre",
           "right": "droite",
           "farRight": "extrême-droite",
